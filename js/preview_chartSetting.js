@@ -1,7 +1,5 @@
-$(document).ready(function(){
-            Chart.register(ChartDataLabels);
+$(window).on('load', function(){
 
-            Chart.defaults.defaultFontFamily = "Noto Sans KR";
 
             const chart1 = document.getElementById('chart1');
 

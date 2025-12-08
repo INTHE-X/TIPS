@@ -173,4 +173,93 @@ let tl = gsap.timeline({
             
         window.addEventListener('resize', ScrollTrigger.refresh());
 
+        $('.distr_tabBtn .tabOpen').on('click', function(){
+            $(this).toggleClass('active');
+            if($(this).hasClass('active')){
+                $('.distr_tabList').stop().slideDown(300);
+            }
+            else{
+                $('.distr_tabList').stop().slideUp(300);
+            }
+        });
+
+        $('.distr_tabList li button').on('click', function(e){
+            e.preventDefault();
+            $(this).parent('li').addClass('active').siblings().removeClass('active');
+            var txt = $(this).children('span').text();
+            $('.distr_tabBtn .tabOpen span').text(txt);
+
+            var idx = $(this).parent().index();
+
+            var numChange = $('.distr_tabNum span');
+            var txtChange = $('.distr_graph_top h2');
+            if(idx == 0){
+                numChange.text('3,516');
+                txtChange.text('지역별 선정 현황');
+            }
+            if(idx == 1){
+                numChange.text('3,477');
+                txtChange.text('산업별 선정 현황');
+            }
+            if(idx == 2){
+                numChange.text('3,221');
+                txtChange.text('기술별 선정 현황');
+            }
+
+            $('.distr_tab').eq(idx).addClass('active').siblings().removeClass('active');
+            $('.distr_graph').eq(idx).addClass('active').siblings().removeClass('active');
+
+            setTimeout(function() {
+                setHeightSubWideTableHead();
+            }, 1);
+        });
+
+            Chart.register(ChartDataLabels);
+            Chart.defaults.defaultFontFamily = "Noto Sans KR";
+
+});
+
+$(window).on('load', function(){
+
+    Chart.register(ChartDataLabels);
+    Chart.defaults.defaultFontFamily = "Noto Sans KR";
+
+const table = document.querySelectorAll('.distr_graph table');
+
+
+table.forEach(table => {
+if (!table) return;
+
+const rows = table.querySelectorAll('tbody tr');
+const totalRows = rows.length;
+const baseDelay = 0.1; // 딜레이 간격 (초)
+
+rows.forEach((tr, rowIndex) => {
+  const cells = tr.querySelectorAll('td');
+  
+  cells.forEach((td, colIndex) => {
+    const value = parseFloat(td.textContent.trim());
+    
+    if (isNaN(value)) return;
+    
+    
+    if (value >= 0 && value <= 5) {
+      td.classList.add('range1');
+    } else if (value >= 6 && value <= 20) {
+      td.classList.add('range2');
+    } else if (value >= 21 && value <= 50) {
+      td.classList.add('range3');
+    } else if (value >= 51 && value <= 120) {
+      td.classList.add('range4');
+    } else if (value >= 121) {
+      td.classList.add('range5');
+    }
+
+    const diagonalIndex = (totalRows - 1 - rowIndex) + colIndex;
+    td.style.transitionDelay = `${diagonalIndex * baseDelay}s`;
+  });
+});
+})
+
+
 });
