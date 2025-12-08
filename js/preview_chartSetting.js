@@ -15,6 +15,7 @@ $(window).on('load', function(){
                     hover: {
                         mode: null,
                     },
+
                 }
 
                 var prvChartScales = {
@@ -107,6 +108,42 @@ $(window).on('load', function(){
 
         ctx.restore();
     }
+}
+
+const lastBarBgPlugin = {
+    id: 'lastBarBg',
+    beforeDatasetsDraw: function(chart, args, options) {
+        if (!options || !options.enabled) return;
+        
+        const ctx = chart.ctx;
+        const chartArea = chart.chartArea;
+        
+        let barDatasetIndex = chart.data.datasets.findIndex(d => d.type === 'bar');
+        if (barDatasetIndex === -1) return;
+        
+        const meta = chart.getDatasetMeta(barDatasetIndex);
+        if (!meta.data.length) return;
+        
+        const lastIndex = meta.data.length - 1;
+        const bar = meta.data[lastIndex];
+        const { x, width } = bar.getProps(['x', 'width'], true);
+        
+        const padding = options.padding || 10;
+        
+        ctx.save();
+        ctx.fillStyle = options.backgroundColor || 'rgba(95, 107, 127, 0.1)';
+        
+        const bgX = x - width / 2 - padding;
+        const bgWidth = width + padding * 2;
+        const bgY = chartArea.top;
+        const bgHeight = chartArea.bottom - chartArea.top;
+        const radius = options.borderRadius || 8;
+        
+        ctx.beginPath();
+        ctx.rect(bgX, bgY, bgWidth, bgHeight);
+        ctx.fill();
+        ctx.restore();
+    }
 };
                 
                 var prvData1 = [0, 160, 102.6, 7.6, 141.2, 24.9, -0.4, 17.6, 33.3, 25, 20, 25];
@@ -115,7 +152,7 @@ $(window).on('load', function(){
                 if(chart1){
 new Chart(chart1, {
     type: 'bar',
-    plugins: [dualLabelPlugin],
+    plugins: [dualLabelPlugin, lastBarBgPlugin],
                 data: {
                     labels: ['2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
                     datasets: [
@@ -148,6 +185,7 @@ new Chart(chart1, {
                                     return 4;
                                 }
                             }),
+
                         },
                         {
                             type: 'bar', 
@@ -185,6 +223,7 @@ new Chart(chart1, {
                 
                 options: {
                 ...prvChartOptions,
+
                     animation: {
                         duration: 1000,
                         easing: 'easeOutQuart',
@@ -201,6 +240,9 @@ new Chart(chart1, {
                     },
                 plugins: {
                     ...prvChartOptions.plugins,
+                        tooltip: {
+        enabled: false
+    },
                     dualLabel: {
                         enabled: true,
                         label1: {
@@ -213,7 +255,13 @@ new Chart(chart1, {
                             backgroundColor: '#8059E0',
                             color: '#FFFFFF',
                         }
-                    }
+                    },
+                    lastBarBg: {
+                enabled: true,
+                backgroundColor: 'rgba(95, 107, 127, 0.15)', 
+                padding: 12,      
+                borderRadius: 0,
+            }
                 },
                 scales: {
                     ...prvChartScales,
@@ -263,7 +311,7 @@ new Chart(chart1, {
             if(prv_barLine2){
 new Chart(prv_barLine2, {
     type: 'bar',
-    plugins: [dualLabelPlugin],
+    plugins: [dualLabelPlugin, lastBarBgPlugin],
                 data: {
                     labels: ['2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
                     datasets: [
@@ -347,6 +395,9 @@ new Chart(prv_barLine2, {
                     },
                     plugins: {
                     ...prvChartOptions.plugins,
+                        tooltip: {
+        enabled: false
+    },
                     dualLabel: {
                         enabled: true,
                         label1: {

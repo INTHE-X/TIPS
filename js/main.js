@@ -215,14 +215,14 @@ let tl = gsap.timeline({
         });
 
             Chart.register(ChartDataLabels);
-            Chart.defaults.defaultFontFamily = "Noto Sans KR";
+            Chart.defaults.defaultFontFamily = "Pretendard";
 
 });
 
 $(window).on('load', function(){
 
     Chart.register(ChartDataLabels);
-    Chart.defaults.defaultFontFamily = "Noto Sans KR";
+    Chart.defaults.defaultFontFamily = "Pretendard";
 
 const table = document.querySelectorAll('.distr_graph table');
 
