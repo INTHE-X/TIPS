@@ -204,6 +204,8 @@
 
 .link_tit p{
     font-size: 0.938vw;
+    font-weight: 600;
+    letter-spacing: -0.01876vw;
 }
 
 .link_tit h2{
@@ -245,9 +247,12 @@
     display: inline-block;
     width: max-content;
     font-size: 15px;
+    font-weight: 600;
+    color: #2b2b2b;
     padding: 9px 16px;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.9);
+    letter-spacing: -0.3px;
 }
 
 .link_box.right{
@@ -377,7 +382,7 @@
 
 .llb_top span{
     display: inline-block;
-    margin-bottom: 1.563vw;
+    margin-bottom: 1rem;
     font-size: 0.938vw;
     font-weight: 500;
     font-family: var(--font1-);
@@ -422,8 +427,7 @@
 }
 
 .llb_img figure{
-    display: flex;
-    align-items: flex-start;
+    position: relative;
     height: 100%;
 }
 
@@ -433,8 +437,18 @@
 
 .llb_img figure video{
     display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
     height: auto;
+}
+
+.link_list ul li.active .llb_img figure video{
+    width: 120%;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
 }
 
 .llb_bot{
@@ -453,6 +467,7 @@
     font-size: 0.781vw;
     word-break: keep-all;
     color: #fff !important;
+    letter-spacing: -0.01562vw;
 }
 
 .link_check{
@@ -465,14 +480,14 @@
     position: relative;
     display: inline-block;
     font-size: 0.938rem;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.8) !important;
     padding-right: 0.938rem;
     overflow: hidden;
     transition: all .8s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
 .link_list ul li:not(.active) .link_check a{
-    color: transparent;
+    color: transparent !important;
 }
 
 .link_check a::after{
@@ -578,9 +593,9 @@
 
 .subPage_tabBox{
     position: relative;
+    display: flex;
     width: 100%;
     height: 100%;
-    display: none;
     gap: 1rem;
 }
 
@@ -590,7 +605,6 @@
 }
 
 .subPage_tabBox.active{
-    display: flex;
 }
 
 .subPage_tabBox .divider{
@@ -719,15 +733,15 @@
     -webkit-transform: translateX(-50%);
     width: calc(100% - 3.126vw);
     display: table;
+    border-bottom: 1px solid #ededed;
 }
 
 .company_list table thead tr{
     width: 100% !important;
 }
 
-.company_list table thead,
 .company_list table tbody tr{
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .company_list table tbody{
@@ -774,14 +788,14 @@
 }
 
 .company_list table td .bold{
-    font-size: max(0.729vw, 0.813rem);
-    letter-spacing: max(-0.052vw, -0.3px);
+    font-size: 14px;
+    letter-spacing: -0.018rem;
     font-weight: 500;
 }
 
 .company_list table td .desc{
-    font-size: max(0.729vw, 0.875rem);
-    letter-spacing: max(-0.052vw, -0.3px);
+    font-size: 13px;
+    letter-spacing: -0.016rem;
     font-weight: 600;
     color: var(--fontGray1-);
 }
@@ -1338,6 +1352,7 @@
 
 .sub_wideTable tbody td{
     padding: 1rem 0.5rem 1rem 0;
+    vertical-align: top;
 }
 
 .sub_wideTable tbody td:not(.blank){
