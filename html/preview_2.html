@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIPS 프로그램 현황</title>
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/mobile.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@200,300,400,500,600,700,1&display=swap" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <script src="../js/preview_chartSetting.js"></script>
+    
+</head>
+<body>
+    <div id="wrap">
+        <header id="header">
+            <div class="header_inner">
+                <nav id="nav">
+                    <ul>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="active">
+                            <a href="#">Preview</a>
+                        </li>
+                        <li>
+                            <a href="#">Statistic</a>
+                        </li>
+                        <li>
+                            <a href="#">Search</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <section id="preview" class="sub_section">
+            <div class="section_inner">
+                <div class="subPage_tit">
+                    <h1>TIPS 프로그램 현황</h1>
+                </div>
+                <div class="subPage_tabBtnArea">
+                    <div class="subPage_tabBtn">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <span>창업기업</span>
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="#">
+                                    <span>운영사</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="subPage_tab_desc">
+                        <p>
+                            TIPS 프로그램에
+                            <b>선정된 스타트업</b>을 확인할 수 있습니다.
+                        </p>
+                        <p class="active">
+                            TIPS 창업기업을
+                            <b>발굴·투자</b>하고
+                            <b>정부지원 대상으로 추천하는 민간 투자기업</b>을 확인할 수 있습니다.
+                        </p>
+                    </div>
+                </div>
+                <div class="subPage_tabArea">
+                    <div class="subPage_tabBox active tab2">
+                        <div class="divider type1">
+                            <div class="dashBox wide bgWh1">
+                                <div class="Chart_area">
+                                    <div class="Chart_top">
+                                        <h2 class="subPageTit type1">선정 연도</h2>
+                                        <div class="colorInfo">
+                                            <ul>
+                                                <li>
+                                                    <div class="barColor"></div>
+                                                    <span>운영 기관</span>
+                                                </li>
+                                                <li>
+                                                    <div class="lineColor"></div>
+                                                    <span>운영 기관 당 기업 선정</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="Chart">
+                                        <div class="chart_box bar_line">
+                                            <canvas id="prv_barLine2"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dashBox wide bgWh2">
+                                <div class="company_list">
+                                    <div class="company_list_scroll">
+                                    <table>
+                                        <colgroup>
+                                            <col width="20%">
+                                            <col width="10%">
+                                            <col width="10%">
+                                            <col width="10%">
+                                            <col width="25%">
+                                            <col width="25%">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th width="20%">기업명</th>
+                                                <th width="10%">설립</th>
+                                                <th width="10%">조직</th> 
+                                                <th width="10%">소재지역</th>
+                                                <th width="25%">소속산업/기술</th>
+                                                <th width="25%">대표상품</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="tb_compDesc">
+                                                        <div class="tb_compLogo">
+                                                            <img src="../img/prvComp_ico1.svg" alt="앤톡 로고">
+                                                        </div>
+                                                        <strong>앤톡</strong>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">2015.10.26</span>
+                                                    <br>
+                                                    <span class="desc">9.9년</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">박재준</span>
+                                                    <br>
+                                                    <span class="desc">25명</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">서울특별시</span>
+                                                    <br>
+                                                    <span class="desc">중구</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">컴퓨터시스템 통합 자문 및 구축 서비스업</span>
+                                                    <br>
+                                                    <span class="desc">금융투자</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">응용 소프트웨어 개발 및 공급업</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="tb_compDesc">
+                                                        <div class="tb_compLogo">
+                                                            <img src="../img/prvComp_ico2.svg" alt="에이젠글로벌 로고">
+                                                        </div>
+                                                        <strong>에이젠글로벌</strong>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">2015.10.26</span>
+                                                    <br>
+                                                    <span class="desc">9.9년</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">박재준</span>
+                                                    <br>
+                                                    <span class="desc">25명</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">서울특별시</span>
+                                                    <br>
+                                                    <span class="desc">중구</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">컴퓨터시스템 통합 자문 및 구축 서비스업</span>
+                                                    <br>
+                                                    <span class="desc">엔터라이프스타일</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">응용 소프트웨어 개발 및 공급업</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="tb_compDesc">
+                                                        <div class="tb_compLogo">
+                                                            <img src="../img/prvComp_ico2.svg" alt="에이젠글로벌 로고">
+                                                        </div>
+                                                        <strong>에이젠글로벌</strong>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">2015.10.26</span>
+                                                    <br>
+                                                    <span class="desc">9.9년</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">박재준</span>
+                                                    <br>
+                                                    <span class="desc">25명</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">서울특별시</span>
+                                                    <br>
+                                                    <span class="desc">중구</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">컴퓨터시스템 통합 자문 및 구축 서비스업</span>
+                                                    <br>
+                                                    <span class="desc">엔터라이프스타일</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">응용 소프트웨어 개발 및 공급업</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="tb_compDesc">
+                                                        <div class="tb_compLogo">
+                                                            <img src="../img/prvComp_ico2.svg" alt="에이젠글로벌 로고">
+                                                        </div>
+                                                        <strong>에이젠글로벌</strong>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">2015.10.26</span>
+                                                    <br>
+                                                    <span class="desc">9.9년</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">박재준</span>
+                                                    <br>
+                                                    <span class="desc">25명</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">서울특별시</span>
+                                                    <br>
+                                                    <span class="desc">중구</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">컴퓨터시스템 통합 자문 및 구축 서비스업</span>
+                                                    <br>
+                                                    <span class="desc">엔터라이프스타일</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">응용 소프트웨어 개발 및 공급업</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="tb_compDesc">
+                                                        <div class="tb_compLogo">
+                                                            <img src="../img/prvComp_ico2.svg" alt="에이젠글로벌 로고">
+                                                        </div>
+                                                        <strong>에이젠글로벌</strong>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">2015.10.26</span>
+                                                    <br>
+                                                    <span class="desc">9.9년</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">박재준</span>
+                                                    <br>
+                                                    <span class="desc">25명</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">서울특별시</span>
+                                                    <br>
+                                                    <span class="desc">중구</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">컴퓨터시스템 통합 자문 및 구축 서비스업</span>
+                                                    <br>
+                                                    <span class="desc">엔터라이프스타일</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">응용 소프트웨어 개발 및 공급업</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="tb_compDesc">
+                                                        <div class="tb_compLogo">
+                                                            <img src="../img/prvComp_ico2.svg" alt="에이젠글로벌 로고">
+                                                        </div>
+                                                        <strong>에이젠글로벌</strong>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">2015.10.26</span>
+                                                    <br>
+                                                    <span class="desc">9.9년</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">박재준</span>
+                                                    <br>
+                                                    <span class="desc">25명</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">서울특별시</span>
+                                                    <br>
+                                                    <span class="desc">중구</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">컴퓨터시스템 통합 자문 및 구축 서비스업</span>
+                                                    <br>
+                                                    <span class="desc">엔터라이프스타일</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">응용 소프트웨어 개발 및 공급업</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="tb_compDesc">
+                                                        <div class="tb_compLogo">
+                                                            <img src="../img/prvComp_ico2.svg" alt="에이젠글로벌 로고">
+                                                        </div>
+                                                        <strong>에이젠글로벌</strong>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">2015.10.26</span>
+                                                    <br>
+                                                    <span class="desc">9.9년</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">박재준</span>
+                                                    <br>
+                                                    <span class="desc">25명</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">서울특별시</span>
+                                                    <br>
+                                                    <span class="desc">중구</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">컴퓨터시스템 통합 자문 및 구축 서비스업</span>
+                                                    <br>
+                                                    <span class="desc">엔터라이프스타일</span>
+                                                </td>
+                                                <td>
+                                                    <span class="bold">응용 소프트웨어 개발 및 공급업</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divider right type2">
+                            <div class="dashBox vrt3 bgWh3">
+                                <div class="donutChart_area">
+                                    <div class="donutChart_top">
+                                        <h2 class="subPageTit type2">운영사 투자 분야</h2>
+                                        <div class="donut_desc">
+                                            <span>누적 운영기관 수</span>
+                                            <strong>
+                                                <span>139</span>개
+                                            </strong>
+                                        </div>
+                                    </div>
+                                    <div class="donutChart_bot">
+                                        <div class="donutChart_botArea">
+                                            <div class="doughnut_chart">
+                                                <canvas id="doughnut4" class="prv_doughnut"></canvas>
+                                            </div>
+                                            <ul class="donut_colorInfoList">
+                                                <li class="color1">
+                                                    <span class="desc">전분야</span>
+                                                    <span class="percent">
+                                                        47.7
+                                                        <span>%</span>
+                                                    </span>
+                                                </li>
+                                                <li class="color2">
+                                                    <span class="desc">데이터/네트워크/AI</span>
+                                                    <span class="percent">
+                                                        9.3
+                                                        <span>%</span>
+                                                    </span>
+                                                </li>
+                                                <li class="color3">
+                                                    <span class="desc">바이오헬스 & 데이터/네트워크/AI</span>
+                                                    <span class="percent">
+                                                        5.6
+                                                        <span>%</span>
+                                                    </span>
+                                                </li>
+                                                <li class="color4">
+                                                    <span class="desc">기타</span>
+                                                    <span class="percent">
+                                                        37.4
+                                                        <span>%</span>
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dashBox vrt3 bgWh3">
+                                <div class="donutChart_area">
+                                    <div class="donutChart_top">
+                                        <h2 class="subPageTit type2">운영사 영위 사업</h2>
+                                    </div>
+                                    <div class="donutChart_bot">
+                                        <div class="donutChart_botArea">
+                                            <div class="doughnut_chart">
+                                                <canvas id="doughnut5" class="prv_doughnut"></canvas>
+                                            </div>
+                                            <ul class="donut_colorInfoList">
+                                                <li class="color7">
+                                                    <span class="desc">전문, 과학 및 기술 서비스업</span>
+                                                    <span class="percent">
+                                                        44.5
+                                                        <span>%</span>
+                                                    </span>
+                                                </li>
+                                                <li class="color2">
+                                                    <span class="desc">금융 및 보험업</span>
+                                                    <span class="percent">
+                                                        22.2
+                                                        <span>%</span>
+                                                    </span>
+                                                </li>
+                                                <li class="color3">
+                                                    <span class="desc">응용 소프트웨어 개발 및 공급업</span>
+                                                    <span class="percent">
+                                                        10.5
+                                                        <span>%</span>
+                                                    </span>
+                                                </li>
+                                                <li class="color4">
+                                                    <span class="desc">기타</span>
+                                                    <span class="percent">
+                                                        22.8
+                                                        <span>%</span>
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dashBox vrt3 bgWh3">
+                                <div class="donutChart_area">
+                                    <div class="donutChart_top">
+                                        <h2 class="subPageTit type2">운영사 지역 분포</h2>
+                                    </div>
+                                    <div class="donutChart_bot">
+                                        <div class="donutChart_botArea">
+                                            <div class="doughnut_chart">
+                                                <canvas id="doughnut6" class="prv_doughnut"></canvas>
+                                            </div>
+                                            <ul class="donut_colorInfoList">
+                                                <li class="color5">
+                                                    <span class="desc">서울특별시</span>
+                                                    <span class="percent">
+                                                        58.9
+                                                        <span>%</span>
+                                                    </span>
+                                                </li>
+                                                <li class="color2">
+                                                    <span class="desc">대전광역시</span>
+                                                    <span class="percent">
+                                                        8.4
+                                                        <span>%</span>
+                                                    </span>
+                                                </li>
+                                                <li class="color3">
+                                                    <span class="desc">인천광역시</span>
+                                                    <span class="percent">
+                                                        4.7
+                                                        <span>%</span>
+                                                    </span>
+                                                </li>
+                                                <li class="color4">
+                                                    <span class="desc">기타</span>
+                                                    <span class="percent">
+                                                        18.9
+                                                        <span>%</span>
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

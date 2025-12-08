@@ -1,0 +1,67 @@
+#header{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    z-index: 1000;
+}
+
+.header_inner{
+    width: 180px;
+    height: 100%;
+    padding-top: 2.5rem;
+}
+
+#nav{
+    width: 100%;
+    padding: 0 0 0 0.75rem;
+}
+
+#nav ul{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+#nav ul li{
+    width: 100%;
+}
+
+#nav ul li a{
+    font-family: var(--font3-);
+    display: flex;
+    align-items: center;
+    color: var(--fontGray1-);
+    padding: 0.75rem 1rem 0.75rem 3.125rem;
+    font-size: 0.938rem;
+    border-radius: 999px;
+    font-weight: 500;
+    background-position: left 1rem center !important;
+    background-repeat: no-repeat !important;
+    background-size: 1.125rem auto !important;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#nav ul li:nth-child(1) a{
+    background-image: url('../img/nav_ico1.svg');
+}
+
+#nav ul li:nth-child(2) a{
+    background-image: url('../img/nav_ico2.svg');
+}
+
+#nav ul li:nth-child(3) a{
+    background-image: url('../img/nav_ico3.svg');
+}
+
+#nav ul li:nth-child(4) a{ 
+    background-image: url('../img/nav_ico4.svg');
+}
+
+#nav ul li.active a,
+#nav ul li a:hover,
+#nav ul li a:focus-visible{
+    background-color: var(--main-color2-);
+    color: #000;
+}

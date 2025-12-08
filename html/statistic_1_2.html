@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIPS 성과 통계</title>
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/mobile.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@200,300,400,500,600,700,1&display=swap" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+</head>
+<body>
+    <div id="wrap">
+        <header id="header">
+            <div class="header_inner">
+                <nav id="nav">
+                    <ul>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Preview</a>
+                        </li>
+                        <li class="active">
+                            <a href="#">Statistic</a>
+                        </li>
+                        <li>
+                            <a href="#">Search</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <section id="statistic" class="sub_section type2">
+            <div class="subPage_tit">
+                <h1>TIPS 성과 통계</h1>
+            </div>
+            <div class="subPage_tabBtnArea">
+                <div class="subPage_tabBtn">
+                    <ul>
+                        <li class="active">
+                            <a href="#">
+                                <span>현황</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>트렌드</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="subPage_tab_desc">
+                    <p class="active">
+                        TIPS 성과 통계는
+                        <b>'창업기업'에 대한 성과</b>를 보여줍니다.
+                    <p>
+                        각 연도에 선정된 기업들의 
+                        <b>선정 시점 성과를 분석</b>하여 TIPS가 선호해온
+                        <b>기업 특성과 선정 기준의 변화</b>를 확인할 수 있습니다. 
+                    </p>
+                </div>
+            </div>
+            <div class="subPage_tabArea">
+                <div class="subPage_tabBox tab1 active">
+                    <div class="subPage_link">
+                        <ul>
+                            <li><a href="#">생멸 현황</a></li>
+                            <li class="active"><a href="#">분포 현황</a></li>
+                            <li><a href="#">성과 현황</a></li>
+                        </ul>
+                    </div>
+                    <div class="divider type2">
+                        <div class="dashBox bgWh2">
+                            <div class="dash_basicInner type1">
+                                <div class="distr_tabBtn_area">
+                                    <div class="distr_tabBtn">
+                                        <button class="tabOpen">
+                                            <span>지역</span>
+                                        </button>
+                                        <ul>
+                                            <li>
+                                                <button>
+                                                    <span>지역</span>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button>
+                                                    <span>산업</span>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button>
+                                                    <span>기술</span>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="distr_tab_area">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider type1">
+                        <div class="dashBox bgWh2">
+                            <div class="sub_wideArea type2">
+                                <div class="distr_graphTab">
+                                    <div class="distr_graph_top">
+                                        <h2 class="subPageTit type1">지역별 선정 현황</h2>
+                                    </div>
+                                    <div class="distr_graphArea">
+                                        <div class="distr_graph">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th class="blank"></th>
+                                                        <th>2013</th>
+                                                        <th>2014</th>
+                                                        <th>2015</th>
+                                                        <th>2016</th>
+                                                        <th>2017</th>
+                                                        <th>2018</th>
+                                                        <th>2019</th>
+                                                        <th>2020</th>
+                                                        <th>2021</th>
+                                                        <th>2022</th>
+                                                        <th>2023</th>
+                                                        <th>2024</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>서울특별시</th>
+                                                        <td>7</td>
+                                                        <td>29</td>
+                                                        <td>46</td>
+                                                        <td>41</td>
+                                                        <td>90</td>
+                                                        <td>126</td>
+                                                        <td>136</td>
+                                                        <td>150</td>
+                                                        <td>182</td>
+                                                        <td>268</td>
+                                                        <td>254</td>
+                                                        <td>303</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

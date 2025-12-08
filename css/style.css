@@ -1,0 +1,122 @@
+html, body{
+    font-family: 'Poppins', 'Pretendard', sans-serif;
+    overflow-x: hidden;
+}
+
+:root{
+	--main-color1-: #6141D6;
+    --main-color2-: #EDEFF0;
+    --main-color3-: #EFF0F0;
+    --main-color4-: #8059E0;
+    --fontBlack1-: #252525;
+    --fontGray1-: #70757c;
+    --fontGray2-: #5e5e5e;
+    --fontGray3-: #B4B8BF;
+    --chartColor1-: #5F6B7F; 
+    --chartColor2-: rgba(178, 185, 199, 0.5);
+    --chartColor3-: #525d71;
+    --chartColor4-: #6991ff;
+    --chartColor5-: #42CFD9;
+    --chartColor6-: #35359C;
+    --chartColor7-: #6e42d9;
+    --chartColor8-: #5F6B7F;
+    --font1-: 'Pretendard', sans-serif;
+    --font2-: 'Poppins', sans-serif;
+    --font3-: 'Clash Grotesk', sans-serif;
+}
+
+.subPageTit{
+    color: var(--fontBlack1-);
+}
+
+.subPageTit.type1{
+    font-size: 1.25vw;
+    font-weight: 700;
+}
+
+.subPageTit.type2{
+    font-size: 0.938vw;
+    font-weight: 700;
+}
+
+.sub_section{
+    width: 100vw;
+    min-height: 100vh;
+    overflow: hidden;
+    background: url('../img/preview_bg.png') no-repeat;
+    background-position: top;
+    background-size: cover;
+    padding: 3.125rem 3.125rem 3.125rem 210px;
+}
+
+.close_reason_top{
+    width: 100%;
+    margin-bottom: 0.833vw;
+}
+
+.divider.type1{
+    width: 70%;
+}
+
+.divider.type2{
+    width: 30%;
+}
+
+.dashBox{
+    width: 100%;
+    border-radius: 1.25rem;
+    box-shadow: 2px 4px 20px rgba(56, 56, 56, 0.2);
+}
+
+.dashBox.bgWh1{
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #fff;
+}
+
+.dashBox.bgWh2{
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.dashBox.bgWh3{
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.reasonColor1{
+    background: #38306d;
+}
+
+.reasonColor2{
+    background: #3865e0;
+}
+
+.reasonColor3{
+    background: #3292F9;
+}
+
+.reasonColor4{
+    background: #1FC6DC;
+}
+
+.reasonColor5{
+    background: #1FC6DC;
+}
+
+.reasonColor6{
+    background: #7A45E5;
+}
+
+.reasonColor7{
+    background: #9C76D9;
+}
+
+.reasonColor8{
+    background: #B4B8BF;
+}
+
+.sub_wideArea.type2{
+    position: static;
+    width: 100%;
+    padding: 1.563vw;
+}
