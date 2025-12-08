@@ -608,7 +608,7 @@ new Chart(prv_doughnut1, {
                         datasets: [
                             {
                                 type: 'doughnut',
-                                data: prvData4,
+                                data: prvData7,
                                 backgroundColor: [
                                     'rgba(34, 107, 218, 1)',
                                     'rgba(105, 145, 255, 1)',
