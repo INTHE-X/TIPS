@@ -1,103 +1,89 @@
 $(window).on('load', function(){
 
+    var subWideTable = $('.sub_wideTable, .distr_graph, .company_list_scroll');
 
-            const chart1 = document.getElementById('chart1');
+            function setHeightSubWideTableHead(){
+                subWideTable.each(function(){
+                    var width = $(this).children('table').innerWidth();
+                    var sub_wideTableHead = $(this).children().find('thead');
+                    sub_wideTableHead.css({
+                        'width': width,
+                    });
+                });
+            }
 
-            var prvChartOptions = {
-                maintainAspectRatio: false,
-                    responsive: true,
+Chart.defaults.defaultFontFamily = "Pretendard";
 
-                    plugins: {
-                        legend: {
-                            display: false,
-                        },
-                    },
-                    hover: {
-                        mode: null,
-                    },
+// ========================================
+// 공유 가능한 차트 애니메이션 시스템
+// ========================================
 
-                }
+// WeakMap을 사용하여 각 차트 인스턴스별 상태 저장
+const chartAnimationStates = new WeakMap();
 
-                var prvChartScales = {
-                    x: {
-                        grid: {
-                            display: false,
-                        },
-                        border: {
-                            display: false,
-                        },
-                        ticks: {
-                            color: '5e5e5e',
-                            font: {
-                                weight: 600,
-                            }
-                        }
-                    },
-                    
-                }
+// 차트 인스턴스별 애니메이션 상태 초기화
+function initChartAnimationState(chart) {
+    if (!chartAnimationStates.has(chart)) {
+        chartAnimationStates.set(chart, {
+            barAnimationComplete: false,
+            lineAnimationStarted: false,
+            dualLabelAnimationStarted: false,
+            dualLabelOpacity: 0
+        });
+    }
+    return chartAnimationStates.get(chart);
+}
 
-    const dualLabelPlugin = {
+// ========================================
+// 공유 플러그인들
+// ========================================
+
+const sharedDualLabelPlugin = {
     id: 'dualLabel',
     afterDraw: function(chart, args, options) {
-        if (!options || !options.enabled) {
-            console.log('DualLabel Plugin: Disabled or No Options');
-            return;
-        }
+        if (!options || !options.enabled) return;
+        
+        const state = chartAnimationStates.get(chart);
+        if (!state || !state.barAnimationComplete) return;
+        if (state.dualLabelOpacity <= 0) return;
 
         const ctx = chart.ctx;
-        
         let datasetIndex = chart.data.datasets.findIndex(d => d.type === 'bar');
-        if (datasetIndex === -1) {
-            datasetIndex = 0; 
-        }
-
+        if (datasetIndex === -1) datasetIndex = 0;
         const meta = chart.getDatasetMeta(datasetIndex);
-        
         if (!meta.data.length || meta.hidden) return;
-
         const lastIndex = meta.data.length - 1;
         const bar = meta.data[lastIndex];
-
         const { x, y, width } = bar.getProps(['x', 'y', 'width'], true);
-        
-        
-        const barX = x;
-        const barY = y; 
 
+        const barX = x;
+        const barY = y;
         const boxHeight = 24;
         const offset = 4;
-        const gap = 4;    
+        const gap = 4;
 
         ctx.save();
-
-        const box1Y = barY - offset - boxHeight; 
-
+        ctx.globalAlpha = state.dualLabelOpacity;
+        
+        const box1Y = barY - offset - boxHeight;
         ctx.fillStyle = options.label1?.backgroundColor || '#5F6B7F';
         ctx.beginPath();
-        if (ctx.roundRect) {
-            ctx.roundRect(barX - width / 2, box1Y, width, boxHeight, 999); 
-        } else {
-            ctx.rect(barX - width / 2, box1Y, width, boxHeight); 
-        }
+        if (ctx.roundRect) ctx.roundRect(barX - width / 2, box1Y, width, boxHeight, 999);
+        else ctx.rect(barX - width / 2, box1Y, width, boxHeight);
         ctx.fill();
 
         ctx.fillStyle = options.label1?.color || '#FFFFFF';
         ctx.font = '700 12px sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        
         const text1 = options.label1?.text || chart.data.datasets[datasetIndex].data[lastIndex];
         ctx.fillText(text1, barX, box1Y + boxHeight / 2);
 
         const box2Y = box1Y - gap - boxHeight;
-
         ctx.fillStyle = options.label2?.backgroundColor || '#8059E0';
         ctx.beginPath();
-        if (ctx.roundRect) {
-            ctx.roundRect(barX - width / 2, box2Y, width, boxHeight, 999);
-        } else {
-            ctx.rect(barX - width / 2, box2Y, width, boxHeight);
-        }
+        if (ctx.roundRect) ctx.roundRect(barX - width / 2, box2Y, width, boxHeight, 999);
+        else ctx.rect(barX - width / 2, box2Y, width, boxHeight);
         ctx.fill();
 
         ctx.fillStyle = options.label2?.color || '#FFFFFF';
@@ -108,428 +94,806 @@ $(window).on('load', function(){
 
         ctx.restore();
     }
-}
+};
 
-const lastBarBgPlugin = {
+const sharedLastBarBgPlugin = {
     id: 'lastBarBg',
     beforeDatasetsDraw: function(chart, args, options) {
         if (!options || !options.enabled) return;
-        
+
         const ctx = chart.ctx;
         const chartArea = chart.chartArea;
-        
+
         let barDatasetIndex = chart.data.datasets.findIndex(d => d.type === 'bar');
         if (barDatasetIndex === -1) return;
-        
+
         const meta = chart.getDatasetMeta(barDatasetIndex);
         if (!meta.data.length) return;
-        
+
         const lastIndex = meta.data.length - 1;
         const bar = meta.data[lastIndex];
         const { x, width } = bar.getProps(['x', 'width'], true);
-        
+
         const padding = options.padding || 10;
-        
+
         ctx.save();
         ctx.fillStyle = options.backgroundColor || 'rgba(95, 107, 127, 0.1)';
-        
+
         const bgX = x - width / 2 - padding;
         const bgWidth = width + padding * 2;
         const bgY = chartArea.top;
         const bgHeight = chartArea.bottom - chartArea.top;
-        const radius = options.borderRadius || 8;
-        
+
         ctx.beginPath();
         ctx.rect(bgX, bgY, bgWidth, bgHeight);
         ctx.fill();
         ctx.restore();
     }
 };
-                
-                var prvData1 = [0, 160, 102.6, 7.6, 141.2, 24.9, -0.4, 17.6, 33.3, 25, 20, 25];
-                var prvData2 = [15, 9, 79, 85, 205, 256, 255, 300, 400, 500, 600, 750];
 
-                if(chart1){
-new Chart(chart1, {
-    type: 'bar',
-    plugins: [dualLabelPlugin, lastBarBgPlugin],
-                data: {
-                    labels: ['2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
-                    datasets: [
-                        {
-                            type: 'line',
-                            label: '증감 (%)',
-                            data: prvData1,
-                            yAxisID: 'y1',
-                            datalabels: {
-                                display: false,
-                            },
-                            backgroundColor: "#6E42D9",
-                            borderColor: "#6e42d9",
-                            borderWidth: 2,
-                            borderSkipped: false,
-                            
-
-                            pointBorderColor: prvData1.map((item, index) => {
-                                if (index === prvData1.length - 1) {
-                                    return 'rgba(255, 255, 255, 1)';
-                                } else {
-                                    return 'rgba(255, 255, 255, 0.6)';
-                                }
-                            }),
-                            pointBorderWidth: 2,
-                            pointRadius: prvData1.map((item, index) => {
-                                if (index === prvData1.length - 1) {
-                                    return 5;
-                                } else {
-                                    return 4;
-                                }
-                            }),
-
-                        },
-                        {
-                            type: 'bar', 
-                            label: '기업(개)',
-                            data: prvData2,
-                            yAxisID: 'y2',
-                            datalabels: {
-                                display: function(context) {
-                                    return context.dataIndex !== context.dataset.data.length - 1;
-                                },
-                                offset: 4,
-                                align: 'end',
-                                anchor: 'end',
-                                color: 'rgba(178, 185, 199, 1)',
-                                font: {
-                                    weight: 600,
-                                    size: 13,
-                                },
-                            },
-
-                            backgroundColor: prvData2.map((item, index) => {
-                                if (index === prvData2.length - 1) {
-                                    return 'rgba(95, 107, 127, 1)';
-                                } else {
-                                    return 'rgba(178, 185, 199, 0.5)';
-                                }
-                            }),
-                            borderRadius: 8,
-                            borderSkipped: false,
-                            
-                        },
-
-                    ]
-                },
-                
-                options: {
-                ...prvChartOptions,
-
-                    animation: {
-                        duration: 1000,
-                        easing: 'easeOutQuart',
-                        delay: (context) => {
-                            return context.dataIndex * 50;
-                        },
-                        y: {
-                            from: (ctx) => {
-                                if (ctx.type === 'data' && ctx.datasetIndex === 1) {
-                                    return ctx.chart.chartArea.bottom; 
-                                }
-                            }
-                        }
-                    },
-                plugins: {
-                    ...prvChartOptions.plugins,
-                        tooltip: {
-        enabled: false
+const sharedLineDrawPlugin = {
+    id: 'lineDraw',
+    
+    beforeDatasetsDraw: function(chart, args, options) {
+        if (!options || !options.enabled) return;
+        
+        const state = chartAnimationStates.get(chart);
+        
+        // 라인 데이터셋 항상 숨김 (직접 그릴 것이므로)
+        const lineDatasetIndex = chart.data.datasets.findIndex(d => d.type === 'line');
+        if (lineDatasetIndex !== -1) {
+            const meta = chart.getDatasetMeta(lineDatasetIndex);
+            if (meta) {
+                meta.hidden = true;
+            }
+        }
+        
+        // 애니메이션 시작 전이면 여기서 종료
+        if (!state || !state.lineAnimationStarted) {
+            return;
+        }
     },
-                    dualLabel: {
-                        enabled: true,
-                        label1: {
-                            text: '750',
-                            backgroundColor: '#5F6B7F',
-                            color: '#FFFFFF',
-                        },
-                        label2: {
-                            text: '25.0%',
-                            backgroundColor: '#8059E0',
-                            color: '#FFFFFF',
-                        }
-                    },
-                    lastBarBg: {
-                enabled: true,
-                backgroundColor: 'rgba(95, 107, 127, 0.15)', 
-                padding: 12,      
-                borderRadius: 0,
-            }
-                },
-                scales: {
-                    ...prvChartScales,
-                    y1: {
-                        type: 'linear',
-                        position: 'right',
-                        min: 0,
-                        max: 200,
-                        display: false,
-                        border: {
-                            display: false,
-                        },
-                        ticks: {
-                            color: '#B4B8BF',
-                            weight: 500,
-                        }
-                    },
-                    y2: {
-                        type: 'linear',
-                        position: 'left',
-                        min: 0,
-                        max: 1000,
-                        border: {
-                            display: false,
-                        },
-                        ticks: {
-                            padding: 15,
-                            color: "rgba(178, 185, 199, 1)",
-                            stepSize: 200,
-                            min: 0,
-                            crossAlign: 'far',
-
-                        },
-                    },
-                },
-            }
-                    
-            });
-                }
+    
+    afterDatasetsDraw: function(chart, args, options) {
+        if (!options || !options.enabled) return;
+        
+        const state = chartAnimationStates.get(chart);
+        if (!state || !state.lineAnimationStarted) return;
+        
+        const ctx = chart.ctx;
+        const progress = options.progress || 0;
+        const totalPoints = chart.data.labels.length;
+        
+        if (progress <= 0) return;
+        
+        const lineDatasetIndex = chart.data.datasets.findIndex(d => d.type === 'line');
+        if (lineDatasetIndex === -1) return;
+        
+        const dataset = chart.data.datasets[lineDatasetIndex];
+        const meta = chart.getDatasetMeta(lineDatasetIndex);
+        
+        if (!meta || !meta.data || meta.data.length === 0) return;
+        
+        const points = meta.data;
+        
+        // 애니메이션 완료 여부 확인
+        const isComplete = progress >= totalPoints - 1;
+        const fullSegments = isComplete ? totalPoints - 1 : Math.floor(progress);
+        const partialProgress = isComplete ? 1 : progress - Math.floor(progress);
+        
+        ctx.save();
+        ctx.strokeStyle = dataset.borderColor || '#6E42D9';
+        ctx.lineWidth = dataset.borderWidth || 2;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        
+        ctx.beginPath();
+        
+        // 모든 완료된 세그먼트 그리기
+        for (let i = 0; i <= fullSegments; i++) {
+            const point = points[i];
+            if (!point) continue;
             
+            const { x, y } = point.getProps(['x', 'y'], true);
+            
+            if (i === 0) {
+                ctx.moveTo(x, y);
+            } else {
+                ctx.lineTo(x, y);
+            }
+        }
+        
+        // 진행 중인 세그먼트 그리기 (애니메이션 중일 때만)
+        if (!isComplete && fullSegments < totalPoints - 1 && partialProgress > 0) {
+            const startPoint = points[fullSegments];
+            const endPoint = points[fullSegments + 1];
+            
+            if (startPoint && endPoint) {
+                const startX = startPoint.getProps(['x'], true).x;
+                const startY = startPoint.getProps(['y'], true).y;
+                const endX = endPoint.getProps(['x'], true).x;
+                const endY = endPoint.getProps(['y'], true).y;
+                
+                const currentX = startX + (endX - startX) * partialProgress;
+                const currentY = startY + (endY - startY) * partialProgress;
+                
+                ctx.lineTo(currentX, currentY);
+            }
+        }
+        
+        ctx.stroke();
+        
+        // 포인트 그리기
+        const pointsToDrawCount = isComplete ? totalPoints - 1 : fullSegments;
+        
+        for (let i = 0; i <= pointsToDrawCount; i++) {
+            const point = points[i];
+            if (!point) continue;
+            
+            const { x, y } = point.getProps(['x', 'y'], true);
+            const isLast = i === totalPoints - 1;
+            const radius = isLast ? 5 : 4;
+            
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.fillStyle = dataset.borderColor || '#6E42D9';
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.strokeStyle = isLast ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0.6)';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        }
+        
+        ctx.restore();
+    }
+};
 
-            var prv_barLine2 = document.getElementById('prv_barLine2');
+// ========================================
+// 공유 애니메이션 함수들
+// ========================================
 
-            var prvData02 = [5, 12, 21, 27, 46, 53, 58, 64, 75, 90, 118, 139]; 
-            var prvData03 = [3, 3.3, 3.8, 3.1, 4.5, 4.8, 4.4, 4.7, 5.3, 5.6, 5.1, 5.4]
+function startDualLabelAnimation(chart) {
+    const state = initChartAnimationState(chart);
+    if (state.dualLabelAnimationStarted) return;
+    state.dualLabelAnimationStarted = true;
+    
+    const duration = 500;
+    const startTime = performance.now();
+    
+    function animate(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        state.dualLabelOpacity = 1 - Math.pow(1 - progress, 2);
+        chart.update('none');
+        
+        if (progress < 1) {
+            requestAnimationFrame(animate);
+        } else {
+            state.dualLabelOpacity = 1;
+            chart.update('none');
+        }
+    }
+    
+    requestAnimationFrame(animate);
+}
 
-            if(prv_barLine2){
-new Chart(prv_barLine2, {
-    type: 'bar',
-    plugins: [dualLabelPlugin, lastBarBgPlugin],
-                data: {
-                    labels: ['2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
-                    datasets: [
-                        {
-                            type: 'line',
-                            label: '운영 기관 당 기업 선정(개)',
-                            data: prvData03,
-                            yAxisID: 'y1',
-                            datalabels: {
-                                display: false,
-                            },
-                            backgroundColor: "#6E42D9",
-                            borderColor: "#6e42d9",
-                            borderWidth: 2,
-                            borderSkipped: false,
+function startLineAnimation(chart) {
+    const state = initChartAnimationState(chart);
+    if (state.lineAnimationStarted) return;
+    state.lineAnimationStarted = true;
+    
+    const totalPoints = chart.data.labels.length;
+    const duration = 3000;
+    const startTime = performance.now();
+    
+    function animate(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        const eased = 1 - Math.pow(1 - progress, 4);
+        const lineProgress = eased * (totalPoints - 1);
+        
+        chart.options.plugins.lineDraw.progress = lineProgress;
+        chart.update('none');
+        
+        if (progress < 1) {
+            requestAnimationFrame(animate);
+        } else {
+            chart.options.plugins.lineDraw.progress = totalPoints;
+            chart.update('none');
+            startDualLabelAnimation(chart);
+        }
+    }
+    
+    requestAnimationFrame(animate);
+}
 
-                            pointBorderColor: prvData03.map((item, index) => {
-                                if (index === prvData03.length - 1) {
-                                    return 'rgba(255, 255, 255, 1)';
-                                } else {
-                                    return 'rgba(255, 255, 255, 0.6)';
-                                }
-                            }),
-                            pointBorderWidth: 2,
-                            pointRadius: prvData03.map((item, index) => {
-                                if (index === prvData03.length - 1) {
-                                    return 5;
-                                } else {
-                                    return 4;
-                                }
-                            }),
+// ========================================
+// 차트 생성 헬퍼 함수
+// ========================================
 
-                        },
-                        {
-                            type: 'bar', 
-                            label: '운영 기관',
-                            data: prvData02,
-                            yAxisID: 'y2',
-                            datalabels: {
-                            display: function(context) {
-                                return context.dataIndex !== context.dataset.data.length - 1;
-                            },
-                            offset: 4,
-                            align: 'end',
-                            anchor: 'end',
-                            color: 'rgba(178, 185, 199, 1)',
-                            font: {
-                                weight: 600,
-                                size: 13,
-                            },
-                            },
+function createAnimatedChart(element, config) {
+    const chart = new Chart(element, config);
+    initChartAnimationState(chart);
+    return chart;
+}
 
-                            backgroundColor: prvData2.map((item, index) => {
-                                if (index === prvData2.length - 1) {
-                                    return 'rgba(95, 107, 127, 1)';
-                                } else {
-                                    return 'rgba(178, 185, 199, 0.5)';
-                                }
-                            }),
-                            borderRadius: 8,
-                            borderSkipped: false,
-                            
-                        }
-                    ]
-                },
-                options: {
-                    ...prvChartOptions,
-                    animation: {
-                        duration: 1000,
-                        easing: 'easeOutQuart',
-                        delay: (context) => {
-                            return context.dataIndex * 50;
-                        },
-                        y: {
-                            from: (ctx) => {
-                                if (ctx.type === 'data' && ctx.datasetIndex === 1) {
-                                    return ctx.chart.chartArea.bottom; 
-                                }
-                            }
-                        }
-                    },
-                    plugins: {
-                    ...prvChartOptions.plugins,
-                        tooltip: {
-        enabled: false
+// ========================================
+// 공통 차트 옵션
+// ========================================
+
+const chartTabCallbacks = new WeakMap();
+
+var prvChartOptions = {
+    maintainAspectRatio: false,
+    responsive: true,
+    plugins: {
+        legend: {
+            display: false,
+        },
     },
-                    dualLabel: {
-                        enabled: true,
-                        label1: {
-                            text: '139',
-                            backgroundColor: '#5F6B7F',
-                            color: '#FFFFFF',
-                            borderRadius: 999,
-                            
-                        },
-                        label2: {
-                            text: '5.4',
-                            backgroundColor: '#8059E0',
-                            color: '#FFFFFF',
-                        }
-                    }
-                },
-                    scales: {
-                        ...prvChartScales,
-                        y1: {
-                        type: 'linear',
-                        position: 'right',
-                        min: 0,
-                        max: 200,
-                        display: false,
-                        border: {
-                            display: false,
-                        },
-                        ticks: {
-                            color: '#B4B8BF',
-                            weight: 500,
-                        }
-                    },
-                    y1: {
-                        type: 'linear',
-                        position: 'right',
-                        min: 0,
-                        max: 6,
-                        display: false,
-                        border: {
-                            display: false,
-                        },
-                        ticks: {
-                            color: '#B4B8BF',
-                            weight: 500,
-                        }
-                    },
-                        y2: {
-                            type: 'linear',
-                            position: 'left',
-                            min: 0,
-                            max: 180,
-                            border: {
-                                display: false,
-                            },
-                            ticks: {
-                                padding: 15,
-                                color: "rgba(178, 185, 199, 1)",
-                                stepSize: 30,
-                                crossAlign: 'far',
-                            },
-                        },
-                    },
-                }
-            });
-
-            }
+    hover: {
+        mode: null,
+    },
+        onHover: function(event, activeElements, chart) {
+        // 콜백이 등록된 차트만 커서 변경
+        if (!chartTabCallbacks.has(chart)) return;
+        
+        const rect = chart.canvas.getBoundingClientRect();
+        const x = event.native.clientX - rect.left;
+        const chartArea = chart.chartArea;
+        
+        if (x >= chartArea.left && x <= chartArea.right) {
+            event.native.target.style.cursor = 'pointer';
+        } else {
+            event.native.target.style.cursor = 'default';
+        }
+    },
+    onClick: function(event, activeElements, chart) {
+        // 콜백이 등록된 차트만 처리
+        const callback = chartTabCallbacks.get(chart);
+        if (!callback) return;
+        
+        const rect = chart.canvas.getBoundingClientRect();
+        const x = event.native.clientX - rect.left;
+        const chartArea = chart.chartArea;
+        
+        if (x < chartArea.left || x > chartArea.right) return;
+        
+        const xScale = chart.scales.x;
+        const labels = chart.data.labels;
+        
+        let clickedIndex = -1;
+        let minDistance = Infinity;
+        
+        labels.forEach((label, index) => {
+            const labelX = xScale.getPixelForValue(index);
+            const distance = Math.abs(x - labelX);
             
-            const prv_doughnut1 = document.getElementById('doughnut1');
+            if (distance < minDistance) {
+                minDistance = distance;
+                clickedIndex = index;
+            }
+        });
+        
+        if (clickedIndex >= 0) {
+            callback(clickedIndex);
+        }
+    },
+};
 
-            var prv_doughnutOptions = {
-                maintainAspectRatio: false,
-                hover: {
-                    mode: null,
-                },
+// .company_list가 여러 개인 경우
+function connectChartToTab(chart, tabSelector) {
+    chartTabCallbacks.set(chart, function(index) {
+        $(`${tabSelector}`).eq(index).addClass('active').siblings().removeClass('active');
+        setTimeout(function() {
+            setHeightSubWideTableHead();
+        }, 1);
+    });
+}
 
-                plugins: {
-                    legend: {
+
+var prvChartScales = {
+    x: {
+        grid: {
+            display: false,
+        },
+        border: {
+            display: false,
+        },
+        ticks: {
+            color: '#5e5e5e',
+            font: {
+                weight: 600,
+            }
+        }
+    },
+};
+
+
+
+var prvData1 = [0, 160, 102.6, 7.6, 141.2, 24.9, -0.4, 17.6, 33.3, 25, 20, 25];
+var prvData2 = [15, 9, 79, 85, 205, 256, 255, 300, 400, 500, 600, 750];
+
+
+// ========================================
+// 차트1 생성
+// ========================================
+const chart1 = document.getElementById('chart1');
+
+if (chart1) {
+    const chart1Instance = createAnimatedChart(chart1, {
+        plugins: [sharedDualLabelPlugin, sharedLastBarBgPlugin, sharedLineDrawPlugin],
+        data: {
+            labels: ['2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+            datasets: [
+                {
+                    type: 'line',
+                    label: '증감 (%)',
+                    order: 0,
+                    data: prvData1,
+                    hidden: true,
+                    animation: false,
+                    clip: { left: 5, top: 100, right: 5, bottom: 5 },
+                    yAxisID: 'y1',
+                    datalabels: {
                         display: false,
                     },
-                    tooltip: {
-                        backgroundColor: function(context) {
-                            if (context.tooltip.dataPoints && context.tooltip.dataPoints.length > 0) {
-                                const dataIndex = context.tooltip.dataPoints[0].dataIndex;
-                                return context.tooltip.dataPoints[0].dataset.backgroundColor[dataIndex];
-                            }
-                            return '#000';
+                    borderColor: '#6E42D9',
+                    borderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 4,
+                    pointBackgroundColor: '#6E42D9',
+                    pointBorderColor: 'rgba(255, 255, 255, 0.6)',
+                    pointBorderWidth: 2,
+                    pointStyle: function(context) {
+                        return context.dataIndex === context.dataset.data.length - 1 ? 'circle' : 'circle';
+                    },
+                    pointRadius: function(context) {
+                        return context.dataIndex === context.dataset.data.length - 1 ? 5 : 4;
+                    },
+                    pointBorderColor: function(context) {
+                        return context.dataIndex === context.dataset.data.length - 1 
+                            ? 'rgba(255, 255, 255, 1)' 
+                            : 'rgba(255, 255, 255, 0.6)';
+                    },
+                },
+                {
+                    type: 'bar',
+                    label: '기업(개)',
+                    data: prvData2,
+                    yAxisID: 'y2',
+                    datalabels: {
+                        display: function(context) {
+                            const state = chartAnimationStates.get(context.chart);
+                            if (!state || !state.barAnimationComplete) return false;
+                            return context.dataIndex !== context.dataset.data.length - 1;
                         },
-                        titleAlign: 'center',
-                        bodyAlign: 'center',
-                        callbacks: {
-                            title: function(context) {
-                                return context[0].raw + '%';
-                            },
-                            beforeBody: function() {
-                                return '';  // 한 줄 띄우기
-                            },
-                            label: function(context) {
-                                return context.label;
-                            }
-                        },
-                        titleFont: {
-                            size: 13,
+                        offset: 4,
+                        align: 'end',
+                        anchor: 'end',
+                        color: 'rgba(178, 185, 199, 1)',
+                        font: {
                             weight: 600,
-                            family: 'Clash Grotesk',
-                        },
-                        bodyFont: {
                             size: 13,
-                            weight: 500,
                         },
-                        titleMarginBottom: 1,  // title 아래 간격
-                        padding: {
-                            top: 10,
-                            bottom: 10,
-                            left: 14,
-                            right: 14
-                        },
-                        displayColors: false,
+                    },
+                    backgroundColor: prvData2.map((item, index) => {
+                        if (index === prvData2.length - 1) {
+                            return 'rgba(95, 107, 127, 1)';
+                        } else {
+                            return 'rgba(178, 185, 199, 0.5)';
+                        }
+                    }),
+                    borderRadius: 8,
+                    borderSkipped: false,
+                },
+            ]
+        },
+        options: {
+            ...prvChartOptions,
+            animation: {
+                duration: 1200,
+                easing: 'easeOutQuart',
+                delay: (context) => {
+                    // ★ bar 차트만 애니메이션 적용
+                    if (context.type === 'data' && context.dataset.type === 'bar') {
+                        return context.dataIndex * 75;
                     }
+                    return 0;
+                },
+                y: {
+                    from: (ctx) => {
+                        // ★ bar 차트만 y축 애니메이션 적용
+                        if (ctx.type === 'data' && ctx.dataset.type === 'bar') {
+                            return ctx.chart.chartArea?.bottom || 0;
+                        }
+                    }
+                },
+                onComplete: function(animation) {
+                    const state = chartAnimationStates.get(animation.chart);
+                    if (state && !state.barAnimationComplete) {
+                        state.barAnimationComplete = true;
+                        startLineAnimation(animation.chart);
+                    }
+                }
+            },
+            plugins: {
+                ...prvChartOptions.plugins,
+                tooltip: {
+                    enabled: false
+                },
+                dualLabel: {
+                    enabled: true,
+                    label1: {
+                        text: '750',
+                        backgroundColor: '#5F6B7F',
+                        color: '#FFFFFF',
+                    },
+                    label2: {
+                        text: '25.0%',
+                        backgroundColor: '#8059E0',
+                        color: '#FFFFFF',
+                    }
+                },
+                lastBarBg: {
+                    enabled: true,
+                    backgroundColor: 'rgba(95, 107, 127, 0.15)',
+                    padding: 12,
+                    borderRadius: 0,
+                },
+                lineDraw: {
+                    enabled: true,
+                    progress: 0,
+                }
+            },
+            scales: {
+                ...prvChartScales,
+                y1: {
+                    type: 'linear',
+                    position: 'right',
+                    min: -50,
+                    max: 200,
+                    display: false,
+                },
+                y2: {
+                    type: 'linear',
+                    position: 'left',
+                    min: 0,
+                    max: 1000,
+                    border: {
+                        display: false,
+                    },
+                    ticks: {
+                        padding: 15,
+                        color: "rgba(178, 185, 199, 1)",
+                        stepSize: 200,
+                        crossAlign: 'far',
+                    },
+                },
+            },
+        }
+    });
 
+    connectChartToTab(chart1Instance, '.company_list');
+}
+
+// ========================================
+// 차트2 생성
+// ========================================
+const prv_barLine2 = document.getElementById('prv_barLine2');
+
+var prvData02 = [5, 12, 21, 27, 46, 53, 58, 64, 75, 90, 118, 139]; 
+var prvData03 = [3, 3.3, 3.8, 3.1, 4.5, 4.8, 4.4, 4.7, 5.3, 5.6, 5.1, 5.4];
+
+if (prv_barLine2) {
+    const chart2Instance = createAnimatedChart(prv_barLine2, {
+        type: 'bar',
+        plugins: [sharedDualLabelPlugin, sharedLastBarBgPlugin, sharedLineDrawPlugin],
+        data: {
+            labels: ['2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+            datasets: [
+                {
+                    type: 'line',
+                    label: '운영 기관 당 기업 선정(개)',
+                    data: prvData03,
+                    animation: false,
+                    order: 0,
+                    yAxisID: 'y1',
+                    clip: { left: 5, top: false, right: 5, bottom: 5 },
+                    datalabels: {
+                        display: false,
+                    },
+                    borderColor: '#6E42D9',
+                    borderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 4,
+                    pointBackgroundColor: '#6E42D9',
+                    pointBorderColor: 'rgba(255, 255, 255, 0.6)',
+                    pointBorderWidth: 2,
+                    pointStyle: function(context) {
+                        return context.dataIndex === context.dataset.data.length - 1 ? 'circle' : 'circle';
+                    },
+                    pointRadius: function(context) {
+                        return context.dataIndex === context.dataset.data.length - 1 ? 5 : 4;
+                    },
+                    pointBorderColor: function(context) {
+                        return context.dataIndex === context.dataset.data.length - 1 
+                            ? 'rgba(255, 255, 255, 1)' 
+                            : 'rgba(255, 255, 255, 0.6)';
+                    },
                 },
-                layout: {
-                    padding: 0
+                {
+                    type: 'bar', 
+                    label: '운영 기관',
+                    data: prvData02,
+                    yAxisID: 'y2',
+                    animation: false,
+                    datalabels: {
+                        display: function(context) {
+                            const state = chartAnimationStates.get(context.chart);
+                            if (!state || !state.barAnimationComplete) return false;
+                            return context.dataIndex !== context.dataset.data.length - 1;
+                        },
+                        offset: 4,
+                        align: 'end',
+                        anchor: 'end',
+                        color: 'rgba(178, 185, 199, 1)',
+                        font: {
+                            weight: 600,
+                            size: 13,
+                        },
+                    },
+                    backgroundColor: prvData02.map((item, index) => {
+                        if (index === prvData02.length - 1) {
+                            return 'rgba(95, 107, 127, 1)';
+                        } else {
+                            return 'rgba(178, 185, 199, 0.5)';
+                        }
+                    }),
+                    borderRadius: 8,
+                    borderSkipped: false,
+                }
+            ]
+        },
+        options: {
+            ...prvChartOptions,
+            animation: {
+                duration: 1200,
+                easing: 'easeOutQuart',
+                delay: (context) => {
+                    // ★ bar 차트만 애니메이션 적용
+                    if (context.type === 'data' && context.dataset.type === 'bar') {
+                        return context.dataIndex * 75;
+                    }
+                    return 0;
                 },
-                borderWidth: 0,
-                cutout: '80%',
-                
+                y: {
+                    from: (ctx) => {
+                        // ★ bar 차트만 y축 애니메이션 적용
+                        if (ctx.type === 'data' && ctx.dataset.type === 'bar') {
+                            return ctx.chart.chartArea?.bottom || 0;
+                        }
+                    }
+                },
+                onComplete: function(animation) {
+                    const state = chartAnimationStates.get(animation.chart);
+                    if (state && !state.barAnimationComplete) {
+                        state.barAnimationComplete = true;
+                        startLineAnimation(animation.chart);
+                    }
+                }
+            },
+            plugins: {
+                ...prvChartOptions.plugins,
+                tooltip: {
+                    enabled: false
+                },
+                dualLabel: {
+                    enabled: true,
+                    label1: {
+                        text: '139',
+                        backgroundColor: '#5F6B7F',
+                        color: '#FFFFFF',
+                        borderRadius: 999,
+                    },
+                    label2: {
+                        text: '5.4',
+                        backgroundColor: '#8059E0',
+                        color: '#FFFFFF',
+                    }
+                },
+                lastBarBg: {
+                    enabled: true,
+                    backgroundColor: 'rgba(95, 107, 127, 0.15)', 
+                    padding: 12,      
+                    borderRadius: 0,
+                },
+                lineDraw: {
+                    enabled: true,
+                    progress: 0,
+                }
+            },
+            scales: {
+                ...prvChartScales,
+                y1: {
+                    type: 'linear',
+                    position: 'right',
+                    min: 0,
+                    max: 6,
+                    display: false,
+                    border: {
+                        display: false,
+                    },
+                    ticks: {
+                        color: '#B4B8BF',
+                        weight: 500,
+                    }
+                },
+                y2: {
+                    type: 'linear',
+                    position: 'left',
+                    min: 0,
+                    max: 180,
+                    border: {
+                        display: false,
+                    },
+                    ticks: {
+                        padding: 15,
+                        color: "rgba(178, 185, 199, 1)",
+                        stepSize: 30,
+                        crossAlign: 'far',
+                    },
+                },
+            },
+        }
+    });
+}
+
+const innerExpandPlugin = {
+    id: 'innerExpand',
+    beforeDraw(chart) {
+        const meta = chart.getDatasetMeta(0);
+        const activeElements = chart.getActiveElements();
+        const dataset = chart.data.datasets[0];
+        
+        // 현재 innerRadius 가져오기
+        const currentInner = meta.data[0]?.innerRadius;
+        
+        // 유효한 값일 때만 저장 (0보다 크고, 기존 값보다 클 때)
+        if (currentInner > 0 && (!chart._originalInnerRadius || currentInner > chart._originalInnerRadius)) {
+            chart._originalInnerRadius = currentInner;
+        }
+        
+        // 아직 유효한 값이 없으면 스킵
+        if (!chart._originalInnerRadius) {
+            return;
+        }
+        
+        // 각 arc의 현재 애니메이션 값 저장 객체
+        if (!chart._arcAnimations) {
+            chart._arcAnimations = {};
+        }
+        
+        const originalInner = chart._originalInnerRadius;
+        const expandAmount = 6;
+        const easingSpeed = 0.15;
+        
+        meta.data.forEach((arc, index) => {
+            const isHovered = activeElements.some(el => el.index === index);
+            const targetOffset = isHovered ? expandAmount : 0;
+            
+            if (chart._arcAnimations[index] === undefined) {
+                chart._arcAnimations[index] = 0;
             }
+            
+            const currentOffset = chart._arcAnimations[index];
+            chart._arcAnimations[index] += (targetOffset - currentOffset) * easingSpeed;
+            
+            arc.innerRadius = originalInner - chart._arcAnimations[index];
+            arc.options.backgroundColor = dataset.backgroundColor[index];
+        });
+        
+        const isAnimating = meta.data.some((_, index) => {
+            const current = chart._arcAnimations[index];
+            const isHovered = activeElements.some(el => el.index === index);
+            const target = isHovered ? expandAmount : 0;
+            return Math.abs(target - current) > 0.1;
+        });
+        
+        if (isAnimating) {
+            requestAnimationFrame(() => chart.draw());
+        }
+    }
+};
+
+var prv_doughnutOptions = {
+    maintainAspectRatio: false,
+    hover: {
+        mode: 'nearest',
+    },
+
+    plugins: {
+        legend: {
+            display: false,
+        },
+        tooltip: {
+            enabled: false,  // ← 기본 tooltip 비활성화
+            external: function(context) {
+                // Tooltip Element
+                let tooltipEl = document.getElementById('chartjs-tooltip');
+
+                // 툴팁 요소가 없으면 생성
+                if (!tooltipEl) {
+                    tooltipEl = document.createElement('div');
+                    tooltipEl.id = 'chartjs-tooltip';
+                    tooltipEl.style.cssText = `
+                        position: absolute;
+                        background: #000;
+                        color: white;
+                        border-radius: 6px;
+                        pointer-events: none;
+                        opacity: 0;
+                        transition: opacity 0.2s;
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                        z-index: 1000;
+                    `;
+                    document.body.appendChild(tooltipEl);
+                }
+
+                const tooltipModel = context.tooltip;
+
+                // 툴팁 숨기기
+                if (tooltipModel.opacity === 0) {
+                    tooltipEl.style.opacity = '0';
+                    return;
+                }
+
+                // 내용 설정
+                if (tooltipModel.body) {
+                    const dataIndex = tooltipModel.dataPoints[0].dataIndex;
+                    const value = tooltipModel.dataPoints[0].raw;
+                    const label = tooltipModel.dataPoints[0].label;
+                    const bgColor = tooltipModel.dataPoints[0].dataset.backgroundColor[dataIndex];
+
+                    tooltipEl.style.background = bgColor;
+                    tooltipEl.innerHTML = `
+                        <div style="padding: 10px 14px; text-align: center;">
+                            <div style="font-size: 13px; font-weight: 600; font-family: 'Clash Grotesk', sans-serif; margin-bottom: 1px;">
+                                ${value}%
+                            </div>
+                            <div style="font-size: 13px; font-weight: 500;">
+                                ${label}
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // 위치 설정
+                const position = context.chart.canvas.getBoundingClientRect();
+                tooltipEl.style.opacity = '1';
+                tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
+                tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 'px';
+            }
+        }
+    },
+    layout: {
+        padding: 0
+    },
+    borderWidth: 0,
+    cutout: '80%',
+}
+
+
+const prv_doughnut1 = document.getElementById('doughnut1');
 
             var prvData3 = [64.2, 21.6, 3.3, 10.9];
             
             if(prv_doughnut1){
-new Chart(prv_doughnut1, {
+                new Chart(prv_doughnut1, {
                 data: {
                     labels: ['데이터/네트워크/AI', '바이오헬스', '에너지','기타'],
                     datasets: [
@@ -550,6 +914,7 @@ new Chart(prv_doughnut1, {
 
                 },
                 options: prv_doughnutOptions,
+                plugins: [innerExpandPlugin],
 
             });
             }
@@ -581,6 +946,7 @@ new Chart(prv_doughnut1, {
 
                     },
                     options: prv_doughnutOptions,
+                    plugins: [innerExpandPlugin],
 
                 });
             }
@@ -612,6 +978,7 @@ new Chart(prv_doughnut1, {
 
                     },
                     options: prv_doughnutOptions,
+                    plugins: [innerExpandPlugin],
 
                 });
             }
@@ -644,6 +1011,7 @@ new Chart(prv_doughnut1, {
 
                     },
                     options: prv_doughnutOptions,
+                    plugins: [innerExpandPlugin],
 
                 });
             }
@@ -674,6 +1042,7 @@ new Chart(prv_doughnut1, {
 
                     },
                     options: prv_doughnutOptions,
+                    plugins: [innerExpandPlugin],
 
                 });
             }
@@ -704,6 +1073,7 @@ new Chart(prv_doughnut1, {
 
                     },
                     options: prv_doughnutOptions,
+                    plugins: [innerExpandPlugin],
 
                 });
             }

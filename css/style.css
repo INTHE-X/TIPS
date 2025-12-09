@@ -1,8 +1,6 @@
 html, body{
     font-family: 'Poppins', 'Pretendard', sans-serif;
-}
-
-body{
+    overflow-x: hidden;
 }
 
 #wrap{
@@ -37,22 +35,22 @@ body{
 }
 
 .subPageTit.type1{
-    font-size: 1.25vw;
+    font-size: 24px;
     font-weight: 700;
 }
 
 .subPageTit.type2{
-    font-size: 0.938vw;
+    font-size: 18px;
     font-weight: 700;
 }
 
 .sub_section{
-    width: 1920px;
+    width: 100vw;
     min-height: 100vh;
-    background-position: top;
-    background-size: cover;
     padding: 3.125rem 3.125rem 3.125rem 210px;
     background: url('../img/preview_bg.png') no-repeat;
+    background-position: top;
+    background-size: cover;
 }
 /* 
 .section_inner{
@@ -75,9 +73,17 @@ body{
     width: 30%;
 }
 
+#preview .divider.type1{
+    width: calc(100% - 500px);
+}
+
+#preview .divider.type2{
+    width: 500px;
+}
+
 .dashBox{
     width: 100%;
-    border-radius: 1.25rem;
+    border-radius: 20px;
     box-shadow: 2px 4px 20px rgba(56, 56, 56, 0.2);
 }
 

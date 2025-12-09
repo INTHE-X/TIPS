@@ -133,12 +133,16 @@ let tl = gsap.timeline({
         //     donutChartHeight();
         // });
 
-        // $('.subPage_tabBtn ul li button').on('click', function(){
-        //     $(this).parent().addClass('active').siblings().removeClass('active');
-        //     var idx = $(this).parent().index();
-        //     $('.subPage_tabBox').eq(idx).addClass('active').siblings().removeClass('active');
-        //     $('.subPage_tab_desc p').eq(idx).addClass('active').siblings().removeClass('active');
-        //     }); 
+        $('.subPage_tabBtn ul li a').on('click', function(e){
+            e.preventDefault();
+            $(this).parent().addClass('active').siblings().removeClass('active');
+            var idx = $(this).parent().index();
+            $('.subPage_tabBox').eq(idx).addClass('active').siblings().removeClass('active');
+            $('.subPage_tab_desc p').eq(idx).addClass('active').siblings().removeClass('active');
+                        setTimeout(function() {
+                setHeightSubWideTableHead();
+            }, 1);
+            }); 
 
             $('.ratioChart_select ul li a').on('click', function(e){
                 e.preventDefault();
@@ -153,7 +157,7 @@ let tl = gsap.timeline({
                 }
             })
 
-            var subWideTable = $('.sub_wideTable, .distr_graph');
+            var subWideTable = $('.sub_wideTable, .distr_graph, .company_list_scroll');
 
             function setHeightSubWideTableHead(){
                 subWideTable.each(function(){
