@@ -47,9 +47,9 @@ html, body{
 .sub_section{
     width: 100vw;
     min-height: 100vh;
-    padding: 3.125rem 3.125rem 3.125rem 210px;
-    background: url('../img/preview_bg.png') no-repeat;
-    background-position: top;
+    padding: 50px 50px 50px 210px;
+    background: url('../img/subpage_bg.png') no-repeat;
+    background-position: center;
     background-size: cover;
 }
 /* 
