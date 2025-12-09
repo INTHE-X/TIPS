@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, user-scalable=no">
+    <title>TIPS 성과 통계</title>
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/mobile.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@200,300,400,500,600,700,1&display=swap" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <script src="../js/statistic_chartSetting.js"></script>
+</head>
+<body>
+    <div id="wrap">
+        <header id="header">
+            <div class="header_inner">
+                <nav id="nav">
+                    <ul>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Preview</a>
+                        </li>
+                        <li class="active">
+                            <a href="#">Statistic</a>
+                        </li>
+                        <li>
+                            <a href="#">Search</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <section id="statistic" class="sub_section type2">
+            <div class="section_inner">
+<div class="subPage_tit">
+                <h1>TIPS 성과 통계</h1>
+            </div>
+            <div class="subPage_tabBtnArea">
+                <div class="subPage_tabBtn">
+                    <ul>
+                        <li class="active">
+                            <a href="#">
+                                <span>현황</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>트렌드</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="subPage_tab_desc">
+                    <p class="active">
+                        TIPS 성과 통계는
+                        <b>'창업기업'에 대한 성과</b>를 보여줍니다.
+                    <p>
+                        각 연도에 선정된 기업들의 
+                        <b>선정 시점 성과를 분석</b>하여 TIPS가 선호해온
+                        <b>기업 특성과 선정 기준의 변화</b>를 확인할 수 있습니다. 
+                    </p>
+                </div>
+            </div>
+            <div class="subPage_tabArea">
+                <div class="subPage_tabBox tab1 active">
+                    <div class="subPage_link">
+                        <ul>
+                            <li><a href="#">생멸 현황</a></li>
+                            <li class="active"><a href="#">분포 현황</a></li>
+                            <li><a href="#">성과 현황</a></li>
+                        </ul>
+                    </div>
+                    <div class="divider type2">
+                        <div class="dashBox bgWh2">
+                            <div class="dash_basicInner type1">
+                                <div class="distr_tab_area">
+                                    <div class="distr_tabBtn_area">
+                                        <div class="distr_tabBtn">
+                                            <button class="tabOpen">
+                                                <span>지역</span>
+                                            </button>
+                                            <ul class="distr_tabList">
+                                                <li class="active">
+                                                    <button>
+                                                        <span>지역</span>
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button>
+                                                        <span>산업</span>
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button>
+                                                        <span>기술</span>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="distr_tabNum">
+                                            <strong>총 분포 수</strong>
+                                            <span>3,516</span>
+                                        </div>
+                                    </div>
+                                    <div class="distr_tab tab1 active">
+                                        <div class="distr_chartBox">
+                                            <div class="distr_forScroll">
+                                                <canvas id="statistic_chart1" class="stcChart_type1"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="distr_tab tab2">
+                                        <div class="distr_chartBox">
+                                            <div class="distr_forScroll">
+                                                <canvas id="statistic_chart2" class="stcChart_type1"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="distr_tab tab3">
+                                        <div class="distr_chartBox">
+                                            <div class="distr_forScroll">
+                                                <canvas id="statistic_chart3" class="stcChart_type1"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider type1">
+                        <div class="dashBox bgWh2">
+                            <div class="sub_wideArea type2">
+                                <div class="distr_graphTab">
+                                    <div class="distr_graph_top">
+                                        <h2 class="subPageTit type1">지역별 선정 현황</h2>
+                                        <div class="chart_colorDesc distr_right">
+                                            <ul>
+                                                <li>
+                                                    <div class="chart_colorBox bright"></div>
+                                                    <span>0~5</span>
+                                                </li>
+                                                <li>
+                                                    <div class="chart_colorBox"></div>
+                                                    <span>6~20</span>
+                                                </li>
+                                                <li>
+                                                    <div class="chart_colorBox"></div>
+                                                    <span>21~50</span>
+                                                </li>
+                                                <li>
+                                                    <div class="chart_colorBox"></div>
+                                                    <span>51~120</span>
+                                                </li>
+                                                <li>
+                                                    <div class="chart_colorBox"></div>
+                                                    <span>121~300+</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="distr_graphArea">
+                                        <div class="distr_graph active">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th class="blank"></th>
+                                                        <th>2013</th>
+                                                        <th>2014</th>
+                                                        <th>2015</th>
+                                                        <th>2016</th>
+                                                        <th>2017</th>
+                                                        <th>2018</th>
+                                                        <th>2019</th>
+                                                        <th>2020</th>
+                                                        <th>2021</th>
+                                                        <th>2022</th>
+                                                        <th>2023</th>
+                                                        <th>2024</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>서울특별시</th>
+                                                        <td>7</td>
+                                                        <td>29</td>
+                                                        <td>46</td>
+                                                        <td>41</td>
+                                                        <td>90</td>
+                                                        <td>126</td>
+                                                        <td>136</td>
+                                                        <td>150</td>
+                                                        <td>182</td>
+                                                        <td>268</td>
+                                                        <td>254</td>
+                                                        <td>303</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>경기도</th>
+                                                        <td>7</td>
+                                                        <td>7</td>
+                                                        <td>18</td>
+                                                        <td>17</td>
+                                                        <td>49</td>
+                                                        <td>57</td>
+                                                        <td>46</td>
+                                                        <td>51</td>
+                                                        <td>65</td>
+                                                        <td>63</td>
+                                                        <td>82</td>
+                                                        <td>126</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>대전광역시</th>
+                                                        <td>1</td>
+                                                        <td>1</td>
+                                                        <td>9</td>
+                                                        <td>9</td>
+                                                        <td>25</td>
+                                                        <td>21</td>
+                                                        <td>24</td>
+                                                        <td>28</td>
+                                                        <td>40</td>
+                                                        <td>32</td>
+                                                        <td>57</td>
+                                                        <td>37</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>부산광역시</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>3</td>
+                                                        <td>5</td>
+                                                        <td>5</td>
+                                                        <td>9</td>
+                                                        <td>10</td>
+                                                        <td>12</td>
+                                                        <td>19</td>
+                                                        <td>26</td>
+                                                        <td>48</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>대구광역시</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>1</td>
+                                                        <td>2</td>
+                                                        <td>6</td>
+                                                        <td>4</td>
+                                                        <td>8</td>
+                                                        <td>17</td>
+                                                        <td>23</td>
+                                                        <td>31</td>
+                                                        <td>21</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>경상북도</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>3</td>
+                                                        <td>5</td>
+                                                        <td>7</td>
+                                                        <td>6</td>
+                                                        <td>7</td>
+                                                        <td>14</td>
+                                                        <td>13</td>
+                                                        <td>20</td>
+                                                        <td>23</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>인천광역시</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>2</td>
+                                                        <td>1</td>
+                                                        <td>5</td>
+                                                        <td>5</td>
+                                                        <td>4</td>
+                                                        <td>9</td>
+                                                        <td>10</td>
+                                                        <td>11</td>
+                                                        <td>16</td>
+                                                        <td>34</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>충청남도</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>5</td>
+                                                        <td>3</td>
+                                                        <td>4</td>
+                                                        <td>5</td>
+                                                        <td>10</td>
+                                                        <td>14</td>
+                                                        <td>27</td>
+                                                        <td>23</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>강원특별자치도</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>2</td>
+                                                        <td>1</td>
+                                                        <td>3</td>
+                                                        <td>3</td>
+                                                        <td>5</td>
+                                                        <td>11</td>
+                                                        <td>15</td>
+                                                        <td>14</td>
+                                                        <td>28</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>경상남도</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>2</td>
+                                                        <td>1</td>
+                                                        <td>1</td>
+                                                        <td>2</td>
+                                                        <td>6</td>
+                                                        <td>7</td>
+                                                        <td>9</td>
+                                                        <td>15</td>
+                                                        <td>23</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>광주광역시</th>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>0</td>
+                                                        <td>3</td>
+                                                        <td>2</td>
+                                                        <td>3</td>
+                                                        <td>2</td>
+                                                        <td>2</td>
+                                                        <td>9</td>
+                                                        <td>7</td>
+                                                        <td>12</td>
+                                                        <td>24</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>제주특별자치도</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>3</td>
+                                                        <td>1</td>
+                                                        <td>4</td>
+                                                        <td>4</td>
+                                                        <td>10</td>
+                                                        <td>8</td>
+                                                        <td>31</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>충청북도</th>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>1</td>
+                                                        <td>1</td>
+                                                        <td class="blank">
+                                                            <span>0</span>
+                                                        </td>
+                                                        <td>10</td>
+                                                        <td>5</td>
+                                                        <td>6</td>
+                                                        <td>3</td>
+                                                        <td>7</td>
+                                                        <td>9</td>
+                                                        <td>13</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>전북특별자치도</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>0</td>
+                                                        <td>5</td>
+                                                        <td>2</td>
+                                                        <td>2</td>
+                                                        <td>3</td>
+                                                        <td>6</td>
+                                                        <td>1</td>
+                                                        <td>11</td>
+                                                        <td>20</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>울산광역시</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>6</td>
+                                                        <td>5</td>
+                                                        <td>2</td>
+                                                        <td>6</td>
+                                                        <td>7</td>
+                                                        <td>7</td>
+                                                        <td>7</td>
+                                                        <td>7</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>세종특별자치시</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>1</td>
+                                                        <td>1</td>
+                                                        <td>1</td>
+                                                        <td>1</td>
+                                                        <td>6</td>
+                                                        <td>5</td>
+                                                        <td>6</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>전라남도</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>1</td>
+                                                        <td>2</td>
+                                                        <td>2</td>
+                                                        <td>2</td>
+                                                        <td>1</td>
+                                                        <td>4</td>
+                                                        <td>6</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="distr_graph">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th class="blank"></th>
+                                                        <th>2013</th>
+                                                        <th>2014</th>
+                                                        <th>2015</th>
+                                                        <th>2016</th>
+                                                        <th>2017</th>
+                                                        <th>2018</th>
+                                                        <th>2019</th>
+                                                        <th>2020</th>
+                                                        <th>2021</th>
+                                                        <th>2022</th>
+                                                        <th>2023</th>
+                                                        <th>2024</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>정보통신업</th>
+                                                        <td>8</td>
+                                                        <td>29</td>
+                                                        <td>38</td>
+                                                        <td>33</td>
+                                                        <td>81</td>
+                                                        <td>104</td>
+                                                        <td>107</td>
+                                                        <td>141</td>
+                                                        <td>197</td>
+                                                        <td>299</td>
+                                                        <td>319</td>
+                                                        <td>398</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>제조업</th>
+                                                        <td>4</td>
+                                                        <td>8</td>
+                                                        <td>28</td>
+                                                        <td>39</td>
+                                                        <td>71</td>
+                                                        <td>74</td>
+                                                        <td>83</td>
+                                                        <td>79</td>
+                                                        <td>93</td>
+                                                        <td>87</td>
+                                                        <td>127</td>
+                                                        <td>189</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>전문, 과학 및 기술</th>
+                                                        <td>2</td>
+                                                        <td>1</td>
+                                                        <td>9</td>
+                                                        <td>10</td>
+                                                        <td>38</td>
+                                                        <td>58</td>
+                                                        <td>51</td>
+                                                        <td>69</td>
+                                                        <td>81</td>
+                                                        <td>82</td>
+                                                        <td>94</td>
+                                                        <td>92</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>도매 및 소매업</th>
+                                                        <td>1</td>
+                                                        <td>0</td>
+                                                        <td>3</td>
+                                                        <td>3</td>
+                                                        <td>10</td>
+                                                        <td>15</td>
+                                                        <td>9</td>
+                                                        <td>5</td>
+                                                        <td>20</td>
+                                                        <td>22</td>
+                                                        <td>33</td>
+                                                        <td>40</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>사업시설 관리</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>0</td>
+                                                        <td>2</td>
+                                                        <td>1</td>
+                                                        <td>2</td>
+                                                        <td>0</td>
+                                                        <td>7</td>
+                                                        <td>9</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>교육 서비스업</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>3</td>
+                                                        <td>2</td>
+                                                        <td>0</td>
+                                                        <td>4</td>
+                                                        <td>3</td>
+                                                        <td>3</td>
+                                                        <td>3</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>농업, 임업 및 어업</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>4</td>
+                                                        <td>3</td>
+                                                        <td>6</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>금융 및 보험업</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>2</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>1</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>예술, 스포츠</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>0</td>
+                                                        <td>3</td>
+                                                        <td>1</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>협회 및 단체</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>2</td>
+                                                        <td>1</td>
+                                                        <td>2</td>
+                                                        <td>0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>광업</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>2</td>
+                                                        <td>0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>수도, 하수 및 폐기물</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>2</td>
+                                                        <td>1</td>                                           
+                                                    </tr>
+                                                    <tr>
+                                                        <th>건설업</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>2</td>
+                                                        <td>1</td>
+                                                        <td>1</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>운수 및 창고업</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>3</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>부동산업</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>2</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>보건업 및 사회복지</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>2</td>
+                                                        <td>0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>숙박 및 음식점업</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="distr_graph">
+                                            <table>
+                                                <thead>
+                                                    <th class="blank"></th>
+                                                    <th>2013</th>
+                                                    <th>2014</th>
+                                                    <th>2015</th>
+                                                    <th>2016</th>
+                                                    <th>2017</th>
+                                                    <th>2018</th>
+                                                    <th>2019</th>
+                                                    <th>2020</th>
+                                                    <th>2021</th>
+                                                    <th>2022</th>
+                                                    <th>2023</th>
+                                                    <th>2024</th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>데이터/네트워크/AI</th>
+                                                        <td>7</td>
+                                                        <td>28</td>
+                                                        <td>42</td>
+                                                        <td>37</td>
+                                                        <td>88</td>
+                                                        <td>141</td>
+                                                        <td>135</td>
+                                                        <td>168</td>
+                                                        <td>245</td>
+                                                        <td>346</td>
+                                                        <td>392</td>
+                                                        <td>439</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>바이오헬스</th>
+                                                        <td>3</td>
+                                                        <td>3</td>
+                                                        <td>15</td>
+                                                        <td>25</td>
+                                                        <td>59</td>
+                                                        <td>67</td>
+                                                        <td>71</td>
+                                                        <td>76</td>
+                                                        <td>90</td>
+                                                        <td>80</td>
+                                                        <td>90</td>
+                                                        <td>116</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>에너지</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>4</td>
+                                                        <td>1</td>
+                                                        <td>5</td>
+                                                        <td>7</td>
+                                                        <td>8</td>
+                                                        <td>5</td>
+                                                        <td>14</td>
+                                                        <td>10</td>
+                                                        <td>21</td>
+                                                        <td>31</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>로보틱스</th>
+                                                        <td>1</td>
+                                                        <td>1</td>
+                                                        <td>2</td>
+                                                        <td>1</td>
+                                                        <td>8</td>
+                                                        <td>6</td>
+                                                        <td>8</td>
+                                                        <td>13</td>
+                                                        <td>13</td>
+                                                        <td>8</td>
+                                                        <td>12</td>
+                                                        <td>20</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>친환경</th>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>4</td>
+                                                        <td>5</td>
+                                                        <td>1</td>
+                                                        <td>10</td>
+                                                        <td>9</td>
+                                                        <td>12</td>
+                                                        <td>25</td>
+                                                        <td>22</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>반도체</th>
+                                                        <td>1</td>
+                                                        <td>0</td>
+                                                        <td>3</td>
+                                                        <td>4</td>
+                                                        <td>7</td>
+                                                        <td>10</td>
+                                                        <td>6</td>
+                                                        <td>9</td>
+                                                        <td>6</td>
+                                                        <td>7</td>
+                                                        <td>10</td>
+                                                        <td>10</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>신소재</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>2</td>
+                                                        <td>4</td>
+                                                        <td>5</td>
+                                                        <td>7</td>
+                                                        <td>6</td>
+                                                        <td>6</td>
+                                                        <td>3</td>
+                                                        <td>4</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>모빌리티</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>2</td>
+                                                        <td>1</td>
+                                                        <td>2</td>
+                                                        <td>4</td>
+                                                        <td>5</td>
+                                                        <td>4</td>
+                                                        <td>1</td>
+                                                        <td>4</td>
+                                                        <td>4</td>
+                                                        <td>4</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>우주항공해양</th>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>2</td>
+                                                        <td>1</td>
+                                                        <td>5</td>
+                                                        <td>1</td>
+                                                        <td>1</td>
+                                                        <td>5</td>
+                                                        <td>3</td>
+                                                        <td>7</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>양자기술</th>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>1</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

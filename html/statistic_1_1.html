@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, user-scalable=no">
+    <title>TIPS 성과 통계</title>
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/mobile.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@200,300,400,500,600,700,1&display=swap" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <script src="../js/statistic_chartSetting.js"></script>
+</head>
+<body>
+    <div id="wrap">
+        <header id="header">
+            <div class="header_inner">
+                <nav id="nav">
+                    <ul>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Preview</a>
+                        </li>
+                        <li class="active">
+                            <a href="#">Statistic</a>
+                        </li>
+                        <li>
+                            <a href="#">Search</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <section id="statistic" class="sub_section type2">
+            <div class="section_inner">
+<div class="subPage_tit">
+                <h1>TIPS 성과 통계</h1>
+            </div>
+            <div class="subPage_tabBtnArea">
+                <div class="subPage_tabBtn">
+                    <ul>
+                        <li class="active">
+                            <a href="#">
+                                <span>현황</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>트렌드</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="subPage_tab_desc">
+                    <p class="active">
+                        TIPS 성과 통계는
+                        <b>'창업기업'에 대한 성과</b>를 보여줍니다.
+                    <p>
+                        각 연도에 선정된 기업들의 
+                        <b>선정 시점 성과를 분석</b>하여 TIPS가 선호해온
+                        <b>기업 특성과 선정 기준의 변화</b>를 확인할 수 있습니다. 
+                    </p>
+                </div>
+            </div>
+            <div class="subPage_tabArea">
+                <div class="subPage_tabBox tab1 active">
+                    <div class="subPage_link">
+                        <ul>
+                            <li class="active"><a href="#">생멸 현황</a></li>
+                            <li><a href="#">분포 현황</a></li>
+                            <li><a href="#">성과 현황</a></li>
+                        </ul>
+                    </div>
+                    <div class="divider type2">
+                        <div class="dashBox bgWh1">
+                            <div class="dash_basicInner type1">
+                                <div class="ratioChart_area">
+                                    <div class="ratioChart_top">
+                                        <h2 class="subPageTit type1">사업자 비율</h2>
+                                    </div>
+                                    <div class="ratioChart_box">
+                                        <div class="ratioChart_arrow continue">
+                                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8.63225 13.4207C7.90147 14.5404 6.23269 14.4491 5.62844 13.2564L0.190179 2.52217C-0.414072 1.32948 0.499396 -0.0700686 1.83442 0.00297914L13.8496 0.660409C15.1847 0.733457 15.94 2.22432 15.2092 3.34396L8.63225 13.4207Z" fill="#6E42D9"/>
+                                            </svg>
+                                        </div>
+                                        <div class="ratioChart continue active">
+                                            <div class="ratioChart_line"></div>
+                                            <div class="ratioChart_info">
+                                                <strong>94.5%</strong>
+                                                <span>계속</span>
+                                            </div>
+                                        </div>
+                                        <div class="ratioChart close">
+                                            <div class="ratioChart_line"></div>
+                                            <div class="ratioChart_info">
+                                                <strong>5.5%</strong>
+                                                <span>폐업</span>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="ratioChart_select">
+                                        <ul>
+                                            <li class="color1">
+                                                <a href="#">
+                                                    <span class="status">계속</span>
+                                                    <span class="percent">94.5%</span>
+                                                </a>
+                                            </li>
+                                            <li class="color2">
+                                                <a href="#">
+                                                    <span class="status">폐업</span>
+                                                    <span class="percent">5.5%</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dashBox bgWh3">
+                            <div class="dash_basicInner type1">
+                                <div class="close_reason_area">
+                                    <div class="close_reason_top">
+                                        <h2 class="subPageTit type2">폐업 사유</h2>
+                                    </div>
+                                    <div class="close_reason_visual"></div>
+                                    <div class="close_notice">
+                                        <p>
+                                            <b>소프트웨어 개발 분야</b>가 가장 많은 비율을 차지합니다.
+                                        </p>
+                                    </div>
+                                    <ul class="close_reason_cate">
+                                        <li>
+                                            <div class="cate_dots reasonColor1"></div>
+                                            <span class="reason">합병해산</span>
+                                            <div class="percent">
+                                                <strong>51</strong><span>(1.5%)</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="cate_dots reasonColor2"></div>
+                                            <span class="reason">기타폐쇄</span>
+                                            <div class="percent">
+                                                <strong>35</strong><span>(1.0%)</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="cate_dots reasonColor3"></div>
+                                            <span class="reason">파산</span>
+                                            <div class="percent">
+                                                <strong>30</strong><span>(0.9%)</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="cate_dots reasonColor4"></div>
+                                            <span class="reason">청산종결</span>
+                                            <div class="percent">
+                                                <strong>29</strong><span>(0.8%)</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="cate_dots reasonColor5"></div>
+                                            <span class="reason">해산간주</span>
+                                            <div class="percent">
+                                                <strong>17</strong><span>(0.5%)</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="cate_dots reasonColor6"></div>
+                                            <span class="reason">해산</span>
+                                            <div class="percent">
+                                                <strong>6</strong><span>(0.2%)</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="cate_dots reasonColor7"></div>
+                                            <span class="reason">회색절차</span>
+                                            <div class="percent">
+                                                <strong>4</strong><span>(0.1%)</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="cate_dots reasonColor8"></div>
+                                            <span class="reason">청산종결간주</span>
+                                            <div class="percent">
+                                                <strong>2</strong><span>(0.1%)</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider type1">
+                        <div class="dashBox bgWh2">
+                            <div class="sub_wideArea">
+                                <div class="sub_wideTableBox">
+                                <div class="sub_wideTable">
+                                    <table>
+                                        <colgroup>
+                                            <col class="w1">
+                                            <col class="w2">
+                                            <col class="blank">
+                                            <col class="w1">
+                                            <col class="w2">
+                                            <col class="blank">
+                                            <col class="w1">
+                                            <col class="w2">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th class="reason w1">사유</th>
+                                                <th class="w2">상호명/사업자 현황</th>
+                                                <th class="blank"></th>
+                                                <th class="reason w1">사유</th>
+                                                <th class="w2">상호명/사업자 현황</th>
+                                                <th class="blank"></th>
+                                                <th class="reason w1">사유</th>
+                                                <th class="w2">상호명/사업자 현황</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">더식스데이</span>
+                                                    <br>
+                                                    <span class="comp_num">699-81-00658</span>
+                                                </td>
+                                                <td class="blank"></td>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">올룰로</span>
+                                                    <br>
+                                                    <span class="comp_num">317-86-00256</span>
+                                                </td>
+                                                <td class="blank"></td>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">시큐어티앤에스</span>
+                                                    <br>
+                                                    <span class="comp_num">160-81-00034</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">리벨리온</span>
+                                                    <br>
+                                                    <span class="comp_num">669-87-01717</span>
+                                                </td>
+                                                <td class="blank"></td>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">큐로진생명과학</span>
+                                                    <br>
+                                                    <span class="comp_num">282-81-01013</span>
+                                                </td>
+                                                <td class="blank"></td>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">프로카젠</span>
+                                                    <br>
+                                                    <span class="comp_num">516-86-01250</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">스트리스</span>
+                                                    <br>
+                                                    <span class="comp_num">172-88-00680</span>
+                                                </td>
+                                                <td class="blank"></td>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">라인웍스</span>
+                                                    <br>
+                                                    <span class="comp_num">264-81-27989</span>
+                                                </td>
+                                                <td class="blank"></td>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">오스펌</span>
+                                                    <br>
+                                                    <span class="comp_num">189-86-01311</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">오픈업</span>
+                                                    <br>
+                                                    <span class="comp_num">527-88-01079</span>
+                                                </td>
+                                                <td class="blank"></td>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">맨드언맨드</span>
+                                                    <br>
+                                                    <span class="comp_num">538-86-02661</span>
+                                                </td>
+                                                <td class="blank"></td>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">레드스톤소프트</span>
+                                                    <br>
+                                                    <span class="comp_num">682-86-00674</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">삼십구도씨</span>
+                                                    <br>
+                                                    <span class="comp_num">177-86-00148</span>
+                                                </td>
+                                                <td class="blank"></td>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">짐티</span>
+                                                    <br>
+                                                    <span class="comp_num">168-87-00758</span>
+                                                </td>
+                                                <td class="blank"></td>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">인스유틸</span>
+                                                    <br>
+                                                    <span class="comp_num">706-87-00512</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">두유비</span>
+                                                    <br>
+                                                    <span class="comp_num">451-81-00041</span>
+                                                </td>
+                                                <td class="blank"></td>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">오늘의픽업</span>
+                                                    <br>
+                                                    <span class="comp_num">322-87-01759</span>
+                                                </td>
+                                                <td class="blank"></td>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">페이콕</span>
+                                                    <br>
+                                                    <span class="comp_num">293-87-00184</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">제이피바이오에이</span>
+                                                    <br>
+                                                    <span class="comp_num">798-86-00566</span>
+                                                </td>
+                                                <td class="blank"></td>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">타스컴</span>
+                                                    <br>
+                                                    <span class="comp_num">138-81-82757</span>
+                                                </td>
+                                                <td class="blank"></td>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">가온기술</span>
+                                                    <br>
+                                                    <span class="comp_num">425-88-01211</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">원더온</span>
+                                                    <br>
+                                                    <span class="comp_num">135-86-23114</span>
+                                                </td>
+                                                <td class="blank"></td>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">클라우드브릭</span>
+                                                    <br>
+                                                    <span class="comp_num">735-81-00954</span>
+                                                </td>
+                                                <td class="blank"></td>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">튜터링</span>
+                                                    <br>
+                                                    <span class="comp_num">570-86-00366</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">트리즈네트웍스</span>
+                                                    <br>
+                                                    <span class="comp_num">168-81-01978</span>
+                                                </td>
+                                                <td class="blank"></td>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">비스키트</span>
+                                                    <br>
+                                                    <span class="comp_num">732-88-00949</span>
+                                                </td>
+                                                <td class="blank"></td>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">나인하이어</span>
+                                                    <br>
+                                                    <span class="comp_num">308-86-02319</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">바이시큐</span>
+                                                    <br>
+                                                    <span class="comp_num">620-87-00561</span>
+                                                </td>
+                                                <td class="blank"></td>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">원스프링</span>
+                                                    <br>
+                                                    <span class="comp_num">880-88-00627</span>
+                                                </td>
+                                                <td class="blank"></td>
+                                                <td>
+                                                    <span class="cate">
+                                                        <span class="cate_dots reasonColor1"></span>
+                                                        합병해산
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="name">차이엑스</span>
+                                                    <br>
+                                                    <span class="comp_num">216-87-00076</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

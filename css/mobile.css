@@ -1,0 +1,11 @@
+@media screen and (min-width: 1800px) {
+    .llb_img{
+        height: calc(100% - 1.042vw);
+    }
+}
+
+@media screen and (max-width: 1740px){
+    .sub_section.type2 .subPage_tabBtnArea{
+        margin-bottom: 3.125rem;
+    }
+}
