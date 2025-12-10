@@ -218,15 +218,25 @@ let tl = gsap.timeline({
             }, 1);
         });
 
-            Chart.register(ChartDataLabels);
-            Chart.defaults.defaultFontFamily = "Pretendard";
+        $('.statistic_graphTabBtnList.wide li a, .stat_graphTabWideBtnList li a').on('click', function(e){
+            e.preventDefault();
+            $(this).parent('li').addClass('active').siblings().removeClass('active');
+            var idx = $(this).parent().index();
+            $(this).closest('.divider.type2').siblings('.divider.type1').find('.stat_graphTabArea').eq(idx).addClass('active').siblings().removeClass('active');
+        });
+
+        $('#company_modal_nav ul li button').on('click', function(){
+            $(this).parent('li').addClass('active').siblings().removeClass('active');
+            var idx = $(this).parent().index();
+            $('.cim_tab').eq(idx).addClass('active').siblings().removeClass('active');
+        });
+
 
 });
 
 $(window).on('load', function(){
 
-    Chart.register(ChartDataLabels);
-    Chart.defaults.defaultFontFamily = "Pretendard";
+
 
 const table = document.querySelectorAll('.distr_graph table');
 

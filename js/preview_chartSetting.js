@@ -1,5 +1,8 @@
 $(window).on('load', function(){
 
+        Chart.register(ChartDataLabels);
+    Chart.defaults.defaultFontFamily = "Pretendard";
+
     var subWideTable = $('.sub_wideTable, .distr_graph, .company_list_scroll');
 
             function setHeightSubWideTableHead(){
@@ -147,14 +150,10 @@ const sharedLineDrawPlugin = {
                 meta.hidden = true;
             }
         }
-        
-        // 애니메이션 시작 전이면 여기서 종료
-        if (!state || !state.lineAnimationStarted) {
-            return;
-        }
     },
     
-    afterDatasetsDraw: function(chart, args, options) {
+    // afterDatasetsDraw → afterDraw로 변경
+    afterDraw: function(chart, args, options) {
         if (!options || !options.enabled) return;
         
         const state = chartAnimationStates.get(chart);
@@ -176,7 +175,6 @@ const sharedLineDrawPlugin = {
         
         const points = meta.data;
         
-        // 애니메이션 완료 여부 확인
         const isComplete = progress >= totalPoints - 1;
         const fullSegments = isComplete ? totalPoints - 1 : Math.floor(progress);
         const partialProgress = isComplete ? 1 : progress - Math.floor(progress);
@@ -189,7 +187,6 @@ const sharedLineDrawPlugin = {
         
         ctx.beginPath();
         
-        // 모든 완료된 세그먼트 그리기
         for (let i = 0; i <= fullSegments; i++) {
             const point = points[i];
             if (!point) continue;
@@ -203,7 +200,6 @@ const sharedLineDrawPlugin = {
             }
         }
         
-        // 진행 중인 세그먼트 그리기 (애니메이션 중일 때만)
         if (!isComplete && fullSegments < totalPoints - 1 && partialProgress > 0) {
             const startPoint = points[fullSegments];
             const endPoint = points[fullSegments + 1];
@@ -223,7 +219,6 @@ const sharedLineDrawPlugin = {
         
         ctx.stroke();
         
-        // 포인트 그리기
         const pointsToDrawCount = isComplete ? totalPoints - 1 : fullSegments;
         
         for (let i = 0; i <= pointsToDrawCount; i++) {

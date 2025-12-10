@@ -73,12 +73,27 @@ html, body{
     width: 30%;
 }
 
+.divider.type2.divWidth1{
+    width: 460px;
+}
+
+.divider.type2.divWidth2{
+    width: 495px;
+}
+
+.divider.type2.divWidth3{
+    width: 480px;
+}
+
 #preview .divider.type1{
     width: calc(100% - 500px);
 }
 
 #preview .divider.type2{
     width: 500px;
+}
+
+#statistic .divider.type1{
 }
 
 .dashBox{
@@ -139,3 +154,4 @@ html, body{
     width: 100%;
     padding: 1.563vw;
 }
+

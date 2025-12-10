@@ -1,5 +1,6 @@
 $(window).on('load', function(){
-Chart.defaults.defaultFontFamily = "Pretendard";
+    Chart.register(ChartDataLabels);
+    Chart.defaults.defaultFontFamily = "Pretendard";
 
     var stcChartOption1 = {
         maintainAspectRatio: false,

@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>운영사 상품 추천</title>
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <!-- <link rel="stylesheet" href="../css/side.css"> -->
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/recommend.css">
+    <link rel="stylesheet" href="../css/mobile.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@200,300,400,500,600,700,1&display=swap"
+        rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../js/main.js"></script>
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <!-- Side Include -->
+        <header id="header">
+            <div class="header_inner">
+                <nav id="nav">
+                    <ul>
+                        <li>
+                            <a href="../html/index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="../html/preview_1.html">Preview</a>
+                        </li>
+                        <li class="active">
+                            <a href="../html/recommend.html">Statistic</a>
+                        </li>
+                        <li>
+                            <a href="#">Search</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="logo">
+                    <img src="../img/nav_logo.svg" alt="antock 로고">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main id="recommend" class="recommend_page">
+            <!-- Top Navigation -->
+            <div class="recommend_topNav">
+                <a href="#" class="btn_back">
+                    <span><img src="../img/sub/Vector.png" alt=""></span> 리스트로 돌아가기
+                </a>
+                <div class="page_navigation">
+                    <button type="button" class="btn_prev"><img src="../img/sub/Vector.png" alt=""></button>
+                    <button type="button" class="btn_next"><img src="../img/sub/Vector2.png" alt=""></button>
+                </div>
+            </div>
+
+            <div class="recommend_content">
+                <!-- Left: Company Info Card -->
+                <div class="company_card">
+                    <div class="company_header">
+                        <div class="company_logo_area">
+                            <img src="../img/sub/bg2.png" alt="" class="bg_img">
+                            <img src="../img/sub/logo.png" alt="RCTECH" class="logo_img">
+                        </div>
+                        <div class="company_info">
+                            <h2 class="company_name">알씨테크</h2>
+                            <p class="company_desc">
+                                알씨테크는 SK하이닉스 사내벤처 1호로,<br>
+                                반도체 장비 전문 기업으로서 혁신을 이끌고 있습니다.
+                            </p>
+                        </div>
+                        <div class="company_btns">
+                            <a href="#" class="btn_info">기업 정보<span><img src="../img/sub/arow1.png" alt=""></span></a>
+                            <a href="#" class="btn_recommend">운영사 추천 <span><img src="../img/sub/arow.png" alt=""></span></a>
+                        </div>
+                    </div>
+
+                    <!-- 기업 정보 모달 -->
+
+                    <div class="company_info_modal_container">
+                        <div class="company_info_modal">
+                            <div class="cim_util_area">
+                                <div class="cim_close">
+                                    <button>기업 정보</button>
+                                </div>
+                                <nav id="company_modal_nav">
+                                    <ul>
+                                        <li class="active"><button>기업 개황</button></li>
+                                        <li><button>언론보도</button></li>
+                                        <li><button>재무정보</button></li>
+                                        <li><button>조직구성</button></li>
+                                        <li><button>기술현황</button></li>
+                                        <li><button>모니터링</button></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="cim_cont">
+                                <div class="cim_tab">
+                                    <div class="cim_infoBox">
+                                        <div class="cim_box_tit">
+                                            <h2>회사 개요</h2>
+                                        </div>
+                                        <div class="cim_infoList type1">
+                                            <ul>
+                                                <li>
+                                                    <span class="info_cate">대표이사</span>
+                                                    <strong class="info_bold">임태화(22명)</strong>
+                                                </li>
+                                                <li>
+                                                    <span class="info_cate">설립일자</span>
+                                                    <strong class="info_bold">2019/09/12 (5.4년)</strong>
+                                                </li>
+                                                <li>
+                                                    <span class="info_cate">사업영역</span>
+                                                    <strong class="info_bold">소재 · 부품 · 관리</strong>
+                                                </li>
+                                                <li>
+                                                    <span class="info_cate">사업분류</span>
+                                                    <strong class="info_bold">(C29271) 반도체 제조용 기계 제조업</strong>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="cim_descList type1">
+                                            <ul>
+                                                <li>
+                                                    <span class="info_minorCate">홈페이지</span>
+                                                    <p class="info_descTxt">-</p>
+                                                </li>
+                                                <li>
+                                                    <span class="info_minorCate">대표상품</span>
+                                                    <p class="info_descTxt">반도체 재활용 - 국내 대기업에서 폐기되는 반도체 중고장비 직접 구매 및 개조</p>
+                                                </li>
+                                                <li>
+                                                    <span class="info_minorCate">회사소개</span>
+                                                    <p class="info_descTxt">알씨테크는 SK하이닉스 사내벤처 1호로, 반도체 장비 전문 기업으로서 혁신을 이끌고 있습니다.</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="cim_infoBox">
+                                        <div class="cim_box_tit">
+                                            <h2>식별 정보</h2>
+                                        </div>
+                                        <div class="cim_infoList type1">
+                                            <ul>
+                                                <li>
+                                                    <span class="info_cate">사업번호</span>
+                                                    <strong class="info_bold">377-87-01477</strong>
+                                                </li>
+                                                <li>
+                                                    <span class="info_cate">법인번호</span>
+                                                    <strong class="info_bold">134511-0406840</strong>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="cim_descList type1">
+                                            <ul>
+                                                <li>
+                                                    <span class="info_minorCate">사업상태</span>
+                                                    <p class="info_descTxt">계속 사업자 - 부가가치세 일반과세자</p>
+                                                </li>
+                                                <li>
+                                                    <span class="info_minorCate">주소</span>
+                                                    <p class="info_descTxt">경기도 용인시 처인구 포곡읍 포곡로272번길 10</p>
+                                                </li>
+                                                <li>
+                                                    <span class="info_minorCate">기업 유형</span>
+                                                    <p class="info_descTxt">주식회사</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="cim_infoBox">
+                                        <div class="cim_box_tit">
+                                            <h2>인증 정보</h2>
+                                        </div>
+                                        <div class="cim_descList type2">
+                                            <ul>
+                                                <li>
+                                                    <span class="info_cate">벤처기업</span>
+                                                    <p class="info_descTxt">인증 (2025/10/11)</p>
+                                                </li>
+                                                <li>
+                                                    <span class="info_cate">메인비즈</span>
+                                                    <p class="info_descTxt">인증 (2025/11/10)</p>
+                                                </li>
+                                                <li>
+                                                    <span class="info_minorCate">연구소</span>
+                                                    <p class="info_descTxt">인증</p>
+                                                </li>
+                                                <li>
+                                                    <span class="info_minorCate">이노비즈</span>
+                                                    <p class="info_descTxt">인증</p>
+                                                </li>
+                                                <li>
+                                                    <span class="info_minorCate">통신판매</span>
+                                                    <p class="info_descTxt">-</p>
+                                                </li>
+                                                <li>
+                                                    <span class="info_minorCate">사회적 기업</span>
+                                                    <p class="info_descTxt">-</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cim_tab">
+                                    <div class="cim_infoBox">
+                                        <div class="cim_box_tit">
+                                            <h2>언론보도</h2>
+                                            <p class="article_update">
+                                                신규 기사
+                                                <span class="num">20</span>
+                                            </p>
+                                        </div>
+                                        <div class="cim_articleList">
+                                            <ul>
+                                                <li>
+                                                    <a href="#" target="_blank">
+                                                        <span class="article_cate">한국무역신문</span>
+                                                        <strong class="article_bold">[제60회 무역의 날] 2백만불탑 수상자 명단</strong>
+                                                        <p class="article_descTxt">
+                                                            주식회사 알씨테크 임태희 2백만불탑 주식회사 알토켐 강진규 2백만불탑 주식회사 알씨테크 임태희 2백만불탑 주식회사 알토켐 강진규 2백만불탑 주식회사 에스제이오토모티브 정우진
+                                                        </p>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank">
+                                                        <span class="article_cate">한국무역신문</span>
+                                                        <strong class="article_bold">[제60회 무역의 날] 2백만불탑 수상자 명단</strong>
+                                                        <p class="article_descTxt">
+                                                            주식회사 알씨테크 임태희 2백만불탑 주식회사 알토켐 강진규 2백만불탑 주식회사 알씨테크 임태희 2백만불탑 주식회사 알토켐 강진규 2백만불탑 주식회사 에스제이오토모티브 정우진
+                                                        </p>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank">
+                                                        <span class="article_cate">한국무역신문</span>
+                                                        <strong class="article_bold">[제60회 무역의 날] 2백만불탑 수상자 명단</strong>
+                                                        <p class="article_descTxt">
+                                                            주식회사 알씨테크 임태희 2백만불탑 주식회사 알토켐 강진규 2백만불탑 주식회사 알씨테크 임태희 2백만불탑 주식회사 알토켐 강진규 2백만불탑 주식회사 에스제이오토모티브 정우진
+                                                        </p>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank">
+                                                        <span class="article_cate">한국무역신문</span>
+                                                        <strong class="article_bold">[제60회 무역의 날] 2백만불탑 수상자 명단</strong>
+                                                        <p class="article_descTxt">
+                                                            주식회사 알씨테크 임태희 2백만불탑 주식회사 알토켐 강진규 2백만불탑 주식회사 알씨테크 임태희 2백만불탑 주식회사 알토켐 강진규 2백만불탑 주식회사 에스제이오토모티브 정우진
+                                                        </p>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank">
+                                                        <span class="article_cate">한국무역신문</span>
+                                                        <strong class="article_bold">[제60회 무역의 날] 2백만불탑 수상자 명단</strong>
+                                                        <p class="article_descTxt">
+                                                            주식회사 알씨테크 임태희 2백만불탑 주식회사 알토켐 강진규 2백만불탑 주식회사 알씨테크 임태희 2백만불탑 주식회사 알토켐 강진규 2백만불탑 주식회사 에스제이오토모티브 정우진
+                                                        </p>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank">
+                                                        <span class="article_cate">한국무역신문</span>
+                                                        <strong class="article_bold">[제60회 무역의 날] 2백만불탑 수상자 명단</strong>
+                                                        <p class="article_descTxt">
+                                                            주식회사 알씨테크 임태희 2백만불탑 주식회사 알토켐 강진규 2백만불탑 주식회사 알씨테크 임태희 2백만불탑 주식회사 알토켐 강진규 2백만불탑 주식회사 에스제이오토모티브 정우진
+                                                        </p>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank">
+                                                        <span class="article_cate">한국무역신문</span>
+                                                        <strong class="article_bold">[제60회 무역의 날] 2백만불탑 수상자 명단</strong>
+                                                        <p class="article_descTxt">
+                                                            주식회사 알씨테크 임태희 2백만불탑 주식회사 알토켐 강진규 2백만불탑 주식회사 알씨테크 임태희 2백만불탑 주식회사 알토켐 강진규 2백만불탑 주식회사 에스제이오토모티브 정우진
+                                                        </p>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank">
+                                                        <span class="article_cate">한국무역신문</span>
+                                                        <strong class="article_bold">[제60회 무역의 날] 2백만불탑 수상자 명단</strong>
+                                                        <p class="article_descTxt">
+                                                            주식회사 알씨테크 임태희 2백만불탑 주식회사 알토켐 강진규 2백만불탑 주식회사 알씨테크 임태희 2백만불탑 주식회사 알토켐 강진규 2백만불탑 주식회사 에스제이오토모티브 정우진
+                                                        </p>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cim_tab">
+                                    <div class="cim_infoBox">
+                                        <div class="cim_box_tit">
+                                            <h2>요약 재무제표</h2> 
+                                        </div>
+                                        <div class="finPos_chartList">
+                                            <h3 class="cim_minor_tit">재무상태표</h3>
+                                            <ul>
+                                                <li>
+                                                    <div class="finPos_chart">
+                                                        <img src="../img/cim_graph1.png" alt="#">
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="finPos_chart">
+                                                        <img src="../img/cim_graph1.png" alt="#">
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="finPos_chart">
+                                                        <img src="../img/cim_graph1.png" alt="#">
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="cim_table type1">
+                                            <div class="cim_table_box">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>연도</th>
+                                                        <th>2020</th>
+                                                        <th>2021</th>
+                                                        <th>2022</th>
+                                                        <th>2023</th>
+                                                        <th>2024</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>자산총계</th>
+                                                        <td>26</td>
+                                                        <td>580</td>
+                                                        <td>4,819</td>
+                                                        <td>8,665</td>
+                                                        <td>9,607</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>부채총계</th>
+                                                        <td>10</td>
+                                                        <td>551</td>
+                                                        <td>2,500</td>
+                                                        <td>2,078</td>
+                                                        <td>2,871</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>자본총계</th>
+                                                        <td>15</td>
+                                                        <td>29</td>
+                                                        <td>2,319</td>
+                                                        <td>6,586</td>
+                                                        <td>6,736</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            </div>
+                                            <p>단위: 백만 원</p>
+                                        </div>
+                                    </div>
+                                    <div class="cim_infoBox">
+                                        <div class="cim_box_tit">
+                                            <h2>요약 재무제표</h2> 
+                                        </div>
+                                        <div class="finPos_chartList">
+                                            <h3 class="cim_minor_tit">손익계산서</h3>
+                                            <ul>
+                                                <li>
+                                                    <div class="finPos_chart">
+                                                        <img src="../img/cim_graph1.png" alt="#">
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="finPos_chart">
+                                                        <img src="../img/cim_graph1.png" alt="#">
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="finPos_chart">
+                                                        <img src="../img/cim_graph1.png" alt="#">
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="cim_table type1">
+                                            <div class="cim_table_box">
+                                                <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>연도</th>
+                                                        <th>2020</th>
+                                                        <th>2021</th>
+                                                        <th>2022</th>
+                                                        <th>2023</th>
+                                                        <th>2024</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>자산총계</th>
+                                                        <td>26</td>
+                                                        <td>580</td>
+                                                        <td>4,819</td>
+                                                        <td>8,665</td>
+                                                        <td>9,607</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>부채총계</th>
+                                                        <td>10</td>
+                                                        <td>551</td>
+                                                        <td>2,500</td>
+                                                        <td>2,078</td>
+                                                        <td>2,871</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>자본총계</th>
+                                                        <td>15</td>
+                                                        <td>29</td>
+                                                        <td>2,319</td>
+                                                        <td>6,586</td>
+                                                        <td>6,736</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="cim_tab active">
+                                    <div class="cim_infoBox">
+                                        <div class="cim_box_tit">
+                                            <h2>고용 현황</h2>
+                                        </div>
+                                        <div class="teams_info_list_Box">
+                                            <ul class="teams_info_list floor1">
+                                                <li>
+                                                    <div class="major_box til_box">
+                                                        <span class="info_cate">고용규모</span>
+                                                        <strong>22</strong>
+                                                    </div>
+                                                    <div class="minor_box til_box">
+                                                        <ul>
+                                                            <li>
+                                                                <span>산업 평균</span>
+                                                                <strong>18.8</strong>
+                                                            </li>
+                                                            <li>
+                                                                <span>유사 업력</span>
+                                                                <strong>9.6</strong>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="major_box til_box">
+                                                        <span class="info_cate">평균 월급</span>
+                                                        <strong>5</strong>
+                                                    </div>
+                                                    <div class="minor_box til_box">
+                                                        <ul>
+                                                            <li>
+                                                                <span>산업 평균</span>
+                                                                <strong>18.8</strong>
+                                                            </li>
+                                                            <li>
+                                                                <span>유사 업력</span>
+                                                                <strong>9.6</strong>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="major_box til_box">
+                                                        <span class="info_cate">고용규모</span>
+                                                        <strong>22</strong>
+                                                    </div>
+                                                    <div class="minor_box til_box">
+                                                        <ul>
+                                                            <li>
+                                                                <span>산업 평균</span>
+                                                                <strong>18.8</strong>
+                                                            </li>
+                                                            <li>
+                                                                <span>유사 업력</span>
+                                                                <strong>9.6</strong>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="major_box til_box">
+                                                        <span class="info_cate">고용규모</span>
+                                                        <strong>22</strong>
+                                                    </div>
+                                                    <div class="minor_box til_box">
+                                                        <ul>
+                                                            <li>
+                                                                <span>산업 평균</span>
+                                                                <strong>18.8</strong>
+                                                            </li>
+                                                            <li>
+                                                                <span>유사 업력</span>
+                                                                <strong>9.6</strong>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Grade & Score -->
+                    <div class="company_grade">
+                        <div class="grade_box dark">
+                            <span class="grade_label">TIPS 등급</span>
+                            <strong class="grade_value">A</strong>
+                            <span class="grade_range">A~Z</span>
+                        </div>
+                        <div class="grade_box highlight">
+                            <span class="grade_label">TIPS 적합도</span>
+                            <strong class="grade_value">99.3</strong>
+                            <span class="grade_range">상위 0.7%</span>
+                        </div>
+                    </div>
+
+                    <!-- Stats Grid - 6개 박스 -->
+                    <div class="company_stats">
+                        <div class="stat_item">
+                            <span class="stat_label">매출 <small>(백만 원)</small></span>
+                            <strong class="stat_value">3,042</strong>
+                            <div class="stat_chart">
+                                <img src="../img/sub/graph.png" alt="매출 그래프">
+                            </div>
+                        </div>
+                        <div class="stat_item">
+                            <span class="stat_label">영업이익 <small>(백만 원)</small></span>
+                            <strong class="stat_value">3,042</strong>
+                            <div class="stat_chart">
+                                <img src="../img/sub/graph.png" alt="매출 그래프">
+                            </div>
+                        </div>
+                        <div class="stat_item">
+                            <span class="stat_label">당기순익 <small>(백만 원)</small></span>
+                            <strong class="stat_value">8,042</strong>
+                            <div class="stat_chart">
+                                <img src="../img/sub/graph.png" alt="매출 그래프">
+                            </div>
+                        </div>
+                        <div class="stat_item">
+                            <span class="stat_label">고용인원 <small>(명)</small></span>
+                            <strong class="stat_value">345</strong>
+                            <div class="stat_chart">
+                                <img src="../img/sub/graph.png" alt="매출 그래프">
+                            </div>
+                        </div>
+                        <div class="stat_item">
+                            <span class="stat_label">특허 <small>(건)</small></span>
+                            <strong class="stat_value">102</strong>
+                            <div class="stat_chart">
+                                <img src="../img/sub/graph.png" alt="매출 그래프">
+                            </div>
+                        </div>
+                        <div class="stat_item">
+                            <span class="stat_label">투자유치금액 <small>(백만 원)</small></span>
+                            <strong class="stat_value">3,042</strong>
+                            <div class="stat_chart">
+                                <img src="../img/sub/graph.png" alt="매출 그래프">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Recommendation Chart -->
+                <div class="recommend_chart_area">
+                    <div class="recommend_header">
+                        <div class="recommend_title">
+                            <span class="company">알씨테크</span>
+                            <h3>운영사 추천</h3>
+                        </div>
+                    </div>
+
+                    <!-- Mind Map Style Chart -->
+                    <div class="recommend_mindmap">
+                        <!-- SVG 연결선 (배경) -->
+                        <svg class="connection_lines" preserveAspectRatio="none">
+                            <defs>
+                                <!-- 왼쪽 그라데이션 (보라 → 연보라) -->
+                                <linearGradient id="gradientLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#6E42D9" />
+                                    <stop offset="100%" stop-color="#B8A8E8" />
+                                </linearGradient>
+                                <!-- 오른쪽 그라데이션 (연파랑 → 파랑) -->
+                                <linearGradient id="gradientRight" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#A8D4E8" />
+                                    <stop offset="100%" stop-color="#226AD6" />
+                                </linearGradient>
+                            </defs>
+                            <!-- 연결선은 JS로 동적 생성 -->
+                        </svg>
+
+                        <!-- Left Side - 운영사 목록 -->
+                        <div class="mindmap_left">
+                            <div class="mindmap_label">운영사 추천</div>
+                            <ul class="recommend_list" id="operatorList">
+                                <li data-id="op1" data-connects="pr1,pr3">
+                                    <div class="recommend_info">
+                                        <span class="name">AAA 인베스트먼트</span>
+                                        <span class="score">적합도 <strong>90%</strong></span>
+                                    </div>
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="90">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">90%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <!-- 팝업 -->
+                                    <div class="info_popup popup_right">
+                                        <div class="popup_header">
+                                            <div class="popup_icon">
+                                                <img src="../img/sub/icon_company.png" alt="">
+                                            </div>
+                                            <div class="popup_title">
+                                                <h4>CCC 캐피탈</h4>
+                                                <p>
+                                                    대표자명<span>김진한</span><span
+                                                        class="divider">|</span>설립일자<span>2025-10-20</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>투자활동내역</h5>
+                                            <dl>
+                                                <dt>투자 분야</dt>
+                                                <dd>화학 소재, 첨단 제조</dd>
+
+                                                <dt>투자 금액</dt>
+                                                <dd>715.2억 원 (평균 1.15억 원)</dd>
+
+                                                <dt>투자 기업</dt>
+                                                <dd>팁스 창업기업 62개 사</dd>
+
+                                                <dt>기업 성과</dt>
+                                                <dd>후속투자 81.9억 원, IPO 3건</dd>
+
+                                                <dt>기타 성과</dt>
+                                                <dd>보육 창업기업 CES 5개 수상</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="op2" data-connects="pr2">
+                                    <div class="recommend_info">
+                                        <span class="name">BBB 투자파트너스</span>
+                                        <span class="score">적합도 <strong>70%</strong></span>
+                                    </div>
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="70">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">70%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="info_popup popup_right">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>BBB 투자파트너스</h4>
+                                                <p>
+                                                    대표자명<span>김진한</span><span
+                                                        class="divider">|</span>설립일자<span>2025-10-20</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>투자활동내역</h5>
+                                            <dl>
+                                                <dt>투자 분야</dt>
+                                                <dd>IT, 바이오</dd>
+                                                <dt>투자 금액</dt>
+                                                <dd>320억 원</dd>
+                                                <dt>투자 기업</dt>
+                                                <dd>팁스 창업기업 35개 사</dd>
+                                                <dt>기업 성과</dt>
+                                                <dd>후속투자 45억 원</dd>
+                                                <dt>기타 성과</dt>
+                                                <dd>-</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="op3" data-connects="pr3">
+                                    <div class="recommend_info">
+                                        <span class="name">CCC 캐피탈</span>
+                                        <span class="score">적합도 <strong>80%</strong></span>
+                                    </div>
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="80">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">80%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="info_popup popup_right">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>CCC 캐피탈</h4>
+                                                <p>
+                                                    대표자명<span>김진한</span><span
+                                                        class="divider">|</span>설립일자<span>2025-10-20</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>투자활동내역</h5>
+                                            <dl>
+                                                <dt>투자 분야</dt>
+                                                <dd>핀테크, AI</dd>
+                                                <dt>투자 금액</dt>
+                                                <dd>500억 원</dd>
+                                                <dt>투자 기업</dt>
+                                                <dd>팁스 창업기업 48개 사</dd>
+                                                <dt>기업 성과</dt>
+                                                <dd>IPO 2건</dd>
+                                                <dt>기타 성과</dt>
+                                                <dd>-</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="op4" data-connects="pr1">
+                                    <div class="recommend_info">
+                                        <span class="name">CCC 캐피탈</span>
+                                        <span class="score">적합도 <strong>50%</strong></span>
+                                    </div>
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="50">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">50%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="info_popup popup_right">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>CCC 캐피탈</h4>
+                                                <p>
+                                                    대표자명<span>김진한</span><span
+                                                        class="divider">|</span>설립일자<span>2025-10-20</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>투자활동내역</h5>
+                                            <dl>
+                                                <dt>투자 분야</dt>
+                                                <dd>헬스케어</dd>
+                                                <dt>투자 금액</dt>
+                                                <dd>200억 원</dd>
+                                                <dt>투자 기업</dt>
+                                                <dd>팁스 창업기업 20개 사</dd>
+                                                <dt>기업 성과</dt>
+                                                <dd>-</dd>
+                                                <dt>기타 성과</dt>
+                                                <dd>-</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="op5" data-connects="pr5">
+                                    <div class="recommend_info">
+                                        <span class="name">CCC 캐피탈</span>
+                                        <span class="score">적합도 <strong>90%</strong></span>
+                                    </div>
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="90">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">90%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="info_popup popup_right">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>CCC 캐피탈</h4>
+                                                <p>
+                                                    대표자명<span>김진한</span><span
+                                                        class="divider">|</span>설립일자<span>2025-10-20</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>투자활동내역</h5>
+                                            <dl>
+                                                <dt>투자 분야</dt>
+                                                <dd>반도체, 디스플레이</dd>
+                                                <dt>투자 금액</dt>
+                                                <dd>800억 원</dd>
+                                                <dt>투자 기업</dt>
+                                                <dd>팁스 창업기업 70개 사</dd>
+                                                <dt>기업 성과</dt>
+                                                <dd>IPO 5건</dd>
+                                                <dt>기타 성과</dt>
+                                                <dd>CES 혁신상 3회</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="op6" data-connects="pr3,pr6,pr7">
+                                    <div class="recommend_info">
+                                        <span class="name">CCC 캐피탈</span>
+                                        <span class="score">적합도 <strong>60%</strong></span>
+                                    </div>
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="60">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">60%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="info_popup popup_right">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>CCC 캐피탈</h4>
+                                                <p>
+                                                    대표자명<span>김진한</span><span
+                                                        class="divider">|</span>설립일자<span>2025-10-20</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>투자활동내역</h5>
+                                            <dl>
+                                                <dt>투자 분야</dt>
+                                                <dd>콘텐츠, 미디어</dd>
+                                                <dt>투자 금액</dt>
+                                                <dd>150억 원</dd>
+                                                <dt>투자 기업</dt>
+                                                <dd>팁스 창업기업 15개 사</dd>
+                                                <dt>기업 성과</dt>
+                                                <dd>-</dd>
+                                                <dt>기타 성과</dt>
+                                                <dd>-</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="op7" data-connects="pr6,pr7">
+                                    <div class="recommend_info">
+                                        <span class="name">CCC 캐피탈</span>
+                                        <span class="score">적합도 <strong>60%</strong></span>
+                                    </div>
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="60">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">60%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="info_popup popup_right">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>CCC 캐피탈</h4>
+                                                <p>
+                                                    대표자명<span>김진한</span><span
+                                                        class="divider">|</span>설립일자<span>2025-10-20</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>투자활동내역</h5>
+                                            <dl>
+                                                <dt>투자 분야</dt>
+                                                <dd>에듀테크</dd>
+                                                <dt>투자 금액</dt>
+                                                <dd>100억 원</dd>
+                                                <dt>투자 기업</dt>
+                                                <dd>팁스 창업기업 10개 사</dd>
+                                                <dt>기업 성과</dt>
+                                                <dd>-</dd>
+                                                <dt>기타 성과</dt>
+                                                <dd>-</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="op8" data-connects="pr3,pr8">
+                                    <div class="recommend_info">
+                                        <span class="name">CCC 캐피탈</span>
+                                        <span class="score">적합도 <strong>60%</strong></span>
+                                    </div>
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="60">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">60%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="info_popup popup_right">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>CCC 캐피탈</h4>
+                                                <p>
+                                                    대표자명<span>김진한</span><span
+                                                        class="divider">|</span>설립일자<span>2025-10-20</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>투자활동내역</h5>
+                                            <dl>
+                                                <dt>투자 분야</dt>
+                                                <dd>물류, 유통</dd>
+                                                <dt>투자 금액</dt>
+                                                <dd>80억 원</dd>
+                                                <dt>투자 기업</dt>
+                                                <dd>팁스 창업기업 8개 사</dd>
+                                                <dt>기업 성과</dt>
+                                                <dd>-</dd>
+                                                <dt>기타 성과</dt>
+                                                <dd>-</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mindmap_center">
+                            <div class="center_node" id="centerNode">
+                                <img src="../img/sub/wlogo.png" alt="RCTECH">
+                            </div>
+                        </div>
+
+                        <!-- Right Side - 상품 목록 -->
+                        <div class="mindmap_right">
+                            <div class="mindmap_label">상품 추천</div>
+                            <ul class="recommend_list" id="productList">
+                                <li data-id="pr1" data-connects="op1">
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="90">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">90%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="recommend_info">
+                                        <span class="name">AAA 인베스트먼트</span>
+                                        <span class="score">적합도 <strong>90%</strong></span>
+                                    </div>
+                                    <div class="info_popup popup_left">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>상품명이 입력됩니다.</h4>
+                                                <p>
+                                                    담당 부서<span>부서명 입력</span><span
+                                                        class="divider">|</span>신청기간<span>2015-10-20</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>상품 내역</h5>
+                                            <dl>
+                                                <dt>지원 대상</dt>
+                                                <dd>예비창업자</dd>
+                                                <dt>지원 예산</dt>
+                                                <dd>490억 원 내외</dd>
+                                                <dt>지원 규모</dt>
+                                                <dd>748명 내외</dd>
+                                                <dt>지원 내용</dt>
+                                                <dd>사업화 자금, 창업교육 및 멘토링</dd>
+                                                <dt>지원 자금</dt>
+                                                <dd>사업화 자금 최대 1억원</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="pr2" data-connects="op2">
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="70">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">70%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="recommend_info">
+                                        <span class="name">BBB 투자파트너스</span>
+                                        <span class="score">적합도 <strong>70%</strong></span>
+                                    </div>
+                                    <div class="info_popup popup_left">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>상품명이 입력됩니다.</h4>
+                                                <p>
+                                                    담당 부서<span>부서명 입력</span><span
+                                                        class="divider">|</span>신청기간<span>2015-10-20</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>상품 내역</h5>
+                                            <dl>
+                                                <dt>지원 대상</dt>
+                                                <dd>초기 창업자</dd>
+                                                <dt>지원 예산</dt>
+                                                <dd>300억 원</dd>
+                                                <dt>지원 규모</dt>
+                                                <dd>500명</dd>
+                                                <dt>지원 내용</dt>
+                                                <dd>R&D 자금</dd>
+                                                <dt>지원 자금</dt>
+                                                <dd>최대 2억원</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="pr3" data-connects="op1,op3,op6">
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="80">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">80%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="recommend_info">
+                                        <span class="name">CCC 캐피탈</span>
+                                        <span class="score">적합도 <strong>80%</strong></span>
+                                    </div>
+                                    <div class="info_popup popup_left">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>상품명이 입력됩니다.</h4>
+                                                <p>
+                                                    담당 부서<span>부서명 입력</span><span
+                                                        class="divider">|</span>신청기간<span>2015-10-20</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>상품 내역</h5>
+                                            <dl>
+                                                <dt>지원 대상</dt>
+                                                <dd>성장기 기업</dd>
+                                                <dt>지원 예산</dt>
+                                                <dd>600억 원</dd>
+                                                <dt>지원 규모</dt>
+                                                <dd>300명</dd>
+                                                <dt>지원 내용</dt>
+                                                <dd>스케일업 지원</dd>
+                                                <dt>지원 자금</dt>
+                                                <dd>최대 5억원</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="pr4" data-connects="op5,op1">
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="50">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">50%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="recommend_info">
+                                        <span class="name">CCC 캐피탈</span>
+                                        <span class="score">적합도 <strong>50%</strong></span>
+                                    </div>
+                                    <div class="info_popup popup_left">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>상품명이 입력됩니다.</h4>
+                                                <p>
+                                                    담당 부서<span>부서명 입력</span><span
+                                                        class="divider">|</span>신청기간<span>2015-10-20</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>상품 내역</h5>
+                                            <dl>
+                                                <dt>지원 대상</dt>
+                                                <dd>예비창업자</dd>
+                                                <dt>지원 예산</dt>
+                                                <dd>200억 원</dd>
+                                                <dt>지원 규모</dt>
+                                                <dd>200명</dd>
+                                                <dt>지원 내용</dt>
+                                                <dd>창업 교육</dd>
+                                                <dt>지원 자금</dt>
+                                                <dd>최대 5천만원</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="pr5" data-connects="op5">
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="90">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">90%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="recommend_info">
+                                        <span class="name">CCC 캐피탈</span>
+                                        <span class="score">적합도 <strong>90%</strong></span>
+                                    </div>
+                                    <div class="info_popup popup_left">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>상품명이 입력됩니다.</h4>
+                                                <p>
+                                                    담당 부서<span>부서명 입력</span><span
+                                                        class="divider">|</span>신청기간<span>2015-10-20</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>상품 내역</h5>
+                                            <dl>
+                                                <dt>지원 대상</dt>
+                                                <dd>기술 창업자</dd>
+                                                <dt>지원 예산</dt>
+                                                <dd>800억 원</dd>
+                                                <dt>지원 규모</dt>
+                                                <dd>400명</dd>
+                                                <dt>지원 내용</dt>
+                                                <dd>기술 사업화</dd>
+                                                <dt>지원 자금</dt>
+                                                <dd>최대 10억원</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="pr6" data-connects="op6,op7">
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="60">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">60%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="recommend_info">
+                                        <span class="name">CCC 캐피탈</span>
+                                        <span class="score">적합도 <strong>60%</strong></span>
+                                    </div>
+                                    <div class="info_popup popup_left">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>상품명이 입력됩니다.</h4>
+                                                <p>
+                                                    담당 부서<span>부서명 입력</span><span
+                                                        class="divider">|</span>신청기간<span>2015-10-20</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>상품 내역</h5>
+                                            <dl>
+                                                <dt>지원 대상</dt>
+                                                <dd>소셜벤처</dd>
+                                                <dt>지원 예산</dt>
+                                                <dd>150억 원</dd>
+                                                <dt>지원 규모</dt>
+                                                <dd>150명</dd>
+                                                <dt>지원 내용</dt>
+                                                <dd>임팩트 투자</dd>
+                                                <dt>지원 자금</dt>
+                                                <dd>최대 3억원</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="pr7" data-connects="op6,op7">
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="60">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">60%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="recommend_info">
+                                        <span class="name">CCC 캐피탈</span>
+                                        <span class="score">적합도 <strong>60%</strong></span>
+                                    </div>
+                                    <div class="info_popup popup_left">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>상품명이 입력됩니다.</h4>
+                                                <p>
+                                                    담당 부서<span>부서명 입력</span><span
+                                                        class="divider">|</span>신청기간<span>2015-10-20</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>상품 내역</h5>
+                                            <dl>
+                                                <dt>지원 대상</dt>
+                                                <dd>글로벌 진출 기업</dd>
+                                                <dt>지원 예산</dt>
+                                                <dd>400억 원</dd>
+                                                <dt>지원 규모</dt>
+                                                <dd>100명</dd>
+                                                <dt>지원 내용</dt>
+                                                <dd>해외 진출 지원</dd>
+                                                <dt>지원 자금</dt>
+                                                <dd>최대 7억원</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="pr8" data-connects="op2">
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="60">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">60%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="recommend_info">
+                                        <span class="name">CCC 캐피탈</span>
+                                        <span class="score">적합도 <strong>60%</strong></span>
+                                    </div>
+                                    <div class="info_popup popup_left">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>상품명이 입력됩니다.</h4>
+                                                <p>
+                                                    담당 부서<span>부서명 입력</span><span
+                                                        class="divider">|</span>신청기간<span>2015-10-20</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>상품 내역</h5>
+                                            <dl>
+                                                <dt>지원 대상</dt>
+                                                <dd>재창업자</dd>
+                                                <dt>지원 예산</dt>
+                                                <dd>100억 원</dd>
+                                                <dt>지원 규모</dt>
+                                                <dd>100명</dd>
+                                                <dt>지원 내용</dt>
+                                                <dd>재기 지원</dd>
+                                                <dt>지원 자금</dt>
+                                                <dd>최대 1억원</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        $(function () {
+            // Side Include
+            $('#side-container').load('../inc/side.html');
+        });
+    </script>
+    <script src="../js/recommend.js"></script>
+</body>
+
+</html>
