@@ -1535,13 +1535,13 @@
     width: 100%;
     text-align: left;
     transition: all .3s;
-    background: #fff;
+    background: #edeff0;
 }
 
 .distr_tabBtn > ul > li.active button,
 .distr_tabBtn > ul > li:hover button,
 .distr_tabBtn > ul > li:focus button{
-    background-color: var(--main-color2-);
+    background-color: #e0e3e5;
 }
 
 .distr_tabBtn > ul > li > button > span{
@@ -2076,7 +2076,11 @@
 }
 
 .graphTabWideBtn .txt_area .desc{
-    display: inline-block;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0 10px;
     font-size: 14px;
     letter-spacing: -0.28px;
     color: #252525;
@@ -2084,6 +2088,14 @@
     line-height: 1.5;
     margin-bottom: 4px;
 }
+
+.graphTabWideBtn .txt_area .desc .dem{
+    font-size: 14px;
+    color: #70757C;
+    font-weight: 500;
+    font-family: var(--font1-);
+}
+
 
 .graphTabWideBtn .txt_area .num{
     font-family: var(--font3-);
