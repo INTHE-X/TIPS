@@ -476,5 +476,15 @@ $(function () {
             $('html, body').css('overflow', 'hidden');
         });
 
-        $()
+        $('.cim_close button').on('click', function(e){
+            e.preventDefault();
+            $('.company_info_modal_container').removeClass('active');
+            $('html, body').css('overflow', 'visible');
+        });
+
+        $('.company_modal_nav ul li button').on('click', function(){
+            $(this).parent('li').addClass('active').siblings().removeClass('active');
+            var idx = $(this).parent('li').index();
+            $('.cim_tab').eq(idx).add
+        });
 });
