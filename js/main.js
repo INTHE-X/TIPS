@@ -231,7 +231,6 @@ let tl = gsap.timeline({
             $('.cim_tab').eq(idx).addClass('active').siblings().removeClass('active');
         });
 
-
 });
 
 $(window).on('load', function(){

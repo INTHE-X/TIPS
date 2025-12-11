@@ -468,4 +468,13 @@ $(function () {
             resizeTimer = setTimeout(drawConnections, 200);
         });
     }
+
+    
+        $('.company_btns .btn_info').on('click', function(e){
+            e.preventDefault();
+            $('.company_info_modal_container').addClass('active');
+            $('html, body').css('overflow', 'hidden');
+        });
+
+        $()
 });

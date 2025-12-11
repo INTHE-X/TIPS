@@ -1694,14 +1694,23 @@
     font-family: var(--font1-);
 }
 
+.distr_graphTab{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 .distr_graphArea{
+    position: relative;
+    flex: 1;
     width: 100%;
     padding-bottom: 35px;
 }
 
 .distr_graph{
-    position: relative;
     width: 100%;
+    height: 100%;
     display: none;
 }
 
@@ -1711,13 +1720,14 @@
 
 .distr_graph table{
     width: 100%;
+    height: 100%;
     border-collapse: separate;
 }
 
 .distr_graph table thead{
     position: absolute;
     left: 0;
-    top: 100%;
+    bottom: 0;
     width: 100%;
     display: table;
     table-layout: fixed;
@@ -1750,10 +1760,12 @@
 }
 
 .distr_graph table tbody th{
+    display: flex;
     text-align: left;
     color: #5E5E5E;
     line-height: 1.3;
     word-break: keep-all;
+    align-items: center;
 }
 
 .distr_graph td,
@@ -1761,13 +1773,26 @@
     text-align: center;
     font-family: var(--font1-);
     font-size: 13px;
-    padding: 11px 5px;
+    padding: 0px 5px;
     letter-spacing: -0.26px;
     font-weight: 600;
 }
 
+.distr_graph tbody{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.distr_graph tbody td,
 .distr_graph tbody th{
-    padding: 11px 5px 11px 0;
+}
+
+.distr_graph tbody th{
+}
+
+.distr_graph tr{
+    flex: 1;
 }
 
 .distr_graph td{
@@ -1901,6 +1926,10 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+}
+
+#statistic .divider.type1:has(.distr_graphTab){
+    height: 830px;
 }
 
 #statistic .divider.type1 > div{

@@ -155,3 +155,6 @@ html, body{
     padding: 30px;
 }
 
+.sub_wideArea.type2:has(.distr_graphTab){
+}
+

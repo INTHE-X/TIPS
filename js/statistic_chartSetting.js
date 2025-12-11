@@ -246,7 +246,7 @@ $(window).on('load', function(){
                 scales: {
                     x: {
                         min: 0,
-                        max: 2200,
+                        max: 2600,
                         ticks: {
                             stepSize: 200,
                             display: false
