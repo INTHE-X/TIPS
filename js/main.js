@@ -171,6 +171,14 @@ $(document).ready(function(){
             $('.cim_tab').eq(idx).addClass('active').siblings().removeClass('active');
         });
 
+        $('.cim_info_tab_btn').each(function(){
+            $(this).children('ul').find('button').on('click', function(){
+                $(this).parent('li').addClass('active').siblings().removeClass('active');
+                var idx = $(this).parent('li').index();
+                $(this).parent().parent().parent().siblings('.cim_info_tab').eq(idx).addClass('active').siblings().removeClass('active');
+            });
+        });
+
 });
 
 $(window).on('load', function(){
