@@ -1610,7 +1610,7 @@
 .distr_chartBox{
     width: 100%;
     height: 100%;
-    overflow-x: scroll;
+    overflow-x: auto;
     scrollbar-width: thin;
 }
 
@@ -1865,6 +1865,19 @@
     font-size: 14px;
     font-weight: 600;
     line-height: 1.2;
+    font-family: var(--font1-);
+}
+
+.desc_area span.desc{
+    display: flex;
+    align-items: center;
+    gap: 0 4px;
+}
+
+.desc_area span.desc > span{
+    font-size: 13px;
+    color: #70757C;
+    font-weight: 500;
 }
 
 .desc_area span.num{
@@ -1895,7 +1908,6 @@
 
 .stat_graphTabArea{
     width: 100%;
-    height: 100%;
     display: none;
     flex-direction: column;
     gap: 16px;
@@ -1910,6 +1922,8 @@
     padding: 30px;
     border: 1px solid rgba(255, 255, 255, 0.7);
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .stat_graph,
@@ -1922,7 +1936,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 22px;
+    margin-bottom: 30px;
 }
 
 .stat_graph_tit_txt{
@@ -1959,11 +1973,50 @@
     background: #6E42D9;
 }
 
-.stat_table{
+.stat_chartImgArea{
+    position: relative;
+    width: 100%;
     flex: 1;
+}
+
+.stat_chartImgArea img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom;
+}
+
+.stat_table{
     background: rgba(255, 255, 255, 0.7);
     border-radius: 20px;
-    padding: 30px;
+    padding: 16px 30px 30px 30px;
+}
+
+.subPage_tabBox:nth-child(1) .stat_graphTabArea:nth-child(n+9) .stat_graph{
+    height: 600px;
+}
+
+.subPage_tabBox:nth-child(1) .stat_graphTabArea:nth-child(n+9) .stat_table{
+    height: 212px;
+}
+
+.subPage_tabBox:nth-child(1) .stat_graphTabArea:nth-child(-n+8) .stat_graph{
+    height: 511px;
+}
+
+.subPage_tabBox:nth-child(1) .stat_graphTabArea:nth-child(-n+8) .stat_table{
+    height: 301px;
+}
+
+.subPage_tabBox:nth-child(2) .stat_graphTabArea .stat_graph{
+    height: 600px;
+}
+
+.subPage_tabBox:nth-child(2) .stat_graphTabArea .stat_table{
+    height: 212px;
 }
 
 .stat_table table{
@@ -2012,12 +2065,18 @@
 }
 
 .stat_table table tbody tr{
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.stat_table table tbody tr:last-child td,
+.stat_table table tbody tr:last-child th{
+    padding: 30px 5px 0px 5px;
+    line-height: 1.5;
 }
 
 .stat_table table tbody tr th,
 .stat_table table tbody tr td{
-    padding: 32px 5px;
+    padding: 30px 5px;
     vertical-align: middle;
     text-align: center;
 }
@@ -2080,7 +2139,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 0 10px;
+    gap: 0 6px;
     font-size: 14px;
     letter-spacing: -0.28px;
     color: #252525;
