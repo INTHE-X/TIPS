@@ -240,7 +240,7 @@ $(window).on('load', function(){
                 ...stcChartOption1,
                 layout: {
                         padding: {
-                            right: 50
+                            right: 10
                         }
                     },
                 scales: {

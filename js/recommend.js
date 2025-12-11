@@ -485,6 +485,6 @@ $(function () {
         $('.company_modal_nav ul li button').on('click', function(){
             $(this).parent('li').addClass('active').siblings().removeClass('active');
             var idx = $(this).parent('li').index();
-            $('.cim_tab').eq(idx).add
+            $('.cim_tab').eq(idx).addClass('ac')
         });
 });
