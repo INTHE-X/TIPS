@@ -1225,6 +1225,7 @@ body {
     display: flex;
     justify-content: flex-end;
     overflow: hidden;
+    display: none;
 }
 
 .company_info_modal{
