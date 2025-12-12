@@ -1,0 +1,431 @@
+/* ==================== Main Content ==================== */
+.main-content {
+    flex: 1;
+    margin-left: 180px;
+    padding: 40px 0px;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(250, 250, 246, 1) 0%, transparent 25%),
+        radial-gradient(circle at 20% 50%, rgba(230, 229, 208, 0.3) 0%, transparent 30%),
+        radial-gradient(circle at 80% 30%, rgba(172, 205, 255, 0.4) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(58, 16, 110, 0.35) 0%, transparent 40%),
+        radial-gradient(circle at 50% 85%, rgba(71, 66, 217, 0.25) 0%, transparent 45%),
+        #FAFAF6;
+    min-height: 100vh;
+}
+
+.content-wrapper {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.page-search #nav ul li:nth-child(1) a {
+    background-image: url('../img/company_discovery/nav_ico1.png');
+}
+
+.page-search #nav ul li:nth-child(2) a {
+    background-image: url('../img/company_discovery/nav_ico2.png');
+}
+
+.page-search #nav ul li:nth-child(3) a {
+    background-image: url('../img/company_discovery/nav_ico3.png');
+}
+
+.page-search #nav ul li:nth-child(4) a {
+    background-image: url('../img/company_discovery/nav_ico4.png');
+}
+
+/* ==================== Header ==================== */
+.result-header {
+    margin-bottom: 40px;
+}
+
+.result-title {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 46px;
+    color: #252525;
+    margin-bottom: 24px;
+}
+
+/* Tab Section */
+.tab-section {
+    position: relative;
+    margin-bottom: 40px;
+    padding-bottom: 17px;
+}
+
+.tab-section::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: -70px;
+    bottom: 0;
+    height: 1px;
+    background: #E5E7EB;
+}
+
+.tab-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* TOP 30 Link */
+.top-30-link {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: #8059E0;
+    text-decoration: none;
+    position: absolute;
+    right: -55px;
+    bottom: 0;
+    padding-bottom: 14px;
+    transition: color 0.3s ease;
+}
+
+.top-30-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    background: #8059E0;
+}
+
+.top-30-link:hover {
+    color: #6E42D9;
+}
+
+.top-30-link:hover::after {
+    background: #6E42D9;
+}
+
+/* Tab Navigation */
+.tab-navigation {
+    display: inline-flex;
+    background: #EDEFF0;
+    border: none;
+    border-radius: 28px;
+    padding: 4px;
+    width: 380px;
+    height: 56px;
+        align-items: center; /* ← 추가 */
+
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 14px 0; /* ← 수정: 상하 패딩 동일하게 */
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: #666;
+    background: transparent;
+    border: none;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tab-btn.active {
+    color: #252525;
+    background: #FFFFFF;
+    font-weight: 700;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.tab-btn:hover:not(.active) {
+    color: #252525;
+}
+
+/* Tab Info */
+.tab-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.tab-info-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.tab-info-text {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Info Bar */
+.info-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.info-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.info-text {
+    flex: 1;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.top-link {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #6E42D9;
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: color 0.3s ease;
+}
+
+.top-link:hover {
+    color: #5730B8;
+}
+
+/* ==================== Company Grid ==================== */
+.company-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+/* Company Card */
+.company-card {
+    width: 320px;
+    height: 413px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #E4E9EA;
+    transition: all 0.3s ease;
+}
+
+/* Card Image */
+.card-image {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+}
+
+/* ✅ 배경 이미지 */
+.card-bg {
+    width: 320px;
+    height: 168px;
+    object-fit: cover;
+}
+
+/* ✅ 그라디언트 오버레이 - 아래에서 위로 흰색 */
+.card-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 0) 50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Card Content */
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.company-name {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #252525;
+    margin-bottom: 16px;
+}
+
+.company-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 9px;
+    margin-bottom: 9px;
+    border-bottom: 1px solid #E5E5E5;
+    /* ✅ 밑줄 */
+}
+
+.info-row:last-child {
+    border-bottom: none;
+    /* ✅ 마지막 줄은 밑줄 제거 */
+}
+
+.info-label {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #5E5E5E
+}
+
+.rank-level {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 21px;
+    padding: 1px 6px 1px 5px;
+    border-radius: 5px;
+
+    background: #756D8C;
+    /* ✅ 뱃지 배경 */
+    font-family: 'Pretendard', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    gap: 2px;
+}
+
+/* ✅ 숫자 1 */
+.rank-number {
+    color: #FFFFFF;
+    /* 흰색 */
+}
+
+/* ✅ 등급 텍스트 */
+.rank-text-small {
+    color: #DAD6E6;
+    /* 연보라 or 연한 톤 */
+    font-weight: 500;
+}
+
+.rank-text {
+    color: #000;
+    font-family: Pretendard;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: -2%;
+    text-align: right;
+    vertical-align: middle;
+
+}
+
+.info-value {
+    font-family: Pretendard;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: -2%;
+    text-align: right;
+    vertical-align: middle;
+    color: #000;
+}
+
+
+/* Rank Badge */
+.rank-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.rank {
+    padding: 4px 8px;
+    font-family: 'Clash Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    color: #6E42D9;
+    background: rgba(110, 66, 217, 0.1);
+    border-radius: 4px;
+}
+
+.score {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: #252525;
+}
+
+/* Dashboard Button */
+.dashboard-btn {
+    margin: 20px auto 0;
+    padding: 10px 22px;
+    border: 1px solid #E5E5E5;
+    border-radius: 24px;
+    background: #fff;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: 5E5E5E;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    align-self: center;
+}
+
+.dashboard-btn img {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+
+/* ==================== Responsive Design ==================== */
+@media (max-width: 1400px) {
+    .company-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 1200px) {
+    .company-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .company-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .result-title {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .company-grid {
+        grid-template-columns: 1fr;
+    }
+}
