@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기업 상세 - Preview</title>
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/company_dashboard.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@200,300,400,500,600,700,1&display=swap"
+        rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="page-search">
+    <div id="wrap">
+        <!-- Side Include -->
+        <header id="header">
+            <div class="header_inner">
+                <nav id="nav">
+                    <ul>
+                        <li>
+                            <a href="../html/index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="../html/preview_1.html">Preview</a>
+                        </li>
+                        <li>
+                            <a href="../html/statistic_1_1.html">Statistic</a>
+                        </li>
+                        <li class="active">
+                            <a href="../html/recommend.html">Search</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="logo">
+                    <img src="../img/nav_logo.svg" alt="antock 로고">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="recommend_page">
+            <!-- Top Navigation -->
+            <div class="recommend_topNav">
+                <a href="#" class="btn_back">
+                    <span><img src="../img/sub/Vector.png" alt=""></span> 리스트로 돌아가기
+                </a>
+                <div class="page_navigation">
+                    <button type="button" class="btn_prev"><img src="../img/sub/Vector.png" alt=""></button>
+                    <button type="button" class="btn_next"><img src="../img/sub/Vector2.png" alt=""></button>
+                </div>
+            </div>
+
+            <div class="recommend_content">
+                <!-- Left: Company Info Card -->
+                <div class="company_card">
+                    <div class="company_header">
+                        <div class="company_logo_area">
+                            <img src="../img/sub/bg5.png" alt="" class="bg_img">
+                            <img src="../img/sub/logo4.png" alt="RCTECH" class="logo_img">
+                        </div>
+                        <div class="company_info">
+                            <h2 class="company_name">테라헬릭스</h2>
+                            <p class="company_desc">
+                                알씨테크는 SK하이닉스 사내벤처 1호로,<br>
+                                반도체 장비 전문 기업으로서 혁신을 이끌고 있습니다.
+                            </p>
+                        </div>
+                        <div class="company_btns">
+                            <a href="#" class="btn_info">기업 정보 <span><img src="../img/sub/arow1.png" alt=""></span></a>
+                            <a href="#" class="btn_recommend">운영사 추천 <span><img src="../img/sub/arow.png"
+                                        alt=""></span></a>
+                        </div>
+                    </div>
+
+                    <!-- Grade & Score -->
+                    <div class="company_grade">
+                        <div class="grade_box dark">
+                            <span class="grade_label">VICTORY ROAD 등급</span>
+                            <strong class="grade_value">A</strong>
+                            <span class="grade_range">A~Z</span>
+                        </div>
+                        <div class="grade_box highlight">
+                            <span class="grade_label">VICTORY ROAD 점수</span>
+                            <strong class="grade_value">99.3</strong>
+                            <span class="grade_range">상위 0.7%</span>
+                        </div>
+                    </div>
+
+                    <!-- Stats Grid - 6개 박스 -->
+                    <div class="company_stats">
+                        <div class="stat_item">
+                            <span class="stat_label">매출 <small>(백만 원)</small></span>
+                            <strong class="stat_value">3,042</strong>
+                            <div class="stat_chart">
+                                <img src="../img/sub/graph.png" alt="매출 그래프">
+                            </div>
+                        </div>
+                        <div class="stat_item">
+                            <span class="stat_label">영업이익 <small>(백만 원)</small></span>
+                            <strong class="stat_value">3,042</strong>
+                            <div class="stat_chart">
+                                <img src="../img/sub/graph.png" alt="영업이익 그래프">
+                            </div>
+                        </div>
+                        <div class="stat_item">
+                            <span class="stat_label">당기순익 <small>(백만 원)</small></span>
+                            <strong class="stat_value">8,042</strong>
+                            <div class="stat_chart">
+                                <img src="../img/sub/graph.png" alt="당기순익 그래프">
+                            </div>
+                        </div>
+                        <div class="stat_item">
+                            <span class="stat_label">고용인원 <small>(명)</small></span>
+                            <strong class="stat_value">345</strong>
+                            <div class="stat_chart">
+                                <img src="../img/sub/graph.png" alt="고용인원 그래프">
+                            </div>
+                        </div>
+                        <div class="stat_item">
+                            <span class="stat_label">특허 <small>(건)</small></span>
+                            <strong class="stat_value">102</strong>
+                            <div class="stat_chart">
+                                <img src="../img/sub/graph.png" alt="특허 그래프">
+                            </div>
+                        </div>
+                        <div class="stat_item">
+                            <span class="stat_label">투자유치금액 <small>(백만 원)</small></span>
+                            <strong class="stat_value">3,042</strong>
+                            <div class="stat_chart">
+                                <img src="../img/sub/graph.png" alt="투자유치금액 그래프">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center: 핵심 성장 요인 -->
+                <div class="center_section">
+                    <div class="section_header">
+                        <h3 class="section_title">핵심 성장 요인</h3>
+                        <div class="legend_box">
+                            <div class="legend">
+                                <div class="legend_item">
+                                    <span class="legend_dot" style="background: #6E42D9;"></span>
+                                    <span>선택 기업</span>
+                                </div>
+                                <div class="legend_item">
+                                    <span class="legend_dot" style="background: #9C76D9;"></span>
+                                    <span>벤치마킹 기업</span>
+                                </div>
+                                <div class="legend_item">
+                                    <span class="legend_dot" style="background: #42CFD9;"></span>
+                                    <span>산업 평균</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Radar Chart Area -->
+                    <div class="radar_chart_area">
+                        <video src="../img/dash4.webm" autoplay muted playsinline></video>
+                        <canvas id="radarChart"></canvas>
+                    </div>
+
+                    <!-- 성공 요인 기여치 -->
+                    <div class="success_factors">
+                        <div class="factors_container">
+                            <!-- 왼쪽: 항목 리스트 (회색 박스) -->
+                            <div class="factors_list">
+                                <h4 class="factors_title">성공 요인 기여치</h4>
+
+                                <div class="factors_grid">
+                                    <div class="factor_item_new active" data-index="0">
+                                        <div class="factor_info">
+                                            <span class="factor_dot" style="background: #6E42D9;"></span>
+                                            <span class="factor_label_new">외형 지표 가시화</span>
+                                        </div>
+                                        <span class="factor_percent">23.21%</span>
+                                    </div>
+
+                                    <div class="factor_item_new" data-index="1">
+                                        <div class="factor_info">
+                                            <span class="factor_dot" style="background: #35359C;"></span>
+                                            <span class="factor_label_new">사업 초기 수익성</span>
+                                        </div>
+                                        <span class="factor_percent">10.01%</span>
+                                    </div>
+
+                                    <div class="factor_item_new" data-index="2">
+                                        <div class="factor_info">
+                                            <span class="factor_dot" style="background: #226BDA;"></span>
+                                            <span class="factor_label_new">정부 출연금 확보</span>
+                                        </div>
+                                        <span class="factor_percent">15.3%</span>
+                                    </div>
+
+                                    <div class="factor_item_new" data-index="3">
+                                        <div class="factor_info">
+                                            <span class="factor_dot" style="background: #6991FF;"></span>
+                                            <span class="factor_label_new">조직자 기술 개발</span>
+                                        </div>
+                                        <span class="factor_percent">8.23%</span>
+                                    </div>
+
+                                    <div class="factor_item_new" data-index="4">
+                                        <div class="factor_info">
+                                            <span class="factor_dot" style="background: #2193CB;"></span>
+                                            <span class="factor_label_new">추가 투자금 유치</span>
+                                        </div>
+                                        <span class="factor_percent">11.43%</span>
+                                    </div>
+
+                                    <div class="factor_item_new" data-index="5">
+                                        <div class="factor_info">
+                                            <span class="factor_dot" style="background: #42CFD9;"></span>
+                                            <span class="factor_label_new">사업화 역량 수행</span>
+                                        </div>
+                                        <span class="factor_percent">7%</span>
+                                    </div>
+
+                                    <div class="factor_item_new" data-index="6">
+                                        <div class="factor_info">
+                                            <span class="factor_dot" style="background: #55D9C9;"></span>
+                                            <span class="factor_label_new">높은 기술 준비도</span>
+                                        </div>
+                                        <span class="factor_percent">10.4%</span>
+                                    </div>
+
+                                    <div class="factor_item_new" data-index="7">
+                                        <div class="factor_info">
+                                            <span class="factor_dot" style="background: #B4B8BF;"></span>
+                                            <span class="factor_label_new">사업 포트폴리오 제고</span>
+                                        </div>
+                                        <span class="factor_percent">14.42%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 오른쪽: 도넛 차트 -->
+                            <div class="donut_chart_area_new">
+                                <canvas id="successDonutChart"></canvas>
+
+                                <!-- 화살표 포인터 -->
+                                <!-- <div class="donut_arrow">
+                                    <img src="../img/Polygon 8.png" alt="pointer">
+                                </div> -->
+
+                                <!-- 중앙 텍스트 -->
+                                <!-- 중앙 텍스트 -->
+                                <div class="donut_center_new">
+                                    <strong id="donutCenterPercent">23.21%</strong>
+                                    <span id="donutCenterLabel">외형 지표 가시화</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: 외형 지표 가시화 -->
+                <div class="right_section">
+                    <div class="section_header_right">
+                        <h3 class="section_title_right">외형 지표 가시화</h3>
+                        <p class="section_desc">
+                            재무적, 비재무적 성과 지표를 명확하게 제시하여<br>
+                            이해관계자들에게
+                            <span class="highlight_text">회사의 성장 궤도와 안정성</span>
+                            을 명확히 보여줍니다.
+                        </p>
+                    </div>
+
+                    <!-- Score Gauges -->
+                    <div class="score_gauges">
+                        <div class="gauge_item">
+                            <span class="gauge_label">선택 기업 </span>
+                            <div class="gauge_chart_wrapper">
+                                <svg id="gauge1" class="gauge-svg" viewBox="0 0 200 120"></svg>
+                                <div class="gauge_number">91</div>
+                                <div class="gauge_text">점수</div>
+                            </div>
+                        </div>
+                        <div class="gauge_item">
+                            <span class="gauge_label">벤치마킹 기업</span>
+                            <div class="gauge_chart_wrapper">
+                                <svg id="gauge2" class="gauge-svg" viewBox="0 0 200 120"></svg>
+                                <div class="gauge_number">92</div>
+                                <div class="gauge_text">점수</div>
+                            </div>
+                        </div>
+                        <div class="gauge_item">
+                            <span class="gauge_label">전체 평균</span>
+                            <div class="gauge_chart_wrapper">
+                                <svg id="gauge3" class="gauge-svg" viewBox="0 0 200 120"></svg>
+                                <div class="gauge_number">86</div>
+                                <div class="gauge_text">점수</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DNA Table -->
+                    <div class="dna_table">
+                        <div class="table_header">
+                            <span class="header_item">성장 DNA</span>
+                            <span class="header_item">값</span>
+                            <span class="header_item">점수</span>
+                        </div>
+                        <div class="table_body">
+                            <div class="table_row">
+                                <span class="row_label">4-7년차 고용인원(평균)</span>
+                                <span class="row_value">18</span>
+                                <div class="row_bar">
+                                    <div class="bar_fill" style="width: 80%;"></div>
+                                    <span class="bar_score">80</span>
+                                </div>
+                            </div>
+                            <div class="table_row">
+                                <span class="row_label">연도별이 이자 랜드는 리드트에 노출</span>
+                                <span class="row_value">6,586</span>
+                                <div class="row_bar">
+                                    <div class="bar_fill" style="width: 80%;"></div>
+                                    <span class="bar_score">80</span>
+                                </div>
+                            </div>
+                            <div class="table_row">
+                                <span class="row_label">4-7년차 고용인원(평균)</span>
+                                <span class="row_value">18</span>
+                                <div class="row_bar">
+                                    <div class="bar_fill" style="width: 80%;"></div>
+                                    <span class="bar_score">80</span>
+                                </div>
+                            </div>
+                            <div class="table_row">
+                                <span class="row_label">4-7년차 고용인원(평균)</span>
+                                <span class="row_value">18</span>
+                                <div class="row_bar">
+                                    <div class="bar_fill" style="width: 80%;"></div>
+                                    <span class="bar_score">80</span>
+                                </div>
+                            </div>
+                            <div class="table_row">
+                                <span class="row_label">4-7년차 고용인원(평균)</span>
+                                <span class="row_value">18</span>
+                                <div class="row_bar">
+                                    <div class="bar_fill" style="width: 80%;"></div>
+                                    <span class="bar_score">80</span>
+                                </div>
+                            </div>
+                            <div class="table_row">
+                                <span class="row_label">4-7년차 고용인원(평균)</span>
+                                <span class="row_value">18</span>
+                                <div class="row_bar">
+                                    <div class="bar_fill" style="width: 80%;"></div>
+                                    <span class="bar_score">80</span>
+                                </div>
+                            </div>
+                            <div class="table_row">
+                                <span class="row_label">4-7년차 고용인원(평균)</span>
+                                <span class="row_value">18</span>
+                                <div class="row_bar">
+                                    <div class="bar_fill" style="width: 80%;"></div>
+                                    <span class="bar_score">80</span>
+                                </div>
+                            </div>
+                            <div class="table_row">
+                                <span class="row_label">4-7년차 고용인원(평균)</span>
+                                <span class="row_value">18</span>
+                                <div class="row_bar">
+                                    <div class="bar_fill" style="width: 80%;"></div>
+                                    <span class="bar_score">80</span>
+                                </div>
+                            </div>
+                            <div class="table_row">
+                                <span class="row_label">4-7년차 고용인원(평균)</span>
+                                <span class="row_value">18</span>
+                                <div class="row_bar">
+                                    <div class="bar_fill" style="width: 80%;"></div>
+                                    <span class="bar_score">80</span>
+                                </div>
+                            </div>
+                            <div class="table_row">
+                                <span class="row_label">4-7년차 고용인원(평균)</span>
+                                <span class="row_value">18</span>
+                                <div class="row_bar">
+                                    <div class="bar_fill" style="width: 80%;"></div>
+                                    <span class="bar_score">80</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script>
+        $(function () {
+            $('#side-container').load('../inc/side.html');
+        });
+    </script>
+
+    <script>
+        function createGauge(svgId, targetScore = 91, colorScheme = 'blue', duration = 1500) {
+            const svg = document.getElementById(svgId);
+            svg.innerHTML = "";
+
+            const centerX = 100;
+            const centerY = 120;
+            const innerRadius = 55;
+            const outerRadius = 90;
+
+            const startAngle = 180;
+            const endAngle = 0;
+            const totalAngle = startAngle - endAngle;
+            const totalSegments = 14;
+            const segmentAngle = totalAngle / totalSegments;
+            const gapAngle = 2.5;
+
+            const colorSchemes = {
+                blue: { start: { r: 144, g: 188, b: 255 }, end: { r: 54, g: 111, b: 198 } },
+                purple: { start: { r: 203, g: 182, b: 255 }, end: { r: 110, g: 66, b: 217 } },
+                cyan: { start: { r: 127, g: 228, b: 238 }, end: { r: 0, g: 162, b: 182 } }
+            };
+
+            const colors = colorSchemes[colorScheme];
+            const segments = [];
+
+            for (let i = 0; i < totalSegments; i++) {
+                const startDeg = startAngle - (segmentAngle * i);
+                const endDeg = startDeg - segmentAngle + gapAngle;
+                const startRad = startDeg * Math.PI / 180;
+                const endRad = endDeg * Math.PI / 180;
+
+                const x1Inner = centerX + innerRadius * Math.cos(startRad);
+                const y1Inner = centerY - innerRadius * Math.sin(startRad);
+                const x2Inner = centerX + innerRadius * Math.cos(endRad);
+                const y2Inner = centerY - innerRadius * Math.sin(endRad);
+                const x1Outer = centerX + outerRadius * Math.cos(startRad);
+                const y1Outer = centerY - outerRadius * Math.sin(startRad);
+                const x2Outer = centerX + outerRadius * Math.cos(endRad);
+                const y2Outer = centerY - outerRadius * Math.sin(endRad);
+
+                const pathData = `M ${x1Inner} ${y1Inner} L ${x1Outer} ${y1Outer} A ${outerRadius} ${outerRadius} 0 0 0 ${x2Outer} ${y2Outer} L ${x2Inner} ${y2Inner} A ${innerRadius} ${innerRadius} 0 0 1 ${x1Inner} ${y1Inner} Z`;
+
+                const segment = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                segment.setAttribute("d", pathData.trim());
+                segment.setAttribute("fill", "#D7D7D7");
+                svg.appendChild(segment);
+
+                segments.push({ element: segment, startDeg, endDeg, startRad, endRad, x1Inner, y1Inner, x2Inner, y2Inner, x1Outer, y1Outer, x2Outer, y2Outer, pathData });
+            }
+
+            let startTime = null;
+            function animate(currentTime) {
+                if (!startTime) startTime = currentTime;
+                const progress = Math.min((currentTime - startTime) / duration, 1);
+                const currentScore = progress * targetScore;
+                const exactFill = (currentScore / 100) * totalSegments;
+                const filledSegments = Math.floor(exactFill);
+                const partialFill = exactFill - filledSegments;
+
+                segments.forEach((seg, i) => {
+                    const t = i / (exactFill - 1 || 1);
+                    const r = Math.round(colors.start.r + t * (colors.end.r - colors.start.r));
+                    const g = Math.round(colors.start.g + t * (colors.end.g - colors.start.g));
+                    const b = Math.round(colors.start.b + t * (colors.end.b - colors.start.b));
+
+                    if (i < filledSegments) {
+                        seg.element.setAttribute("fill", `rgb(${r},${g},${b})`);
+                    } else if (i === filledSegments && partialFill > 0) {
+                        const partialAngleDeg = seg.startDeg - (segmentAngle - gapAngle) * partialFill;
+                        const partialAngleRad = partialAngleDeg * Math.PI / 180;
+                        const xPartialInner = centerX + innerRadius * Math.cos(partialAngleRad);
+                        const yPartialInner = centerY - innerRadius * Math.sin(partialAngleRad);
+                        const xPartialOuter = centerX + outerRadius * Math.cos(partialAngleRad);
+                        const yPartialOuter = centerY - outerRadius * Math.sin(partialAngleRad);
+
+                        const colorPath = `M ${seg.x1Inner} ${seg.y1Inner} L ${seg.x1Outer} ${seg.y1Outer} A ${outerRadius} ${outerRadius} 0 0 0 ${xPartialOuter} ${yPartialOuter} L ${xPartialInner} ${yPartialInner} A ${innerRadius} ${innerRadius} 0 0 1 ${seg.x1Inner} ${seg.y1Inner} Z`;
+                        seg.element.setAttribute("d", colorPath.trim());
+                        seg.element.setAttribute("fill", `rgb(${r},${g},${b})`);
+
+                        if (!seg.grayElement) {
+                            seg.grayElement = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                            svg.appendChild(seg.grayElement);
+                        }
+                        const grayPath = `M ${xPartialInner} ${yPartialInner} L ${xPartialOuter} ${yPartialOuter} A ${outerRadius} ${outerRadius} 0 0 0 ${seg.x2Outer} ${seg.y2Outer} L ${seg.x2Inner} ${seg.y2Inner} A ${innerRadius} ${innerRadius} 0 0 1 ${xPartialInner} ${yPartialInner} Z`;
+                        seg.grayElement.setAttribute("d", grayPath.trim());
+                        seg.grayElement.setAttribute("fill", "#D7D7D7");
+                    } else {
+                        seg.element.setAttribute("d", seg.pathData.trim());
+                        seg.element.setAttribute("fill", "#D7D7D7");
+                        if (seg.grayElement) { seg.grayElement.remove(); seg.grayElement = null; }
+                    }
+                });
+
+                if (progress < 1) requestAnimationFrame(animate);
+            }
+            requestAnimationFrame(animate);
+        }
+
+        createGauge("gauge1", 91, "blue", 1500);
+        createGauge("gauge2", 92, "purple", 1500);
+        createGauge("gauge3", 86, "cyan", 1500);
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const rows = document.querySelectorAll('.table_row');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const row = entry.target;
+                        const barFill = row.querySelector('.bar_fill');
+                        if (!barFill || barFill.dataset.animated) return;
+
+                        const score = parseInt(row.querySelector('.bar_score').textContent);
+                        const filledCount = Math.round(score / 10);
+                        const segments = barFill.querySelectorAll('.bar_segment');
+
+                        segments.forEach((segment, i) => {
+                            if (i < filledCount) {
+                                setTimeout(() => segment.classList.add('filled'), i * 80);
+                            }
+                        });
+
+                        barFill.dataset.animated = 'true';
+                        observer.unobserve(row);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            rows.forEach(row => {
+                const barFill = row.querySelector('.bar_fill');
+                if (!barFill) return;
+
+                barFill.innerHTML = '';
+                for (let i = 0; i < 10; i++) {
+                    const segment = document.createElement('span');
+                    segment.className = 'bar_segment';
+                    barFill.appendChild(segment);
+                }
+                observer.observe(row);
+            });
+        });
+    </script>
+
+    <script src="../js/company_dashboard_4.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const dashboardType = params.get('type');   // a,b,c,d,e,f
+        const companyId = params.get('id');         // 회사 id
+
+        console.log('id:', companyId, 'type:', dashboardType);
+    </script>
+    <script>
+    $(function () {
+        const maxPage = 5;  // 총 파일 수
+        const path = window.location.pathname;
+        const file = path.substring(path.lastIndexOf('/') + 1); // ex: company_dashboard_3.html
+
+        // 숫자 추출
+        const match = file.match(/company_dashboard_(\d+)\.html/);
+
+        if (match) {
+            const currentIndex = Number(match[1]);
+
+            // next 버튼: 마지막→1 로 순환
+            $('.btn_next').on('click', function () {
+                const nextIndex = currentIndex === maxPage ? 1 : currentIndex + 1;
+                window.location.href = `company_dashboard_${nextIndex}.html`;
+            });
+
+            // prev 버튼: 1→마지막(5) 로 순환
+            $('.btn_prev').on('click', function () {
+                const prevIndex = currentIndex === 1 ? maxPage : currentIndex - 1;
+                window.location.href = `company_dashboard_${prevIndex}.html`;
+            });
+        }
+    });
+</script>
+
+</body>
+
+</html>

@@ -10,7 +10,7 @@ const tipsCompaniesData = [
         "representative": "김영준",
         "foundedDate": "2019-11-28",
         "stage": "성장",
-        "showDashboard": true
+        "dashboardType": 1
     },
     {
         "id": 2,
@@ -21,7 +21,7 @@ const tipsCompaniesData = [
         "representative": "이윤행",
         "foundedDate": "2019-11-21",
         "stage": "성장",
-        "showDashboard": true
+        "dashboardType": 2
     },
     {
         "id": 3,
@@ -32,7 +32,7 @@ const tipsCompaniesData = [
         "representative": "손수영",
         "foundedDate": "2019-11-27",
         "stage": "성장",
-        "showDashboard": true
+        "dashboardType": 3
     },
     {
         "id": 4,
@@ -43,7 +43,7 @@ const tipsCompaniesData = [
         "representative": "신동주",
         "foundedDate": "2019-04-17",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": 4
     },
     {
         "id": 5,
@@ -54,7 +54,7 @@ const tipsCompaniesData = [
         "representative": "이진",
         "foundedDate": "2019-05-09",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 6,
@@ -65,7 +65,7 @@ const tipsCompaniesData = [
         "representative": "윤찬",
         "foundedDate": "2019-08-12",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 7,
@@ -76,7 +76,7 @@ const tipsCompaniesData = [
         "representative": "이치원",
         "foundedDate": "2020-02-12",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 8,
@@ -87,7 +87,7 @@ const tipsCompaniesData = [
         "representative": "김현배",
         "foundedDate": "2019-07-22",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 9,
@@ -98,7 +98,7 @@ const tipsCompaniesData = [
         "representative": "김재광",
         "foundedDate": "2019-10-29",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 10,
@@ -109,7 +109,7 @@ const tipsCompaniesData = [
         "representative": "박준혁",
         "foundedDate": "2019-03-06",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 11,
@@ -120,7 +120,7 @@ const tipsCompaniesData = [
         "representative": "배현진",
         "foundedDate": "2019-10-01",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 12,
@@ -131,7 +131,7 @@ const tipsCompaniesData = [
         "representative": "지광철",
         "foundedDate": "2019-08-16",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 13,
@@ -142,7 +142,7 @@ const tipsCompaniesData = [
         "representative": "이민봉",
         "foundedDate": "2019-07-30",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 14,
@@ -153,7 +153,7 @@ const tipsCompaniesData = [
         "representative": "강신현",
         "foundedDate": "2019-08-28",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 15,
@@ -164,7 +164,7 @@ const tipsCompaniesData = [
         "representative": "장한힘",
         "foundedDate": "2019-01-28",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 16,
@@ -175,7 +175,7 @@ const tipsCompaniesData = [
         "representative": "이효근",
         "foundedDate": "2023-11-13",
         "stage": "초기",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 17,
@@ -186,7 +186,7 @@ const tipsCompaniesData = [
         "representative": "전광명",
         "foundedDate": "2019-08-01",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 18,
@@ -197,7 +197,7 @@ const tipsCompaniesData = [
         "representative": "박철우",
         "foundedDate": "2019-03-26",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 19,
@@ -208,7 +208,7 @@ const tipsCompaniesData = [
         "representative": "조정현",
         "foundedDate": "2023-11-10",
         "stage": "초기",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 20,
@@ -219,7 +219,7 @@ const tipsCompaniesData = [
         "representative": "전혜란",
         "foundedDate": "2023-01-18",
         "stage": "초기",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 21,
@@ -230,7 +230,7 @@ const tipsCompaniesData = [
         "representative": "윤성한",
         "foundedDate": "2019-12-23",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 22,
@@ -241,7 +241,7 @@ const tipsCompaniesData = [
         "representative": "김기남",
         "foundedDate": "2019-01-04",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 23,
@@ -252,7 +252,7 @@ const tipsCompaniesData = [
         "representative": "방남진",
         "foundedDate": "2023-02-15",
         "stage": "초기",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 24,
@@ -263,7 +263,7 @@ const tipsCompaniesData = [
         "representative": "최수영",
         "foundedDate": "2023-05-12",
         "stage": "초기",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 25,
@@ -274,7 +274,7 @@ const tipsCompaniesData = [
         "representative": "김중호",
         "foundedDate": "2023-07-06",
         "stage": "초기",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 26,
@@ -285,7 +285,7 @@ const tipsCompaniesData = [
         "representative": "윤거성",
         "foundedDate": "2024-03-26",
         "stage": "초기",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 27,
@@ -296,7 +296,7 @@ const tipsCompaniesData = [
         "representative": "서성권",
         "foundedDate": "2023-02-01",
         "stage": "초기",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 28,
@@ -307,7 +307,7 @@ const tipsCompaniesData = [
         "representative": "문욱",
         "foundedDate": "2019-02-08",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 29,
@@ -318,7 +318,7 @@ const tipsCompaniesData = [
         "representative": "박영선",
         "foundedDate": "2023-01-10",
         "stage": "초기",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 30,
@@ -329,7 +329,7 @@ const tipsCompaniesData = [
         "representative": "김영욱",
         "foundedDate": "2019-09-09",
         "stage": "성장",
-        "showDashboard": true
+        "dashboardType": null
     }
 
 ];
@@ -346,7 +346,7 @@ const generalCompaniesData = [
         "representative": "이석우",
         "foundedDate": "2019-08-01",
         "stage": "성장",
-        "showDashboard": true
+        "dashboardType": 5
     },
     {
         "id": 2,
@@ -357,7 +357,7 @@ const generalCompaniesData = [
         "representative": "김성훈",
         "foundedDate": "2020-10-05",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 3,
@@ -368,7 +368,7 @@ const generalCompaniesData = [
         "representative": "정희범",
         "foundedDate": "2019-01-25",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 4,
@@ -379,7 +379,7 @@ const generalCompaniesData = [
         "representative": "정무경",
         "foundedDate": "2023-06-28",
         "stage": "초기",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 5,
@@ -390,7 +390,7 @@ const generalCompaniesData = [
         "representative": "박성현|홍두화",
         "foundedDate": "2019-02-27",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 6,
@@ -401,7 +401,7 @@ const generalCompaniesData = [
         "representative": "김영준",
         "foundedDate": "2019-03-18",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 7,
@@ -412,7 +412,7 @@ const generalCompaniesData = [
         "representative": "김주영",
         "foundedDate": "2023-01-12",
         "stage": "초기",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 8,
@@ -423,7 +423,7 @@ const generalCompaniesData = [
         "representative": "한덕희",
         "foundedDate": "2019-01-02",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 9,
@@ -434,7 +434,7 @@ const generalCompaniesData = [
         "representative": "최재식",
         "foundedDate": "2019-01-02",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 10,
@@ -445,7 +445,7 @@ const generalCompaniesData = [
         "representative": "김상수",
         "foundedDate": "2019-12-04",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 11,
@@ -456,7 +456,7 @@ const generalCompaniesData = [
         "representative": "김용태",
         "foundedDate": "2019-08-29",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 12,
@@ -467,7 +467,7 @@ const generalCompaniesData = [
         "representative": "황성재",
         "foundedDate": "2019-05-29",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 13,
@@ -478,7 +478,7 @@ const generalCompaniesData = [
         "representative": "이상헌",
         "foundedDate": "2019-06-12",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 14,
@@ -489,7 +489,7 @@ const generalCompaniesData = [
         "representative": "장승래",
         "foundedDate": "2019-11-25",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 15,
@@ -500,7 +500,7 @@ const generalCompaniesData = [
         "representative": "원지현",
         "foundedDate": "2023-11-10",
         "stage": "초기",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 16,
@@ -511,7 +511,7 @@ const generalCompaniesData = [
         "representative": "조신후",
         "foundedDate": "2023-06-21",
         "stage": "초기",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 17,
@@ -522,7 +522,7 @@ const generalCompaniesData = [
         "representative": "김용삼",
         "foundedDate": "2019-09-23",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 18,
@@ -533,7 +533,7 @@ const generalCompaniesData = [
         "representative": "이승철",
         "foundedDate": "2023-02-02",
         "stage": "초기",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 19,
@@ -544,7 +544,7 @@ const generalCompaniesData = [
         "representative": "송기영",
         "foundedDate": "2024-03-26",
         "stage": "초기",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 20,
@@ -555,7 +555,7 @@ const generalCompaniesData = [
         "representative": "정지원",
         "foundedDate": "2019-11-14",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 21,
@@ -566,7 +566,7 @@ const generalCompaniesData = [
         "representative": "구수룡",
         "foundedDate": "2019-05-09",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 22,
@@ -577,7 +577,7 @@ const generalCompaniesData = [
         "representative": "방오영",
         "foundedDate": "2019-01-14",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 23,
@@ -588,7 +588,7 @@ const generalCompaniesData = [
         "representative": "박선춘",
         "foundedDate": "2019-03-19",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 24,
@@ -599,7 +599,7 @@ const generalCompaniesData = [
         "representative": "이재은",
         "foundedDate": "2023-03-10",
         "stage": "초기",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 25,
@@ -610,7 +610,7 @@ const generalCompaniesData = [
         "representative": "김유재",
         "foundedDate": "2019-04-17",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 26,
@@ -621,7 +621,7 @@ const generalCompaniesData = [
         "representative": "최상규",
         "foundedDate": "2023-05-25",
         "stage": "초기",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 27,
@@ -632,7 +632,7 @@ const generalCompaniesData = [
         "representative": "윤현규",
         "foundedDate": "2019-01-11",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 28,
@@ -643,7 +643,7 @@ const generalCompaniesData = [
         "representative": "김태영",
         "foundedDate": "2019-07-17",
         "stage": "성장",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 29,
@@ -654,7 +654,7 @@ const generalCompaniesData = [
         "representative": "조남석",
         "foundedDate": "2023-06-13",
         "stage": "초기",
-        "showDashboard": false
+        "dashboardType": null
     },
     {
         "id": 30,
@@ -665,72 +665,12 @@ const generalCompaniesData = [
         "representative": "이재원",
         "foundedDate": "2023-12-11",
         "stage": "초기",
-        "showDashboard": false
+        "dashboardType": null
     }
 ];
 
 
-// // 기업 카드 렌더링 함수
-// function renderCompanyCards(data, maxCount = 30) {
-//     const container = document.getElementById('companyGrid');
-//     if (!container) {
-//         console.error('companyGrid 요소를 찾을 수 없습니다.');
-//         return;
-//     }
-
-//     container.innerHTML = ''; // 기존 카드 초기화
-
-//     const limitedData = data.slice(0, maxCount); // 최대 개수 제한
-
-//     limitedData.forEach(company => {
-//         const card = `
-//         <div class="company-card">
-//             <div class="card-image">
-//                 <img src="${company.bgImage}" alt="" class="card-bg">
-//                 <img src="${company.logo}" alt="${company.name}" class="company-logo">
-//             </div>
-//             <div class="card-content">
-//                 <h3 class="company-name">${company.name}</h3>
-//                 <div class="company-info">
-//                     <div class="info-row">
-//                         <span class="info-label">순위 / 등급</span>
-//                         <div class="rank-badge">
-//                             <span class="rank-text">${company.rank}</span>
-//                             <span class="rank-level">
-//                                 <span class="rank-number">${company.grade}</span>
-//                                 <span class="rank-text-small">등급</span>
-//                             </span>
-//                         </div>
-//                     </div>
-//                     <div class="info-row">
-//                         <span class="info-label">대표자</span>
-//                         <span class="info-value">${company.representative}</span>
-//                     </div>
-//                     <div class="info-row">
-//                         <span class="info-label">설립일자</span>
-//                         <span class="info-value">${company.foundedDate}</span>
-//                     </div>
-//                 </div>
-                
-//                 ${company.showDashboard
-//                 ? `<a href="company_dashboard.html?id=${company.id}" class="dashboard-btn active-link">
-//                         DASHBOARD 
-//                         <span><img src="../img/company_discovery/arrow.png" alt=""></span>
-//                    </a>`
-//                 : `<button class="dashboard-btn disabled" disabled>
-//                         DASHBOARD 
-//                         <span><img src="../img/company_discovery/arrow.png" alt=""></span>
-//                    </button>`
-//             }
-//             </div>
-//         </div>
-//     `;
-//         container.innerHTML += card;
-//     });
-
-//     console.log(`총 ${limitedData.length}개의 기업 카드가 렌더링되었습니다.`);
-// }
-
+// 기업 카드 렌더링 함수
 function renderCompanyCards(data, maxCount = 30) {
     const container = document.getElementById('companyGrid');
     if (!container) {
@@ -742,20 +682,12 @@ function renderCompanyCards(data, maxCount = 30) {
 
     const limitedData = data.slice(0, maxCount); // 최대 개수 제한
 
-    limitedData.forEach((company, index) => {
-        // 첫 번째(index 0)는 recommend.html, 두 번째부터는 recommend1, recommend2...
-        let dashboardLink;
-        if (index === 0) {
-            dashboardLink = `../html/recommend.html`;
-        } else {
-            dashboardLink = `../html/recommend${index}.html`;
-        }
-
+    limitedData.forEach(company => {
         const card = `
         <div class="company-card">
             <div class="card-image">
                 <img src="${company.bgImage}" alt="" class="card-bg">
-                <img src="${company.logo}" alt="${company.name}" class="company-logo">
+                
             </div>
             <div class="card-content">
                 <h3 class="company-name">${company.name}</h3>
@@ -780,13 +712,21 @@ function renderCompanyCards(data, maxCount = 30) {
                     </div>
                 </div>
                 
-                <a href="${dashboardLink}" class="dashboard-btn ${company.showDashboard ? 'active-link' : 'disabled'}">
-                    DASHBOARD 
-                    <span><img src="../img/company_discovery/arrow.png" alt=""></span>
-                </a>
+${company.dashboardType
+                ? `<a href="company_dashboard_${company.dashboardType}.html?id=${company.id}"
+
+       class="dashboard-btn active-link">
+        DASHBOARD 
+        <span><img src="../img/company_discovery/arrow.png" alt=""></span>
+     </a>`
+                : `<button class="dashboard-btn disabled" disabled>
+        DASHBOARD 
+        <span><img src="../img/company_discovery/arrow.png" alt=""></span>
+     </button>`
+            }
             </div>
         </div>
-        `;
+    `;
         container.innerHTML += card;
     });
 
