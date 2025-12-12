@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기업 발굴</title>
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/side.css">
+    <link rel="stylesheet" href="../css/company_discovery.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@200,300,400,500,600,700,1&display=swap"
+        rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../js/main.js"></script>
+</head>
+
+<body class="page-search">
+    <!-- Page Transition Overlay -->
+    <div class="page-transition-overlay"></div>
+    
+    <div id="wrap">
+        <!-- Side Include -->
+        <div id="side-container"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <!-- Header Section -->
+                <div class="page-header">
+                    <div class="title-background">
+                        <span class="page-category">Statistic</span>
+                        <h1 class="page-title">기업 발굴</h1>
+                        <p class="page-description">확인하고자 하는 항목을 선택해주세요.</p>
+                    </div>
+                </div>
+
+                <!-- Cards Section -->
+                <div class="card-wrapper">
+                    <div class="cards-container">
+                        <!-- Investment-Focused Card -->
+                        <div class="discovery-card">
+                            <div class="card-visual">
+                                <div class="card-bg blue-gradient"></div>
+                                <div class="icon-wrapper">
+                                    <img src="../img/company_discovery/button_left.png" alt="투자유치형" class="card-icon">
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-label">investment-Focused</span>
+                                <h2 class="card-title">투자유치형</h2>
+                                <p class="card-description">
+                                    창업기업의 성과 데이터를 기반으로 프로그램의 성장성과<br>
+                                    정책효과, 그리고 TIPS가 선호하는 기업 트렌드를 파악할 수 있는 화면입니다.
+                                </p>
+                                <button class="card-button" data-link="company_discovery_loading.html">READY</button>
+                            </div>
+                        </div>
+
+                        <!-- Fundraising-Focused Card -->
+                        <div class="discovery-card">
+                            <div class="card-visual">
+                                <div class="card-bg purple-gradient"></div>
+                                <div class="icon-wrapper">
+                                    <img src="../img/company_discovery/button_right.png" alt="수익창출형" class="card-icon">
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-label">Fundraising-Focused</span>
+                                <h2 class="card-title">수익창출형</h2>
+                                <p class="card-description">
+                                    창업기업의 성과 데이터를 기반으로 프로그램의 성장성과 정책효과,<br>
+                                    그리고 TIPS가 선호하는 기업 트렌드를 파악할 수 있는 화면입니다.
+                                </p>
+                                <button class="card-button" data-link="company_discovery_loading.html">READY</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+<script>
+    $(function () {
+        // Side Include
+        $('#side-container').load('../inc/side.html');
+        
+        // 버튼 클릭 시 페이지 이동
+        $('.card-button').on('click', function() {
+            const targetUrl = $(this).data('link');
+            window.location.href = targetUrl;
+        });
+    });
+</script>
+<script src="../js/recommend.js"></script
+<script src="../js/recommend.js"></script>
+
+</html>
