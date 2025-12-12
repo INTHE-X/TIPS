@@ -468,4 +468,6 @@ $(function () {
             resizeTimer = setTimeout(drawConnections, 200);
         });
     }
+
+
 });

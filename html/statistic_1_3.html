@@ -17,12 +17,13 @@
     <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@200,300,400,500,600,700,1&display=swap" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="../js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
-    <script src="../js/statistic_chartSetting.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/statistic_chartSetting2.js"></script>
+
 </head>
 <body>
     <div id="wrap">
@@ -336,7 +337,7 @@
                                     </div>
                                 </div>
                                 <div class="stat_chartImgArea">
-                                    <img src="../img/stat_graph1.png" alt="#">
+                                    <canvas id="stat_chart1"></canvas>
                                 </div>
                             </div>
                             <div class="stat_table">
@@ -429,7 +430,7 @@
                                     </div>
                                 </div>
                                 <div class="stat_chartImgArea">
-                                    <img src="../img/stat_graph2.png" alt="#">
+                                    <canvas id="stat_chart2"></canvas>
                                 </div>
                             </div>
                             <div class="stat_table">

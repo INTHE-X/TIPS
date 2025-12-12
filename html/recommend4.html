@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>운영사 상품 추천</title>
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <!-- <link rel="stylesheet" href="../css/side.css"> -->
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/recommend.css">
+    <link rel="stylesheet" href="../css/mobile.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@200,300,400,500,600,700,1&display=swap"
+        rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../js/main.js"></script>
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <!-- Side Include -->
+        <header id="header">
+            <div class="header_inner">
+                <nav id="nav">
+                    <ul>
+                        <li>
+                            <a href="../html/index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="../html/preview_1.html">Preview</a>
+                        </li>
+                        <li>
+                            <a href="../html/statistic_1_1.html">Statistic</a>
+                        </li>
+                        <li class="active">
+                            <a href="../html/recommend.html">Search</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="logo">
+                    <img src="../img/nav_logo.svg" alt="antock 로고">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main id="recommend" class="recommend_page">
+            <!-- Top Navigation -->
+            <div class="recommend_topNav">
+                <a href="#" class="btn_back">
+                    <span><img src="../img/sub/Vector.png" alt=""></span> 리스트로 돌아가기
+                </a>
+                <div class="page_navigation">
+                    <button type="button" class="btn_prev"><img src="../img/sub/Vector.png" alt=""></button>
+                    <button type="button" class="btn_next"><img src="../img/sub/Vector2.png" alt=""></button>
+                </div>
+            </div>
+
+            <div class="recommend_content">
+                <!-- Left: Company Info Card -->
+                <div class="company_card">
+                    <div class="company_header">
+                        <div class="company_logo_area">
+                            <img src="../img/rec_comp5.png" alt="" class="bg_img">
+                            <!-- <img src="../img/sub/logo.png" alt="RCTECH" class="logo_img"> -->
+                        </div>
+                        <div class="company_info">
+                            <h2 class="company_name">시너지엠</h2>
+                            <p class="company_desc">
+                                콘텐츠·금융·커머스를 하나의 플랫폼으로 통합해
+                                <br>
+최적의 사용자 경험을 제공하는
+<br>
+라이프스타일 플랫폼 기업입니다.
+                            </p>
+                        </div>
+                        <div class="company_btns">
+                            <a href="#" class="btn_info">기업 정보<span><img src="../img/sub/arow1.png" alt=""></span></a>
+                            <a href="#" class="btn_recommend">운영사 추천 <span><img src="../img/sub/arow.png" alt=""></span></a>
+                        </div>
+                    </div>
+
+                    <!-- 기업 정보 모달 / 인클루드 되어 있으므로 아래 div만 적절한 곳에 추가하면 됨-->
+                    <div class="company_info_modal_container"></div>
+
+                    <!-- Grade & Score -->
+                    <div class="company_grade">
+                        <div class="grade_box dark">
+                            <span class="grade_label">Victory Road 등급</span>
+                            <strong class="grade_value">1등급</strong>
+                            <span class="grade_range">1~5</span>
+                        </div>
+                        <div class="grade_box highlight">
+                            <span class="grade_label">Victory Road 점수</span>
+                            <strong class="grade_value">99.8</strong>
+                            <span class="grade_range">상위 0.7%</span>
+                        </div>
+                    </div>
+
+                    <!-- Stats Grid - 6개 박스 -->
+                    <div class="company_stats">
+                        <div class="stat_item">
+                            <span class="stat_label">매출 <small>(백만 원)</small></span>
+                            <strong class="stat_value">3,042</strong>
+                            <div class="stat_chart">
+                                <img src="../img/sub/graph.png" alt="매출 그래프">
+                            </div>
+                        </div>
+                        <div class="stat_item">
+                            <span class="stat_label">영업이익 <small>(백만 원)</small></span>
+                            <strong class="stat_value">3,042</strong>
+                            <div class="stat_chart">
+                                <img src="../img/sub/graph.png" alt="매출 그래프">
+                            </div>
+                        </div>
+                        <div class="stat_item">
+                            <span class="stat_label">당기순익 <small>(백만 원)</small></span>
+                            <strong class="stat_value">8,042</strong>
+                            <div class="stat_chart">
+                                <img src="../img/sub/graph.png" alt="매출 그래프">
+                            </div>
+                        </div>
+                        <div class="stat_item">
+                            <span class="stat_label">고용인원 <small>(명)</small></span>
+                            <strong class="stat_value">345</strong>
+                            <div class="stat_chart">
+                                <img src="../img/sub/graph.png" alt="매출 그래프">
+                            </div>
+                        </div>
+                        <div class="stat_item">
+                            <span class="stat_label">특허 <small>(건)</small></span>
+                            <strong class="stat_value">102</strong>
+                            <div class="stat_chart">
+                                <img src="../img/sub/graph.png" alt="매출 그래프">
+                            </div>
+                        </div>
+                        <div class="stat_item">
+                            <span class="stat_label">투자유치금액 <small>(백만 원)</small></span>
+                            <strong class="stat_value">3,042</strong>
+                            <div class="stat_chart">
+                                <img src="../img/sub/graph.png" alt="매출 그래프">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Recommendation Chart -->
+                <div class="recommend_chart_area">
+                    <div class="recommend_header">
+                        <div class="recommend_title">
+                            <span class="company">시너지엠</span>
+                            <h3>운영사 추천</h3>
+                        </div>
+                    </div>
+
+                    <!-- Mind Map Style Chart -->
+                    <div class="recommend_mindmap">
+                        <!-- SVG 연결선 (배경) -->
+                        <svg class="connection_lines" preserveAspectRatio="none">
+                            <defs>
+                                <!-- 왼쪽 그라데이션 (보라 → 연보라) -->
+                                <linearGradient id="gradientLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#6E42D9" />
+                                    <stop offset="100%" stop-color="#B8A8E8" />
+                                </linearGradient>
+                                <!-- 오른쪽 그라데이션 (연파랑 → 파랑) -->
+                                <linearGradient id="gradientRight" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#A8D4E8" />
+                                    <stop offset="100%" stop-color="#226AD6" />
+                                </linearGradient>
+                            </defs>
+                            <!-- 연결선은 JS로 동적 생성 -->
+                        </svg>
+
+                        <!-- Left Side - 운영사 목록 -->
+                        <div class="mindmap_left">
+                            <div class="mindmap_label">운영사 추천</div>
+                            <ul class="recommend_list" id="operatorList">
+                                <li data-id="op1" data-connects="pr1,pr3">
+                                    <div class="recommend_info">
+                                        <span class="name">초기창업패키지</span>
+                                        <span class="score">적합도 <strong>0%</strong></span>
+                                    </div>
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="0">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">0%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <!-- 팝업 -->
+                                    <div class="info_popup popup_right">
+                                        <div class="popup_header">
+                                            <div class="popup_icon">
+                                                <img src="../img/sub/icon_company.png" alt="">
+                                            </div>
+                                            <div class="popup_title">
+                                                <h4>초기창업패키지</h4>
+                                                <p>
+                                                    담당기관<span>창업진흥원</span><span
+                                                        class="divider">|</span>신청기간<span>2025-01</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>사업내역</h5>
+                                            <dl>
+                                                <dt>사업설명</dt>
+                                                <dd>유망 초기창업기업(창업 3년 이내)을 대상으로 사업화자금, 창업프로그램 등을 제공하여 기술혁신 및 성장 지원</dd>
+
+                                                <dt>지원대상</dt>
+                                                <dd>업력 3년 이내 초기창업기업</dd>
+
+                                                <dt>지원예산 (단위 : 억 원)</dt>
+                                                <dd>455</dd>
+
+                                                <dt>지원내용</dt>
+                                                <dd>①사업화자금, ② 창업프로그램</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="op2" data-connects="pr2">
+                                    <div class="recommend_info">
+                                        <span class="name">창업도약패키지</span>
+                                        <span class="score">적합도 <strong>10%</strong></span>
+                                    </div>
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="10">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">10%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="info_popup popup_right">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>창업도약패키지</h4>
+                                                <p>
+                                                    담당기관<span>창업진흥원</span><span
+                                                        class="divider">|</span>신청기간<span>25.02-25.03</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>사업내역</h5>
+                                            <dl>
+                                                <dt>사업설명</dt>
+                                                <dd>창업도약기(3~7년) 기업이 사업모델 혁신, 제품․서비스 고도화 등을 통해 데스밸리를 극복하고 스케일업 할 수 있도록 지원</dd>
+                                                <dt>지원대상</dt>
+                                                <dd>3년 초과 7년 이내</dd>
+                                                <dt>지원예산 (단위 : 억 원)</dt>
+                                                <dd>593</dd>
+                                                <dt>지원내용</dt>
+                                                <dd>① 사업화 자금, ② 창업지원프로그램</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="op3" data-connects="pr3">
+                                    <div class="recommend_info">
+                                        <span class="name">초격차 스타트업1000+ 프로젝트</span>
+                                        <span class="score">적합도 <strong>40%</strong></span>
+                                    </div>
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="40">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">40%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="info_popup popup_right">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>창업진흥원</h4>
+                                                <p>
+                                                    담당기관<span>창업진흥원</span><span
+                                                        class="divider">|</span>신청기간<span>25.02</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>사업내역</h5>
+                                            <dl>
+                                                <dt>사업설명</dt>
+                                                <dd>시스템반도체, 바이오·헬스 등 10대 신산업 분야의 혁신 기술 및 글로벌 진출 역량을 보유한 유망 창업기업을 선발하여 사업화 및 스케일업 지원</dd>
+                                                <dt>지원대상</dt>
+                                                <dd>신산업 분야 업력 10년 이내 창업기업</dd>
+                                                <dt>지원예산 (단위 : 억 원)</dt>
+                                                <dd> 1,310 </dd>
+                                                <dt>지원내용</dt>
+                                                <dd>①사업화 자금, ② 특화 프로그램, ③ 연계지원(기술개발, 정책자금, 기술보증 등)</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="op4" data-connects="pr1">
+                                    <div class="recommend_info">
+                                        <span class="name">데이터 활용 사업화 지원(DATA-Stars)</span>
+                                        <span class="score">적합도 <strong>0%</strong></span>
+                                    </div>
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="0">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">0%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="info_popup popup_right">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>데이터 활용 사업화 지원(DATA-Stars)</h4>
+                                                <p>
+                                                    담당기관<span>한국데이터산업진흥원</span><span
+                                                        class="divider">|</span>신청기간<span>25.03</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>사업내역</h5>
+                                            <dl>
+                                                <dt>사업설명</dt>
+                                                <dd>데이터 활용 기반의 우수 서비스 및 비즈니스 모델을 보유한 스타트업을  발굴하여 혁신기업으로 성장 하도록 지원</dd>
+                                                <dt>지원대상</dt>
+                                                <dd>창업 7년 이내 데이터 활용 기반 스타트업</dd>
+                                                <dt>지원예산 (단위 : 억 원)</dt>
+                                                <dd>팁스 창업기업 20개 사</dd>
+                                                <dt>지원내용</dt>
+                                                <dd>① 사업화 자금,② 데이터 특화프로그램(데이터 기술 컨설팅, 비즈니스 멘토링 등)</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="op5" data-connects="pr5">
+                                    <div class="recommend_info">
+                                        <span class="name">글로벌 ICT 미래 유니콘 육성(ICT GROWTH)</span>
+                                        <span class="score">적합도 <strong>20%</strong></span>
+                                    </div>
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="20">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">20%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="info_popup popup_right">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>글로벌 ICT 미래 유니콘 육성(ICT GROWTH)</h4>
+                                                <p>
+                                                    담당기관<span>정보통신산업진흥원</span><span
+                                                        class="divider">|</span>신청기간<span>25.02</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>사업내역</h5>
+                                            <dl>
+                                                <dt>사업설명</dt>
+                                                <dd>글로벌 성장 잠재력이 높은 ICT 유망기업을 발굴하여 해외진출, 금융지원 연계 등 종합 지원을 통해 미래유니콘 기업으로 육성</dd>
+                                                <dt>지원대상</dt>
+                                                <dd>글로벌 역량을 갖춘 ICT 또는 ICT 기반 융·복합분야 중소기업</dd>
+                                                <dt>지원예산 (단위 : 억 원)</dt>
+                                                <dd> 24 </dd>
+                                                <dt>지원내용</dt>
+                                                <dd>"①해외진출 지원
+②금융지원 연계
+  * 투자, 보증 등"</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="op6" data-connects="pr3,pr6,pr7">
+                                    <div class="recommend_info">
+                                        <span class="name">디지털 혁신기업 글로벌 성장 바우처 지원</span>
+                                        <span class="score">적합도 <strong>30%</strong></span>
+                                    </div>
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="30">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">30%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="info_popup popup_right">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>디지털 혁신기업 글로벌 성장 바우처 지원</h4>
+                                                <p>
+                                                    담당기관<span>정보통신산업진흥원</span><span
+                                                        class="divider">|</span>신청기간<span>25.02</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>사업내역</h5>
+                                            <dl>
+                                                <dt>사업설명</dt>
+                                                <dd>글로벌 진출 지향 디지털 혁신기업의 제품 개발·고도화 및 레퍼런스 확보를 전문 민간기관(기업)과 연계하여 바우처 형태로 지원</dd>
+                                                <dt>지원대상</dt>
+                                                <dd>유망 글로벌 디지털 혁신 중소‧스타트업</dd>
+                                                <dt>지원예산 (단위 : 억 원)</dt>
+                                                <dd> 30 </dd>
+                                                <dt>지원내용</dt>
+                                                <dd>"①제품 개발·고도화
+②지역 실증"</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="op7" data-connects="pr6,pr7">
+                                    <div class="recommend_info">
+                                        <span class="name">창업성장 기술개발</span>
+                                        <span class="score">적합도 <strong>40%</strong></span>
+                                    </div>
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="40">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">40%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="info_popup popup_right">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>창업성장 기술개발</h4>
+                                                <p>
+                                                    담당기관<span>중소기업기술정보진흥원</span><span
+                                                        class="divider">|</span>신청기간<span>25.04</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>사업내역</h5>
+                                            <dl>
+                                                <dt>사업설명</dt>
+                                                <dd>성장 잠재력을 보유한 창업기업 기술개발 지원으로 기술창업 활성화 및 창업기업 성장 촉진</dd>
+                                                <dt>지원대상</dt>
+                                                <dd>업력 7년 이하이며 전년도 매출액 20억원 미만의 창업기업</dd>
+                                                <dt>지원예산 (단위 : 억 원)</dt>
+                                                <dd> 5,960 </dd>
+                                                <dt>지원내용</dt>
+                                                <dd>① 기술개발 지원</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="op8" data-connects="pr3,pr8">
+                                    <div class="recommend_info">
+                                        <span class="name">딥사이언스 창업활성화 지원</span>
+                                        <span class="score">적합도 <strong>60%</strong></span>
+                                    </div>
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="60">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">60%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="info_popup popup_right">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>딥사이언스 창업활성화 지원</h4>
+                                                <p>
+                                                    담당기관<span>과학기술사업화진흥원</span><span
+                                                        class="divider">|</span>신청기간<span>2025-10-20</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>사업내역</h5>
+                                            <dl>
+                                                <dt>사업설명</dt>
+                                                <dd>‘과학적 원리 탐구(R&D)’에 기반한 ‘기술혁신’이 ‘시장혁신(창업・사업화)’으로 이어지도록 지원하여 딥사이언스 분야 미래신산업 씨앗 창출</dd>
+                                                <dt>지원대상</dt>
+                                                <dd>대학 및 출연(연) 연구자, 엑셀러레이터, 예비창업자, 창업기업 등</dd>
+                                                <dt>지원예산 (단위 : 억 원)</dt>
+                                                <dd> 89 </dd>
+                                                <dt>지원내용</dt>
+                                                <dd>①사업화 기획 및 창업 준비,②기술고도화+창업지원,③시장지향 R&D + 기업 성장지원</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="op9" data-connects="pr3,pr8">
+                                    <div class="recommend_info">
+                                        <span class="name">첨단과학기술기업 글로벌 협력 스케일업 R&D 지원</span>
+                                        <span class="score">적합도 <strong>50%</strong></span>
+                                    </div>
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="50">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">50%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="info_popup popup_right">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>첨단과학기술기업 글로벌 협력 스케일업 R&D 지원</h4>
+                                                <p>
+                                                    담당기관<span>과학기술사업화진흥원</span><span
+                                                        class="divider">|</span>신청기간<span>25.02</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>사업내역</h5>
+                                            <dl>
+                                                <dt>사업설명</dt>
+                                                <dd>첨단과학기술기업(딥사이언스 기업 등)의 선진 해외시장 진출을 촉진할 수 있는 기술 스케일업 및 글로벌 역량 강화 협력 프로그램 추진</dd>
+                                                <dt>지원대상</dt>
+                                                <dd>첨단과학기술기업 창업·사업화 지원 역량 및 글로벌 시장 진출 지원 역량을 보유하고 있는 기관</dd>
+                                                <dt>지원예산 (단위 : 억 원)</dt>
+                                                <dd>10</dd>
+                                                <dt>지원내용</dt>
+                                                <dd>"①글로벌 역량 강화교육 지원
+②해외 기술 스케일업(실증 등)"</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="op10" data-connects="pr3,pr8">
+                                    <div class="recommend_info">
+                                        <span class="name">창업존</span>
+                                        <span class="score">적합도 <strong>90%</strong></span>
+                                    </div>
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="90">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">90%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="info_popup popup_right">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>창업존</h4>
+                                                <p>
+                                                    담당기관<span>창업진흥원, 경기창조경제혁신센터</span><span
+                                                        class="divider">|</span>신청기간<span>수시</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>사업내역</h5>
+                                            <dl>
+                                                <dt>사업설명</dt>
+                                                <dd>Data, Network, AI 등 미래 신산업 분야 스타트업을 발굴하여 입주공간, 맞춤형 보육프로그램 등을 제공함으로써 창업기업의 글로벌 진출 등 스케일업을 집중 지원</dd>
+                                                <dt>지원대상</dt>
+                                                <dd>예비창업자, 창업기업(7년 이내)</dd>
+                                                <dt>지원예산 (단위 : 억 원)</dt>
+                                                <dd>45</dd>
+                                                <dt>지원내용</dt>
+                                                <dd>보육공간 제공(판교), 보육프로그램 운영, 인프라 시설지원 등</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="op11" data-connects="pr3,pr8">
+                                    <div class="recommend_info">
+                                        <span class="name">창조경제혁신센터</span>
+                                        <span class="score">적합도 <strong>30%</strong></span>
+                                    </div>
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="30">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">30%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="info_popup popup_right">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>창조경제혁신센터</h4>
+                                                <p>
+                                                    담당기관<span>창업진흥원</span><span
+                                                        class="divider">|</span>신청기간<span>2025-10-20</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>사업내역</h5>
+                                            <dl>
+                                                <dt>사업설명</dt>
+                                                <dd>지역별 창업 허브인 전국 17개 창조경제혁신센터를 통해 스타트업 간, VC·AC 간 네트워킹, 투자설명회 등을 통한 투자연계, 대·중견기업과의 다양한 개방형혁신 활동 등을 지원</dd>
+                                                <dt>지원대상</dt>
+                                                <dd>예비창업자, 창업기업(7년 이내)</dd>
+                                                <dt>지원예산 (단위 : 억 원)</dt>
+                                                <dd>364</dd>
+                                                <dt>지원내용</dt>
+                                                <dd>멘토링, 창업교육, 투자설명회, 지역 창업자·기업 간 네트워킹, 마케팅·판로개척, 글로벌 진출 등</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mindmap_center">
+                            <div class="center_node" id="centerNode">
+                                <img src="../img/sub/wlogo.png" alt="RCTECH">
+                            </div>
+                        </div>
+
+                        <!-- Right Side - 상품 목록 -->
+                        <div class="mindmap_right">
+                            <div class="mindmap_label">상품 추천</div>
+                            <ul class="recommend_list" id="productList">
+                                <li data-id="pr1" data-connects="op1">
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="60">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">60%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="recommend_info">
+                                        <span class="name">딥테크 밸류업 프로그램</span>
+                                        <span class="score">적합도 <strong>60%</strong></span>
+                                    </div>
+                                    <div class="info_popup popup_left">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>딥테크 밸류업 프로그램</h4>
+                                                <p>
+                                                    담당기관<span>창업진흥원</span><span
+                                                        class="divider">|</span>신청기간<span>수시</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>사업내역</h5>
+                                            <dl>
+                                                <dt>사업설명</dt>
+                                                <dd>검증된 벤처·스타트업을 발굴 및 추천하여 대기업 수요에 기반한 매칭 후 딥테크 밸류업 특화 프로그램 등을 통해 협업 지원</dd>
+                                                <dt>지원대상</dt>
+                                                <dd>대기업과 협력수요가 매칭된 지역 유망 벤처·스타트업</dd>
+                                                <dt>지원예산 (단위 : 억 원)</dt>
+                                                <dd> 70 </dd>
+                                                <dt>지원내용</dt>
+                                                <dd>기술최적화 자금, 멘토링, 직간접 투자 지원, 행사‧네트워크, 글로벌 진출 등</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="pr2" data-connects="op2">
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="40">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">40%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="recommend_info">
+                                        <span class="name">스타트업 법률지원</span>
+                                        <span class="score">적합도 <strong>40%</strong></span>
+                                    </div>
+                                    <div class="info_popup popup_left">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>스타트업 법률지원</h4>
+                                                <p>
+                                                    담당기관<span>창업진흥원</span><span
+                                                        class="divider">|</span>신청기간<span>25.01</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>사업내역</h5>
+                                            <dl>
+                                                <dt>사업설명</dt>
+                                                <dd>신기술·신산업 벤처·스타트업의 법률·규제 애로의 신속한 해결을 위해 창업기업 전문 변호사가 온·오프라인 법률자문을 지원</dd>
+                                                <dt>지원대상</dt>
+                                                <dd>신산업 창업분야 스타트업</dd>
+                                                <dt>지원예산 (단위 : 억 원)</dt>
+                                                <dd> 18 </dd>
+                                                <dt>지원내용</dt>
+                                                <dd>규제·자금·투자·계약 등 9개 분야 법률상담 지원  * 지원한도(안) : 기업법무, 계약법 등 일반분야(100만원),규제 준수, 지재권 등 우선분야(250만원), M&A 컨설팅 등 심화분야(2,000만원, 자부담 20%)</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="pr3" data-connects="op1,op3,op6">
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="10">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">10%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="recommend_info">
+                                        <span class="name">컴업(COMEUP) 2025</span>
+                                        <span class="score">적합도 <strong>10%</strong></span>
+                                    </div>
+                                    <div class="info_popup popup_left">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>컴업(COMEUP) 2025</h4>
+                                                <p>
+                                                    담당기관<span>창업진흥원</span><span
+                                                        class="divider">|</span>신청기간<span>25.06</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>사업내역</h5>
+                                            <dl>
+                                                <dt>사업설명</dt>
+                                                <dd>K-스타트업 생태계를 전 세계에 소개하고, 글로벌 스타트업, VC, 창업관계자 등 글로벌 창업생태계와 교류하며 협력을 강화하는 기회의 장 마련</dd>
+                                                <dt>지원대상</dt>
+                                                <dd>국내·외 스타트업</dd>
+                                                <dt>지원예산 (단위 : 억 원)</dt>
+                                                <dd> 29 </dd>
+                                                <dt>지원 내용</dt>
+                                                <dd>국내 우수 스타트업이 해외 유망한 VC 및 창업생태계 관계자를 통해 투자유치를 받을 수 있도록 다양한 프로그램 운영</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="pr4" data-connects="op5,op1">
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="30">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">30%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="recommend_info">
+                                        <span class="name">도전! K-스타트업</span>
+                                        <span class="score">적합도 <strong>30%</strong></span>
+                                    </div>
+                                    <div class="info_popup popup_left">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>도전! K-스타트업</h4>
+                                                <p>
+                                                    담당 기관<span>창업진흥원</span><span
+                                                        class="divider">|</span>신청기간<span>25.01</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>사업내역</h5>
+                                            <dl>
+                                                <dt>사업설명</dt>
+                                                <dd>부처 합동 창업경진대회를 개최하여, 우수한 창업 아이템을 보유한 유망 (예비)창업팀을 발굴·포상하여 대한민국 親창업 분위기 조성 등 창업저변을 확대</dd>
+                                                <dt>지원대상</dt>
+                                                <dd>예비창업자 또는 창업기업 </dd>
+                                                <dt>지원예산 (단위 : 억 원)</dt>
+                                                <dd> 21 </dd>
+                                                <dt>지원내용</dt>
+                                                <dd>①시상(대통령상, 국무총리상, 장관상 등),② 상금,③ 창업지원사업 후속연계</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="pr5" data-connects="op5">
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="70">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">70%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="recommend_info">
+                                        <span class="name">민관협력 오픈이노베이션 지원</span>
+                                        <span class="score">적합도 <strong>70%</strong></span>
+                                    </div>
+                                    <div class="info_popup popup_left">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>민관협력 오픈이노베이션 지원</h4>
+                                                <p>
+                                                    담당기관<span>창업진흥원</span><span
+                                                        class="divider">|</span>신청기간<span>25.02</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>사업내역</h5>
+                                            <dl>
+                                                <dt>사업설명</dt>
+                                                <dd>대기업 등(공공기관,중견기업 포함)과 창업기업간 상생협력의 개방형 파트너십을 유도하고 협업체계 구축 지원</dd>
+                                                <dt>지원대상</dt>
+                                                <dd>중소기업창업 지원법상 창업기업</dd>
+                                                <dt>지원예산 (단위 : 억 원)</dt>
+                                                <dd> 130 </dd>
+                                                <dt>지원 내용</dt>
+                                                <dd>행사·네트워크</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="pr6" data-connects="op6,op7">
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="30">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">30%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="recommend_info">
+                                        <span class="name">창업기반지원자금</span>
+                                        <span class="score">적합도 <strong>30%</strong></span>
+                                    </div>
+                                    <div class="info_popup popup_left">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>창업기반지원자금</h4>
+                                                <p>
+                                                    담당기관<span>중소벤처기업진흥공단</span><span
+                                                        class="divider">|</span>신청기간<span>25.12</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>사업내역</h5>
+                                            <dl>
+                                                <dt>사업설명</dt>
+                                                <dd>기술력과 사업성은 우수하나 자금이 부족한 창업 초기 중소벤처기업의 창업을 활성화하고 고용 창출을 도모</dd>
+                                                <dt>지원대상</dt>
+                                                <dd>「중소기업창업 지원법」 제2조에 따른 창업자, 업력 7년 미만 중소기업</dd>
+                                                <dt>지원예산 (단위 : 억 원)</dt>
+                                                <dd> 13,358 </dd>
+                                                <dt>지원 내용</dt>
+                                                <dd>융자 지원</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="pr7" data-connects="op6,op7">
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="60">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">60%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="recommend_info">
+                                        <span class="name">글로벌 기업 협업 프로그램</span>
+                                        <span class="score">적합도 <strong>60%</strong></span>
+                                    </div>
+                                    <div class="info_popup popup_left">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>글로벌 기업 협업 프로그램</h4>
+                                                <p>
+                                                    담당기관<span>창업진흥원</span><span
+                                                        class="divider">|</span>신청기간<span>25.02</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>사업내역</h5>
+                                            <dl>
+                                                <dt>사업설명</dt>
+                                                <dd>신산업분야 글로벌 선도기업과 협업하여 창업기업의 스케일업 및 글로벌시장진입기회 마련</dd>
+                                                <dt>지원대상</dt>
+                                                <dd>혁신기술을 보유한 업력 7년 이내 창업기업 *일부 10년이내</dd>
+                                                <dt>지원예산 (단위 : 억 원)</dt>
+                                                <dd> 530 </dd>
+                                                <dt>지원내용</dt>
+                                                <dd>①사업화 자금,②주관기관 특화 프로그램,③글로벌 기업지원 프로그램</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="pr8" data-connects="op2">
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="20">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">20%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="recommend_info">
+                                        <span class="name">스타트업 해외 전시회 지원</span>
+                                        <span class="score">적합도 <strong>20%</strong></span>
+                                    </div>
+                                    <div class="info_popup popup_left">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>스타트업 해외 전시회 지원</h4>
+                                                <p>
+                                                    담당기관<span>창업진흥원</span><span
+                                                        class="divider">|</span>신청기간<span>25.02</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>사업내역</h5>
+                                            <dl>
+                                                <dt>사업설명</dt>
+                                                <dd>미국, 프랑스 등 7개국에 진출할 국내 스타트업을 대상으로 현지 액셀러레이팅 프로그램, 입주공간 및 특화 멘토링 제공</dd>
+                                                <dt>지원대상</dt>
+                                                <dd>7년 이내 창업기업 중 각 전시회별지원요건을 충족하는 자</dd>
+                                                <dt>지원예산 (단위 : 억 원)</dt>
+                                                <dd> 16 </dd>
+                                                <dt>지원 내용</dt>
+                                                <dd>해외전시회 부스 임차, 전시회 참가비, 사전교육, 비즈니스 매칭 지원 등</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="pr9" data-connects="op2">
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="30">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">30%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="recommend_info">
+                                        <span class="name">K-스타트업 센터 사업</span>
+                                        <span class="score">적합도 <strong>30%</strong></span>
+                                    </div>
+                                    <div class="info_popup popup_left">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>K-스타트업 센터 사업</h4>
+                                                <p>
+                                                    담당기관<span>창업진흥원</span><span
+                                                        class="divider">|</span>신청기간<span>25.03</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>사업내역</h5>
+                                            <dl>
+                                                <dt>사업설명</dt>
+                                                <dd>미국, 프랑스 등 7개국에 진출할 국내 스타트업을 대상으로 현지 액셀러레이팅 프로그램, 입주공간 및 특화 멘토링 제공</dd>
+                                                <dt>지원 대상</dt>
+                                                <dd>국내·외 투자유치 또는 현지매출(수출) 실적이 있는 7년이내 창업기업</dd>
+                                                <dt>지원예산 (단위 : 억 원)</dt>
+                                                <dd>154</dd>
+                                                <dt>지원 내용</dt>
+                                                <dd>①해외 액셀러레이팅 프로그램,②특화 멘토링,③입주공간 제공,④해외진출자금</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="pr10" data-connects="op2">
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="50">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">50%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="recommend_info">
+                                        <span class="name">DNA 융합 제품·서비스 해외진출 지원사업</span>
+                                        <span class="score">적합도 <strong>50%</strong></span>
+                                    </div>
+                                    <div class="info_popup popup_left">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>DNA 융합 제품·서비스 해외진출 지원사업</h4>
+                                                <p>
+                                                    담당기관<span>정보통신산업진흥원, 글로벌디지털혁신네트워크</span><span
+                                                        class="divider">|</span>신청기간<span>25.02</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>사업내역</h5>
+                                            <dl>
+                                                <dt>사업설명</dt>
+                                                <dd>AI 등 미래 디지털 기술 보육 국내 기업의 현지 안착과 지속가능한 파트너십 형성, 후속 사업 기회 발굴에 적합한 조인트벤처(JV, Joint Venture)형 해외 진출 지원</dd>
+                                                <dt>지원대상</dt>
+                                                <dd>AI 등 미래 디지털 혁신 기술 보유 기업</dd>
+                                                <dt>지원예산 (단위 : 억 원)</dt>
+                                                <dd>11</dd>
+                                                <dt>지원 내용</dt>
+                                                <dd>"①현지 파트너십 발굴 지원
+②신규 합작법인 설립 전문컨설팅 및 사업개발 등
+③설립완료기업 후속 컨설팅 및 사업개발 등"</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-id="pr11" data-connects="op2">
+                                    <div class="recommend_icon">
+                                        <svg class="circle_chart" viewBox="0 0 100 100" data-percent="40">
+                                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                            <circle class="progress" cx="50" cy="50" r="45"></circle>
+                                            <text x="50" y="55" text-anchor="middle" class="percent_text">40%</text>
+                                        </svg>
+                                        <img src="../img/sub/icon_company.png" alt="아이콘" class="icon_image">
+                                    </div>
+                                    <div class="recommend_info">
+                                        <span class="name">AI·디지털 전환 혁신기업 해외실증 지원</span>
+                                        <span class="score">적합도 <strong>40%</strong></span>
+                                    </div>
+                                    <div class="info_popup popup_left">
+                                        <div class="popup_header">
+                                            <div class="popup_icon"><img src="../img/sub/icon_company.png" alt=""></div>
+                                            <div class="popup_title">
+                                                <h4>AI·디지털 전환 혁신기업 해외실증 지원</h4>
+                                                <p>
+                                                    담당기관<span>정보통신산업진흥원, 글로벌디지털혁신네트워크</span><span
+                                                        class="divider">|</span>신청기간<span>25.02</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="popup_content">
+                                            <h5>사업내역</h5>
+                                            <dl>
+                                                <dt>사업설명</dt>
+                                                <dd>AI·디지털전환 해외실증 프로젝트 발굴 및 현지실증을 통해 AI·디지털전환 혁신기업의 해외진출 및 판로개척 지원</dd>
+                                                <dt>지원대상</dt>
+                                                <dd>Edu-Tech(교육), Ag-Tech(농·축산), 디지털헬스케어, 디지털 제조 분야 AI·디지털전환 기술을 보유한 기업</dd>
+                                                <dt>지원예산 (단위 : 억 원)</dt>
+                                                <dd>16</dd>
+                                                <dt>지원 내용</dt>
+                                                <dd>"①해외수요-국내공급 매칭
+②해외실증"
+</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        $(function () {
+            // Side Include
+            $('#side-container').load('../inc/side.html');
+            
+        });
+    </script>
+    <script src="../js/recommend.js"></script>
+</body>
+
+</html>

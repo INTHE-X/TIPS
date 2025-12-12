@@ -1,87 +1,7 @@
 $(document).ready(function(){
 
 
-gsap.registerPlugin(ScrollTrigger);
 
-let tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: ".scrollBox",
-                start: "top top",      
-                end: "+=6000",         
-                pin: true,             
-                scrub: 1,        
-            }
-});
-        tl.to('.fixed_bg', {
-            width: '100%',
-            height: '100%',
-            duration: 7,
-        });
-
-        tl.to('#main .section_inner', {
-            delay: -7,
-            width: '100%',
-            height: '100%',
-            duration: 7,
-        });
-
-        tl.to('.fixed_bg', {
-            delay: -3,
-            borderRadius: 0,
-            duration: 3,
-        });
-
-        tl.to("#main .fadeOut", {
-            opacity: 0,
-            scale: 1.5,
-            filter: "blur(20px)",
-            stagger: 1,
-            duration: 8,
-        })
-
-        .to("#main", {
-            opacity: 0, 
-            visibility: 'hidden',
-        });
-
-        tl.set("#link", {
-            visibility: 'visible',
-        });
-
-        tl.to('#link',{
-            delay: -1,
-            background: "rgba(255, 255, 255, 0.5)",
-            backdropFilter: "blur(10px)",
-            duration: 5,
-        })
-
-        tl.to('.link_tit p', {
-            y: 0,
-            duration: 2,
-        });
-
-        tl.to('.upEffect', {
-            y: 0,
-            duration: 2,
-            stagger: 0.5,
-        });
-
-        tl.to('.link_tit', {
-            y: 0,
-            duration: 3,
-        });
-
-        tl.to('.linkFadeEffect', {
-            opacity: 1,
-            duration: 2,
-        });
-
-        tl.to("#link .link_list", {
-            delay: -2,
-            opacity: 1,
-            ease: "power2.out",
-            duration: 5,
-        });
 
         function setHeight(){
             var listHighHeight = $('.link_list ul li.active').height();
@@ -133,12 +53,16 @@ let tl = gsap.timeline({
         //     donutChartHeight();
         // });
 
-        // $('.subPage_tabBtn ul li button').on('click', function(){
-        //     $(this).parent().addClass('active').siblings().removeClass('active');
-        //     var idx = $(this).parent().index();
-        //     $('.subPage_tabBox').eq(idx).addClass('active').siblings().removeClass('active');
-        //     $('.subPage_tab_desc p').eq(idx).addClass('active').siblings().removeClass('active');
-        //     }); 
+        $('.subPage_tabBtn ul li a').on('click', function(e){
+            e.preventDefault();
+            $(this).parent().addClass('active').siblings().removeClass('active');
+            var idx = $(this).parent().index();
+            $('.subPage_tabBox').eq(idx).addClass('active').siblings().removeClass('active');
+            $('.subPage_tab_desc p').eq(idx).addClass('active').siblings().removeClass('active');
+                        setTimeout(function() {
+                setHeightSubWideTableHead();
+            }, 1);
+            }); 
 
             $('.ratioChart_select ul li a').on('click', function(e){
                 e.preventDefault();
@@ -153,7 +77,7 @@ let tl = gsap.timeline({
                 }
             })
 
-            var subWideTable = $('.sub_wideTable');
+            var subWideTable = $('.sub_wideTable, .distr_graph, .company_list_scroll');
 
             function setHeightSubWideTableHead(){
                 subWideTable.each(function(){
@@ -171,6 +95,187 @@ let tl = gsap.timeline({
                 setHeightSubWideTableHead();
             }); 
             
-        window.addEventListener('resize', ScrollTrigger.refresh());
+
+        $('.distr_tabBtn .tabOpen').on('click', function(){
+            $(this).toggleClass('active');
+            if($(this).hasClass('active')){
+                $('.distr_tabList').stop().slideDown(300);
+            }
+            else{
+                $('.distr_tabList').stop().slideUp(300);
+            }
+        });
+
+        $('.distr_tabList li button').on('click', function(e){
+            e.preventDefault();
+            $(this).parent('li').addClass('active').siblings().removeClass('active');
+            var txt = $(this).children('span').text();
+            $('.distr_tabBtn .tabOpen span').text(txt);
+
+            var idx = $(this).parent().index();
+
+            var numChange = $('.distr_tabNum span');
+            var txtChange = $('.distr_graph_top h2');
+            if(idx == 0){
+                numChange.text('3,516');
+                txtChange.text('지역별 선정 현황');
+            }
+            if(idx == 1){
+                numChange.text('3,477');
+                txtChange.text('산업별 선정 현황');
+            }
+            if(idx == 2){
+                numChange.text('3,221');
+                txtChange.text('기술별 선정 현황');
+            }
+
+            $('.distr_tab').eq(idx).addClass('active').siblings().removeClass('active');
+            $('.distr_graph').eq(idx).addClass('active').siblings().removeClass('active');
+
+            setTimeout(function() {
+                setHeightSubWideTableHead();
+            }, 1);
+        });
+
+        $('.statistic_graphTabBtnList.wide li a, .stat_graphTabWideBtnList li a').on('click', function(e){
+            e.preventDefault();
+            $(this).parent('li').addClass('active').siblings().removeClass('active');
+            var idx = $(this).parent().index();
+            $(this).closest('.divider.type2').siblings('.divider.type1').find('.stat_graphTabArea').eq(idx).addClass('active').siblings().removeClass('active');
+
+        });
+
+        // $('.company_info_modal_container').load('../inc/company_info_modal.html');
+
+        $('.company_info_modal_container').each(function() {
+    var $container = $(this);
+    var classList = $container.attr('class').split(/\s+/);
+    var numClass = classList.find(function(cls) {
+        return cls.startsWith('num');
+    });
+    
+    var htmlFile;
+    if (numClass) {
+        var num = numClass.replace('num', '');
+        htmlFile = '../inc/company_info_modal' + num + '.html';
+    } else {
+        htmlFile = '../inc/company_info_modal.html';
+    }
+    
+    $container.load(htmlFile, function() {
+        $('#company_modal_nav ul li button').on('click', function() {
+            $(this).parent('li').addClass('active').siblings().removeClass('active');
+            var idx = $(this).parent().index();
+            $('.cim_tab').eq(idx).addClass('active').siblings().removeClass('active');
+        });
+    });
+});
+
+
+        $('.company_info_modal_container').load('../inc/company_info_modal.html', function(){
+            $('#company_modal_nav ul li button').on('click', function(){
+            $(this).parent('li').addClass('active').siblings().removeClass('active');
+            var idx = $(this).parent().index();
+            $('.cim_tab').eq(idx).addClass('active').siblings().removeClass('active');
+        });
+
+        $('.cim_articleList ul li a').on('click', function(e) {
+            e.preventDefault();
+        });
+    
+        $('.company_btns .btn_info').on('click', function(e){
+            e.preventDefault();
+            $('.company_info_modal_container').addClass('active');
+            $('html, body').css('overflow', 'hidden');
+        });
+
+        $('.cim_close button').on('click', function(e){
+            e.preventDefault();
+            $('.company_info_modal_container').removeClass('active');
+            $('html, body').css('overflow-y', 'visible');
+            $('html, body').css('overflow-x', 'hidden');
+        });
+
+        $('.company_modal_nav ul li button').on('click', function(e){
+            e.preventDefault();
+            $(this).parent('li').addClass('active').siblings().removeClass('active');
+            var idx = $(this).parent('li').index();
+            $('.cim_tab').eq(idx).addClass('active').siblings().removeClass('active');
+        });
+
+        $('.cim_info_tab_btn').each(function(){
+            $(this).children('ul').find('button').on('click', function(){
+                $(this).parent('li').addClass('active').siblings().removeClass('active');
+                var idx = $(this).parent('li').index();
+                $(this).parent().parent().parent().siblings('.cim_info_tab').eq(idx).addClass('active').siblings().removeClass('active');
+            });
+        });
+        });
+
+});
+
+$(window).on('load', function(){
+
+
+
+ $('.loading').addClass('active');
+
+var $percents = $('.percent');
+var animationDuration = 18000;
+var timings = [18, 32, 46, 61, 75, 89, 100];
+
+timings.forEach(function(percent, index) {
+    var delay = animationDuration * (percent / 100);
+    
+    setTimeout(function() {
+        $percents.eq(index + 1).addClass('active').siblings().removeClass('active'); // index + 1
+        
+        // 마지막 스텝일 때 blue 클래스 추가
+        if (index === timings.length - 1) {
+            $percents.eq(index + 1).addClass('blue');
+        }
+    }, delay);
+});
+
+
+const table = document.querySelectorAll('.distr_graph table');
+
+
+table.forEach(table => {
+if (!table) return;
+
+const rows = table.querySelectorAll('tbody tr');
+const totalRows = rows.length;
+const baseDelay = 0.1; // 딜레이 간격 (초)
+
+rows.forEach((tr, rowIndex) => {
+  const cells = tr.querySelectorAll('td');
+  
+  cells.forEach((td, colIndex) => {
+    const value = parseFloat(td.textContent.trim());
+    
+    if (isNaN(value)) return;
+    
+    
+    if (value >= 0 && value <= 5) {
+      td.classList.add('range1');
+    } else if (value >= 6 && value <= 20) {
+      td.classList.add('range2');
+    } else if (value >= 21 && value <= 50) {
+      td.classList.add('range3');
+    } else if (value >= 51 && value <= 120) {
+      td.classList.add('range4');
+    } else if (value >= 121) {
+      td.classList.add('range5');
+    }
+
+    const diagonalIndex = (totalRows - 1 - rowIndex) + colIndex;
+    td.style.transitionDelay = `${diagonalIndex * baseDelay}s`;
+  });
+});
+});
+
+
+
 
 });

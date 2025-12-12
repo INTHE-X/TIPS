@@ -670,7 +670,67 @@ const generalCompaniesData = [
 ];
 
 
-// 기업 카드 렌더링 함수
+// // 기업 카드 렌더링 함수
+// function renderCompanyCards(data, maxCount = 30) {
+//     const container = document.getElementById('companyGrid');
+//     if (!container) {
+//         console.error('companyGrid 요소를 찾을 수 없습니다.');
+//         return;
+//     }
+
+//     container.innerHTML = ''; // 기존 카드 초기화
+
+//     const limitedData = data.slice(0, maxCount); // 최대 개수 제한
+
+//     limitedData.forEach(company => {
+//         const card = `
+//         <div class="company-card">
+//             <div class="card-image">
+//                 <img src="${company.bgImage}" alt="" class="card-bg">
+//                 <img src="${company.logo}" alt="${company.name}" class="company-logo">
+//             </div>
+//             <div class="card-content">
+//                 <h3 class="company-name">${company.name}</h3>
+//                 <div class="company-info">
+//                     <div class="info-row">
+//                         <span class="info-label">순위 / 등급</span>
+//                         <div class="rank-badge">
+//                             <span class="rank-text">${company.rank}</span>
+//                             <span class="rank-level">
+//                                 <span class="rank-number">${company.grade}</span>
+//                                 <span class="rank-text-small">등급</span>
+//                             </span>
+//                         </div>
+//                     </div>
+//                     <div class="info-row">
+//                         <span class="info-label">대표자</span>
+//                         <span class="info-value">${company.representative}</span>
+//                     </div>
+//                     <div class="info-row">
+//                         <span class="info-label">설립일자</span>
+//                         <span class="info-value">${company.foundedDate}</span>
+//                     </div>
+//                 </div>
+                
+//                 ${company.showDashboard
+//                 ? `<a href="company_dashboard.html?id=${company.id}" class="dashboard-btn active-link">
+//                         DASHBOARD 
+//                         <span><img src="../img/company_discovery/arrow.png" alt=""></span>
+//                    </a>`
+//                 : `<button class="dashboard-btn disabled" disabled>
+//                         DASHBOARD 
+//                         <span><img src="../img/company_discovery/arrow.png" alt=""></span>
+//                    </button>`
+//             }
+//             </div>
+//         </div>
+//     `;
+//         container.innerHTML += card;
+//     });
+
+//     console.log(`총 ${limitedData.length}개의 기업 카드가 렌더링되었습니다.`);
+// }
+
 function renderCompanyCards(data, maxCount = 30) {
     const container = document.getElementById('companyGrid');
     if (!container) {
@@ -682,7 +742,15 @@ function renderCompanyCards(data, maxCount = 30) {
 
     const limitedData = data.slice(0, maxCount); // 최대 개수 제한
 
-    limitedData.forEach(company => {
+    limitedData.forEach((company, index) => {
+        // 첫 번째(index 0)는 recommend.html, 두 번째부터는 recommend1, recommend2...
+        let dashboardLink;
+        if (index === 0) {
+            dashboardLink = `../html/recommend.html`;
+        } else {
+            dashboardLink = `../html/recommend${index}.html`;
+        }
+
         const card = `
         <div class="company-card">
             <div class="card-image">
@@ -712,19 +780,13 @@ function renderCompanyCards(data, maxCount = 30) {
                     </div>
                 </div>
                 
-                ${company.showDashboard
-                ? `<a href="company_dashboard.html?id=${company.id}" class="dashboard-btn active-link">
-                        DASHBOARD 
-                        <span><img src="../img/company_discovery/arrow.png" alt=""></span>
-                   </a>`
-                : `<button class="dashboard-btn disabled" disabled>
-                        DASHBOARD 
-                        <span><img src="../img/company_discovery/arrow.png" alt=""></span>
-                   </button>`
-            }
+                <a href="${dashboardLink}" class="dashboard-btn ${company.showDashboard ? 'active-link' : 'disabled'}">
+                    DASHBOARD 
+                    <span><img src="../img/company_discovery/arrow.png" alt=""></span>
+                </a>
             </div>
         </div>
-    `;
+        `;
         container.innerHTML += card;
     });
 

@@ -1,6 +1,11 @@
-html, body {
-    font-family: 'Clash Grotesk', 'Pretendard', sans-serif;
+html, body{
+    font-family: 'Pretendard', sans-serif;
     overflow-x: hidden;
+}
+
+#wrap{
+    width: 100%;
+    height: 100%;
 }
 
 :root{
@@ -30,24 +35,30 @@ html, body {
 }
 
 .subPageTit.type1{
-    font-size: 1.25vw;
+    font-size: 24px;
     font-weight: 700;
 }
 
 .subPageTit.type2{
-    font-size: 0.938vw;
+    font-size: 18px;
     font-weight: 700;
 }
 
 .sub_section{
     width: 100vw;
     min-height: 100vh;
-    overflow: hidden;
-    background: url('../img/preview_bg.png') no-repeat;
-    background-position: top;
+    padding: 50px 50px 50px 210px;
+    background: url('../img/subpage_bg.png') no-repeat;
+    background-position: center;
     background-size: cover;
-    padding: 3.125rem 3.125rem 3.125rem 210px;
 }
+/* 
+.section_inner{
+    width: calc(1920px - 210px);
+    overflow-x: scroll;
+    padding: 0 0 3.125rem 30px;
+    margin-left: calc(180px - 3.125rem);
+} */
 
 .close_reason_top{
     width: 100%;
@@ -62,9 +73,32 @@ html, body {
     width: 30%;
 }
 
+.divider.type2.divWidth1{
+    width: 460px;
+}
+
+.divider.type2.divWidth2{
+    width: 495px;
+}
+
+.divider.type2.divWidth3{
+    width: 480px;
+}
+
+#preview .divider.type1{
+    width: calc(100% - 500px);
+}
+
+#preview .divider.type2{
+    width: 500px;
+}
+
+#statistic .divider.type1{
+}
+
 .dashBox{
     width: 100%;
-    border-radius: 1.25rem;
+    border-radius: 20px;
     box-shadow: 2px 4px 20px rgba(56, 56, 56, 0.2);
 }
 
@@ -118,5 +152,9 @@ html, body {
 .sub_wideArea.type2{
     position: static;
     width: 100%;
-    padding: 1.563vw;
+    padding: 30px;
 }
+
+.sub_wideArea.type2:has(.distr_graphTab){
+}
+

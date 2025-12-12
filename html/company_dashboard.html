@@ -125,7 +125,6 @@
                 </div>
 
                 <!-- Center: 핵심 성장 요인 -->
-                <!-- Center: 핵심 성장 요인 -->
                 <div class="center_section">
                     <div class="section_header">
                         <h3 class="section_title">핵심 성장 요인</h3>
@@ -232,10 +231,11 @@
                                 <canvas id="successDonutChart"></canvas>
 
                                 <!-- 화살표 포인터 -->
-                                <div class="donut_arrow">
+                                <!-- <div class="donut_arrow">
                                     <img src="../img/Polygon 8.png" alt="pointer">
-                                </div>
+                                </div> -->
 
+                                <!-- 중앙 텍스트 -->
                                 <!-- 중앙 텍스트 -->
                                 <div class="donut_center_new">
                                     <strong id="donutCenterPercent">23.21%</strong>
@@ -250,13 +250,18 @@
                 <div class="right_section">
                     <div class="section_header_right">
                         <h3 class="section_title_right">외형 지표 가시화</h3>
-                        <p class="section_desc">재무적, 비재무적 성과 지표를 반영하여 계산하며<br>산업별 차별점을 확대 제품 생태계를 만들었으며 성장기 산업입니다.</p>
+                        <p class="section_desc">
+                            재무적, 비재무적 성과 지표를 명확하게 제시하여<br>
+                            이해관계자들에게
+                            <span class="highlight_text">회사의 성장 궤도와 안정성</span>
+                            을 명확히 보여줍니다.
+                        </p>
                     </div>
 
                     <!-- Score Gauges -->
                     <div class="score_gauges">
                         <div class="gauge_item">
-                            <span class="gauge_label">산업 기준</span>
+                            <span class="gauge_label">선택 기업 </span>
                             <div class="gauge_chart_wrapper">
                                 <svg id="gauge1" class="gauge-svg" viewBox="0 0 200 120"></svg>
                                 <div class="gauge_number">91</div>
@@ -264,7 +269,7 @@
                             </div>
                         </div>
                         <div class="gauge_item">
-                            <span class="gauge_label">벤치마킹 기준</span>
+                            <span class="gauge_label">벤치마킹 기업</span>
                             <div class="gauge_chart_wrapper">
                                 <svg id="gauge2" class="gauge-svg" viewBox="0 0 200 120"></svg>
                                 <div class="gauge_number">92</div>
@@ -272,7 +277,7 @@
                             </div>
                         </div>
                         <div class="gauge_item">
-                            <span class="gauge_label">산업 평균</span>
+                            <span class="gauge_label">전체 평균</span>
                             <div class="gauge_chart_wrapper">
                                 <svg id="gauge3" class="gauge-svg" viewBox="0 0 200 120"></svg>
                                 <div class="gauge_number">86</div>
@@ -375,6 +380,7 @@
             </div>
         </main>
     </div>
+
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -384,10 +390,8 @@
             $('#side-container').load('../inc/side.html');
         });
     </script>
-    <script src="../js/company_dashboard.js"></script>
 
     <script>
-
         function createGauge(svgId, targetScore = 91, colorScheme = 'blue', duration = 1500) {
             const svg = document.getElementById(svgId);
             svg.innerHTML = "";
@@ -405,27 +409,17 @@
             const gapAngle = 2.5;
 
             const colorSchemes = {
-                blue: {
-                    start: { r: 144, g: 188, b: 255 },
-                    end: { r: 54, g: 111, b: 198 }
-                },
-                purple: {
-                    start: { r: 203, g: 182, b: 255 },
-                    end: { r: 110, g: 66, b: 217 }
-                },
-                cyan: {
-                    start: { r: 127, g: 228, b: 238 }, // #7FE4EE
-                    end: { r: 0, g: 162, b: 182 }       // #00A2B6
-                }
+                blue: { start: { r: 144, g: 188, b: 255 }, end: { r: 54, g: 111, b: 198 } },
+                purple: { start: { r: 203, g: 182, b: 255 }, end: { r: 110, g: 66, b: 217 } },
+                cyan: { start: { r: 127, g: 228, b: 238 }, end: { r: 0, g: 162, b: 182 } }
             };
 
             const colors = colorSchemes[colorScheme];
-
             const segments = [];
+
             for (let i = 0; i < totalSegments; i++) {
                 const startDeg = startAngle - (segmentAngle * i);
                 const endDeg = startDeg - segmentAngle + gapAngle;
-
                 const startRad = startDeg * Math.PI / 180;
                 const endRad = endDeg * Math.PI / 180;
 
@@ -433,48 +427,25 @@
                 const y1Inner = centerY - innerRadius * Math.sin(startRad);
                 const x2Inner = centerX + innerRadius * Math.cos(endRad);
                 const y2Inner = centerY - innerRadius * Math.sin(endRad);
-
                 const x1Outer = centerX + outerRadius * Math.cos(startRad);
                 const y1Outer = centerY - outerRadius * Math.sin(startRad);
                 const x2Outer = centerX + outerRadius * Math.cos(endRad);
                 const y2Outer = centerY - outerRadius * Math.sin(endRad);
 
-                const pathData = `
-            M ${x1Inner} ${y1Inner}
-            L ${x1Outer} ${y1Outer}
-            A ${outerRadius} ${outerRadius} 0 0 0 ${x2Outer} ${y2Outer}
-            L ${x2Inner} ${y2Inner}
-            A ${innerRadius} ${innerRadius} 0 0 1 ${x1Inner} ${y1Inner}
-            Z
-        `;
+                const pathData = `M ${x1Inner} ${y1Inner} L ${x1Outer} ${y1Outer} A ${outerRadius} ${outerRadius} 0 0 0 ${x2Outer} ${y2Outer} L ${x2Inner} ${y2Inner} A ${innerRadius} ${innerRadius} 0 0 1 ${x1Inner} ${y1Inner} Z`;
 
                 const segment = document.createElementNS("http://www.w3.org/2000/svg", "path");
                 segment.setAttribute("d", pathData.trim());
                 segment.setAttribute("fill", "#D7D7D7");
-                segment.setAttribute("stroke-linejoin", "round");
-                segment.setAttribute("stroke-linecap", "round");
-                segment.setAttribute("stroke", "none");
                 svg.appendChild(segment);
 
-                segments.push({
-                    element: segment,
-                    startDeg,
-                    endDeg,
-                    startRad,
-                    endRad,
-                    x1Inner, y1Inner, x2Inner, y2Inner,
-                    x1Outer, y1Outer, x2Outer, y2Outer,
-                    pathData
-                });
+                segments.push({ element: segment, startDeg, endDeg, startRad, endRad, x1Inner, y1Inner, x2Inner, y2Inner, x1Outer, y1Outer, x2Outer, y2Outer, pathData });
             }
 
             let startTime = null;
-
             function animate(currentTime) {
                 if (!startTime) startTime = currentTime;
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-
+                const progress = Math.min((currentTime - startTime) / duration, 1);
                 const currentScore = progress * targetScore;
                 const exactFill = (currentScore / 100) * totalSegments;
                 const filledSegments = Math.floor(exactFill);
@@ -491,67 +462,40 @@
                     } else if (i === filledSegments && partialFill > 0) {
                         const partialAngleDeg = seg.startDeg - (segmentAngle - gapAngle) * partialFill;
                         const partialAngleRad = partialAngleDeg * Math.PI / 180;
-
                         const xPartialInner = centerX + innerRadius * Math.cos(partialAngleRad);
                         const yPartialInner = centerY - innerRadius * Math.sin(partialAngleRad);
                         const xPartialOuter = centerX + outerRadius * Math.cos(partialAngleRad);
                         const yPartialOuter = centerY - outerRadius * Math.sin(partialAngleRad);
 
-                        const colorPath = `
-                    M ${seg.x1Inner} ${seg.y1Inner}
-                    L ${seg.x1Outer} ${seg.y1Outer}
-                    A ${outerRadius} ${outerRadius} 0 0 0 ${xPartialOuter} ${yPartialOuter}
-                    L ${xPartialInner} ${yPartialInner}
-                    A ${innerRadius} ${innerRadius} 0 0 1 ${seg.x1Inner} ${seg.y1Inner}
-                    Z
-                `;
-
+                        const colorPath = `M ${seg.x1Inner} ${seg.y1Inner} L ${seg.x1Outer} ${seg.y1Outer} A ${outerRadius} ${outerRadius} 0 0 0 ${xPartialOuter} ${yPartialOuter} L ${xPartialInner} ${yPartialInner} A ${innerRadius} ${innerRadius} 0 0 1 ${seg.x1Inner} ${seg.y1Inner} Z`;
                         seg.element.setAttribute("d", colorPath.trim());
                         seg.element.setAttribute("fill", `rgb(${r},${g},${b})`);
 
                         if (!seg.grayElement) {
                             seg.grayElement = document.createElementNS("http://www.w3.org/2000/svg", "path");
-                            seg.grayElement.setAttribute("stroke-linejoin", "round");
-                            seg.grayElement.setAttribute("stroke-linecap", "round");
-                            seg.grayElement.setAttribute("stroke", "none");
                             svg.appendChild(seg.grayElement);
                         }
-
-                        const grayPath = `
-                    M ${xPartialInner} ${yPartialInner}
-                    L ${xPartialOuter} ${yPartialOuter}
-                    A ${outerRadius} ${outerRadius} 0 0 0 ${seg.x2Outer} ${seg.y2Outer}
-                    L ${seg.x2Inner} ${seg.y2Inner}
-                    A ${innerRadius} ${innerRadius} 0 0 1 ${xPartialInner} ${yPartialInner}
-                    Z
-                `;
+                        const grayPath = `M ${xPartialInner} ${yPartialInner} L ${xPartialOuter} ${yPartialOuter} A ${outerRadius} ${outerRadius} 0 0 0 ${seg.x2Outer} ${seg.y2Outer} L ${seg.x2Inner} ${seg.y2Inner} A ${innerRadius} ${innerRadius} 0 0 1 ${xPartialInner} ${yPartialInner} Z`;
                         seg.grayElement.setAttribute("d", grayPath.trim());
                         seg.grayElement.setAttribute("fill", "#D7D7D7");
                     } else {
                         seg.element.setAttribute("d", seg.pathData.trim());
                         seg.element.setAttribute("fill", "#D7D7D7");
-
-                        if (seg.grayElement) {
-                            seg.grayElement.remove();
-                            seg.grayElement = null;
-                        }
+                        if (seg.grayElement) { seg.grayElement.remove(); seg.grayElement = null; }
                     }
                 });
 
-                if (progress < 1) {
-                    requestAnimationFrame(animate);
-                }
+                if (progress < 1) requestAnimationFrame(animate);
             }
-
             requestAnimationFrame(animate);
         }
 
         createGauge("gauge1", 91, "blue", 1500);
         createGauge("gauge2", 92, "purple", 1500);
         createGauge("gauge3", 86, "cyan", 1500);
+
         document.addEventListener('DOMContentLoaded', function () {
             const rows = document.querySelectorAll('.table_row');
-
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -559,16 +503,13 @@
                         const barFill = row.querySelector('.bar_fill');
                         if (!barFill || barFill.dataset.animated) return;
 
-                        const scoreText = row.querySelector('.bar_score').textContent;
-                        const score = parseInt(scoreText);
+                        const score = parseInt(row.querySelector('.bar_score').textContent);
                         const filledCount = Math.round(score / 10);
-
                         const segments = barFill.querySelectorAll('.bar_segment');
+
                         segments.forEach((segment, i) => {
                             if (i < filledCount) {
-                                setTimeout(() => {
-                                    segment.classList.add('filled');
-                                }, i * 80);
+                                setTimeout(() => segment.classList.add('filled'), i * 80);
                             }
                         });
 
@@ -578,26 +519,22 @@
                 });
             }, { threshold: 0.5 });
 
-            rows.forEach((row, rowIndex) => {
+            rows.forEach(row => {
                 const barFill = row.querySelector('.bar_fill');
                 if (!barFill) return;
 
-                const scoreText = row.querySelector('.bar_score').textContent;
-                const score = parseInt(scoreText);
-
                 barFill.innerHTML = '';
-
                 for (let i = 0; i < 10; i++) {
                     const segment = document.createElement('span');
                     segment.className = 'bar_segment';
                     barFill.appendChild(segment);
                 }
-
                 observer.observe(row);
             });
         });
     </script>
 
+    <script src="../js/company_dashboard.js"></script>
 </body>
 
 </html>

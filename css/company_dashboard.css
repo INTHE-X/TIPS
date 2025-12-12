@@ -1,5 +1,5 @@
 body {
-    background-color: #FeFeFe !important;
+    background-color: #F5F5F4 !important;
 }
 
 html,
@@ -16,12 +16,13 @@ body {
 .recommend_page {
     display: flex;
     flex-direction: column;
-    min-height: auto;
-    padding: 20px 60px;
+    padding: 20px 30px;
     margin-left: 180px;
     background: #F5F5F4;
     position: relative;
+    overflow-x: auto;  
 }
+
 
 .recommend_page::after {
     content: '';
@@ -93,7 +94,7 @@ body {
 
 .btn_back img {
     width: 10px;
-    height: 7px;
+    height: 10px;
 }
 
 .btn_back:hover {
@@ -134,8 +135,10 @@ body {
 
 .recommend_content {
     display: flex;
-    gap: 24px;
-    flex: none;
+    gap: 30px;
+
+    flex-wrap: nowrap;
+    width: max-content;   /* 🔥 핵심 */
 }
 
 .company_card {
@@ -388,12 +391,20 @@ body {
     height: 100%;
     object-fit: contain;
 }
+
 /* Section Header */
 .section_header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
+}
+
+.section_title_right {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 10px;
 }
 
 .section_title {
@@ -421,6 +432,7 @@ body {
     border-radius: 10px;
     flex-shrink: 0;
 }
+
 .legend_item:nth-child(1) .legend_dot {
     background: #2F8DFF !important;
 }
@@ -444,10 +456,12 @@ body {
 .legend_item:nth-child(3) span:not(.legend_dot) {
     color: #00A2B6;
 }
+
 .legend_item span:not(.legend_dot) {
     font-size: 14px;
     font-weight: 500;
 }
+
 .legend_box {
     width: 320px;
     height: 40px;
@@ -476,14 +490,15 @@ body {
     font-weight: 700;
     color: #252525;
 }
+
 /* Center Section */
 .center_section {
+    padding: 30px;
     width: 718px;
     height: 920px;
-    flex: 1;
+    flex-shrink: 0;
     background: #FFFFFF;
     border: 1px solid #FFFFFF;
-    padding: 30px;
     box-shadow: 2px 4px 20px 0px rgba(56, 56, 56, 0.1);
     border-radius: 20px;
     position: relative;
@@ -494,11 +509,11 @@ body {
     width: 100%;
     height: 500px;
     margin-bottom: 40px;
+    margin-top: 60px;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
 }
 
 /* 배경 이미지 */
@@ -507,9 +522,10 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60%;     
-    max-width: 420px; /* 너무 커지지 않게 제한 */
-    opacity: 1;  
+    width: 60%;
+    max-width: 420px;
+    /* 너무 커지지 않게 제한 */
+    opacity: 1;
     z-index: 1;
     pointer-events: none;
 }
@@ -533,63 +549,87 @@ body {
 
 .factors_container {
     display: flex;
-    gap: 30px;
+    gap: 20px;
     align-items: flex-start;
     width: 100%;
-    position: relative;  /* ← 추가: 자식 요소의 absolute 기준점 */
+    position: relative;
 }
 
-/* 왼쪽 리스트 - 회색 박스 (원래대로) */
+/* 왼쪽 리스트 - 회색 박스 */
 .factors_list {
     width: 438px;
+    height: 190px;
+    flex: 1;
+    min-width: 0;
     padding: 20px;
     background: #F2F4F5;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
+
 
 /* 제목 (회색 박스 안) */
 .factors_title {
-    font-size: 14px;
+    font-family: Pretendard;
     font-weight: 700;
-    color: #252525;
-    margin-bottom: 12px;
+    font-style: Bold;
+    font-size: 15px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: -2%;
+    color: #5E5E5E;
+    margin-bottom: 16px;
 }
 
 .factor_item_new {
     display: flex;
     justify-content: flex-start;
+    /* ← flex-start에서 변경 */
     align-items: center;
-    gap: 4px;
+    gap: 16px;
     padding: 0;
-    background: transparent !important;  /* ← !important 추가 */
+    background: transparent !important;
+    /* ← !important 추가 */
     cursor: pointer;
     transition: all 0.3s ease;
     border: none;
     max-width: 100%;
     overflow: hidden;
-    box-shadow: none !important;  /* ← 추가 */
-    outline: none !important;  /* ← 추가 */
+    box-shadow: none !important;
+    /* ← 추가 */
+    outline: none !important;
+    /* ← 추가 */
+    min-width: 0;
+    /* ← 추가 */
+
 }
 
 .factor_item_new:hover {
-    background: transparent !important;  /* ← !important 추가 */
+    background: transparent !important;
+    /* ← !important 추가 */
     transform: none;
-    box-shadow: none !important;  /* ← !important 추가 */
+    box-shadow: none !important;
+    /* ← !important 추가 */
 }
 
 .factor_item_new.active {
-    background: transparent !important;  /* ← !important 추가 */
-    border: none !important;  /* ← !important 추가 */
-    box-shadow: none !important;  /* ← !important 추가 */
-    outline: none !important;  /* ← 추가 */
+    background: transparent !important;
+    /* ← !important 추가 */
+    border: none !important;
+    /* ← !important 추가 */
+    box-shadow: none !important;
+    /* ← !important 추가 */
+    outline: none !important;
+    /* ← 추가 */
 }
 
 .factor_item_new.active .factor_label_new,
 .factor_item_new.active .factor_percent {
     font-weight: 700;
-    background: transparent !important;  /* ← 추가 */
+    background: transparent !important;
+    /* ← 추가 */
 }
 
 /* Factor Info */
@@ -607,25 +647,33 @@ body {
 }
 
 .factor_label_new {
-    font-size: 15px;
+    font-size: 14px;
+    /* ← 15px에서 줄임 */
     font-weight: 500;
     color: #252525;
     white-space: nowrap;
+    overflow: hidden;
+    /* ← 추가 */
+    text-overflow: ellipsis;
+    /* ← 추가 */
 }
 
 .factor_percent {
-    font-size: 15px;
+    font-size: 14px;
+    /* ← 15px에서 줄임 */
     font-weight: 600;
     color: #000000;
+    flex-shrink: 0;
+    /* ← 추가: 퍼센트는 항상 표시 */
 }
 
 /* 오른쪽 도넛 차트 - 절대 위치로 변경 */
 .donut_chart_area_new {
-    position: relative;  /* absolute → relative */
-    /* right: 0, top: 0 제거 */
+    position: relative;
     width: 190px;
     height: 190px;
     flex-shrink: 0;
+    /* ← 이미 있음: 크기 고정 */
     overflow: visible;
 }
 
@@ -640,13 +688,14 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(-90deg);
-    transform-origin: center center;
     width: 20px;
     height: 20px;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 10;
     pointer-events: none;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    /* 초기값 */
+    transform-origin: center center;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .donut_arrow img {
@@ -654,6 +703,7 @@ body {
     height: 100%;
     object-fit: contain;
     filter: drop-shadow(0 2px 4px rgba(110, 66, 217, 0.3));
+    display: block;
 }
 
 /* 중앙 텍스트 */
@@ -672,9 +722,11 @@ body {
     font-size: 28px;
     font-weight: 700;
     color: #6E42D9;
-    margin-bottom: 6px;
+    line-height: 1;
+    margin-bottom: 4px;
     font-family: 'Clash Grotesk', 'Pretendard', sans-serif;
     transition: opacity 0.3s ease;
+    white-space: nowrap;
 }
 
 .donut_center_new span {
@@ -682,23 +734,37 @@ body {
     font-size: 12px;
     font-weight: 600;
     color: #5E5E5E;
-    max-width: 100px;
-    line-height: 1.4;
+    line-height: 1.3;
     transition: opacity 0.3s ease;
+    white-space: nowrap;
 }
+
 /* ==================== Right: 외형 지표 가시화 ==================== */
 .right_section {
     flex-shrink: 0;
-    padding: 30px;
     border-radius: 20px;
 }
 
 .section_header_right {
     margin-bottom: 30px;
 }
+
 .section_desc {
+    font-family: Pretendard;
+    font-weight: 500;
     font-size: 13px;
-    line-height: 1.6;
+    line-height: 20px;
+    letter-spacing: -1px;
+    color: #5E5E5E;
+}
+
+.highlight_text {
+    font-family: Pretendard;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: -1px;
     color: #5E5E5E;
 }
 
@@ -708,6 +774,18 @@ body {
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 16px;
+}
+
+.score_gauges::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -16px;
+    height: 1px;
+    background: #E2E2DF;
 }
 
 .gauge_item {
@@ -819,6 +897,7 @@ body {
 }
 
 .table_header {
+    margin-top: 16px;
     display: grid;
     grid-template-columns: 2fr 1fr 2fr;
     gap: 16px;
@@ -830,10 +909,11 @@ body {
 }
 
 .header_item {
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 13px;
+    font-weight: 600;
     color: #5E5E5E;
 }
+
 .header_item:nth-child(2) {
     text-align: right;
 }
@@ -842,6 +922,7 @@ body {
     text-align: right;
     padding-right: 25px;
 }
+
 .table_body {
     background: transparent;
     max-height: 350px;
@@ -887,15 +968,15 @@ body {
 }
 
 .row_label {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 500;
-    color: #252525;
+    color: #000;
 }
 
 .row_value {
-    font-size: 13px;
-    font-weight: 600;
-    color: #5E5E5E;
+    font-size: 15px;
+    font-weight: 500;
+    color: #000;
     text-align: right;
 }
 
@@ -948,27 +1029,67 @@ body {
     }
 }
 
-.bar_score {
-    font-size: 13px;
-    font-weight: 700;
-    color: #6E42D9;
-    min-width: 30px;
-    text-align: left;
-}
+
+
 .factors_grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 14px 20px;
+    gap: 14px 0px;
 }
+
+/* F1~F8 라벨 호버 스타일 - 호버 시 색상 변경 */
+.radar_label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    white-space: nowrap;
+    z-index: 3;
+}
+
+.radar_label_main {
+    font-family: Clash Grotesk;
+    font-size: 20px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 4px;
+    transition: color 0.2s ease;
+}
+
+.radar_label_sub {
+    font-size: 15px;
+    font-weight: 500;
+    color: #5E5E5E;
+    transition: color 0.2s ease;
+}
+
+/* radar_label 호버 시에만 색상 변경 */
+.radar_chart_area .radar_label:hover .radar_label_main {
+    color: #6E42D9 !important;
+}
+
+.radar_chart_area .radar_label:hover .radar_label_sub {
+    color: #9A7CE3 !important;
+}
+
+/* bar_score 스타일 - 검은색 고정 */
+.dna_table .table_body .table_row .row_bar .bar_score {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    min-width: 30px;
+    text-align: left;
+    color: #000 !important;
+    transition: none !important;
+}
+
 /* ==================== Responsive Design ==================== */
 @media (max-width: 1600px) {
     .recommend_content {
         gap: 20px;
     }
 
-    .center_section {
-        flex: 1;
-    }
 }
 
 @media (max-width: 1400px) {
