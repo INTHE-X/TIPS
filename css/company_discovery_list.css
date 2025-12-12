@@ -14,7 +14,7 @@
 }
 
 .content-wrapper {
-    max-width: 1600px;
+    max-width: 1660px;
     margin: 0 auto;
 }
 
@@ -78,7 +78,7 @@
     color: #8059E0;
     text-decoration: none;
     position: absolute;
-    right: -55px;
+    right: 0;
     bottom: 0;
     padding-bottom: 14px;
     transition: color 0.3s ease;
@@ -108,9 +108,8 @@
     background: #EDEFF0;
     border: none;
     border-radius: 28px;
-    padding: 4px;
+    padding: 6px;
     width: 380px;
-    height: 56px;
         align-items: center; /* ← 추가 */
 
 }
@@ -256,7 +255,7 @@
 
 /* Card Content */
 .card-content {
-    padding: 20px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
 }
@@ -264,7 +263,7 @@
 .company-name {
     font-family: 'Pretendard', sans-serif;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 22px;
     color: #252525;
     margin-bottom: 16px;
 }
@@ -272,15 +271,13 @@
 .company-info {
     display: flex;
     flex-direction: column;
-    gap: 12px;
 }
 
 .info-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 9px;
-    margin-bottom: 9px;
+    padding: 12px 0;
     border-bottom: 1px solid #E5E5E5;
     /* ✅ 밑줄 */
 }
@@ -386,7 +383,7 @@
     font-family: 'Pretendard', sans-serif;
     font-weight: 600;
     font-size: 13px;
-    color: 5E5E5E;
+    color: #5E5E5E;
     display: inline-flex;
     align-items: center;
     gap: 8px;

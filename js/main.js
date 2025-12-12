@@ -218,7 +218,6 @@ $(window).on('load', function(){
 
 
 
- $('.loading').addClass('active');
 
 var $percents = $('.percent');
 var animationDuration = 18000;
@@ -240,8 +239,8 @@ timings.forEach(function(percent, index) {
 
 const table = document.querySelectorAll('.distr_graph table');
 
-
-table.forEach(table => {
+setTimeout(() => {
+    table.forEach(table => {
 if (!table) return;
 
 const rows = table.querySelectorAll('tbody tr');
@@ -274,6 +273,8 @@ rows.forEach((tr, rowIndex) => {
   });
 });
 });
+}, 9100);
+
 
 
 
