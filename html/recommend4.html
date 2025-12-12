@@ -46,7 +46,7 @@
                             <a href="../html/statistic_1_1.html">Statistic</a>
                         </li>
                         <li class="active">
-                            <a href="../html/recommend.html">Search</a>
+                            <a href="../html/company_discovery.html">Search</a>
                         </li>
                     </ul>
                 </nav>
@@ -55,23 +55,23 @@
                 </div>
             </div>
         </header>
-        <div class="loading">
+        <!-- <div class="loading">
             <div class="loading_visual">
                 <div class="load_vid">
                     <video src="../img/dash_loading.webm" preload="auto" autoplay muted playsinline></video>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Main Content -->
         <main id="recommend" class="recommend_page">
             <!-- Top Navigation -->
             <div class="recommend_topNav">
-                <a href="#" class="btn_back">
+                <a href="../html/company_discovery_list.html" class="btn_back">
                     <span><img src="../img/sub/Vector.png" alt=""></span> 리스트로 돌아가기
                 </a>
                 <div class="page_navigation">
-                    <button type="button" class="btn_prev"><img src="../img/sub/Vector.png" alt=""></button>
+                    <button type="button" class="btn_prev" onclick="location.href='../html/recommend3.html'"><img src="../img/sub/Vector.png" alt=""></button>
                     <button type="button" class="btn_next"><img src="../img/sub/Vector2.png" alt=""></button>
                 </div>
             </div>
@@ -96,12 +96,12 @@
                         </div>
                         <div class="company_btns">
                             <a href="#" class="btn_info">기업 정보<span><img src="../img/sub/arow1.png" alt=""></span></a>
-                            <a href="#" class="btn_recommend">운영사 추천 <span><img src="../img/sub/arow.png" alt=""></span></a>
+                            <a href="../html/company_dashboard_5.html" class="btn_recommend">운영사 추천 <span><img src="../img/sub/arow.png" alt=""></span></a>
                         </div>
                     </div>
 
                     <!-- 기업 정보 모달 / 인클루드 되어 있으므로 아래 div만 적절한 곳에 추가하면 됨-->
-                    <div class="company_info_modal_container"></div>
+                    <div class="company_info_modal_container num4"></div>
 
                     <!-- Grade & Score -->
                     <div class="company_grade">

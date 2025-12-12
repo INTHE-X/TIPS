@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/main.css">
-    
     <link rel="stylesheet" href="../css/company_discovery.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -45,7 +43,7 @@
                             <a href="../html/statistic_1_1.html">Statistic</a>
                         </li>
                         <li class="active">
-                            <a href="../html/recommend.html">Search</a>
+                            <a href="../html/company_discovery.html">Search</a>
                         </li>
                     </ul>
                 </nav>
@@ -56,7 +54,7 @@
         </header>
 
         <!-- Main Content -->
-        <main class="main-content">
+        <main class="sub_section">
             <div class="content-wrapper">
                 <!-- Header Section -->
                 <div class="page-header">
@@ -113,39 +111,6 @@
         </main>
     </div>
 </body>
-<script>
-    $(function() {
-    const videoContainers = document.querySelectorAll('.loading');
-    
-    // ✅ 초기에 active 클래스 강제 제거
-    videoContainers.forEach(container => {
-        container.classList.remove('active');
-    });
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const container = entry.target;
-                const video = container.querySelector('video');
-                
-                if (video) video.play();
-                
-                setTimeout(() => {
-                    $(container).fadeOut(600);
-                }, 6500);
-                
-                observer.unobserve(container);
-            }
-        });
-    }, {
-        threshold: 0.5
-    });
-    
-    videoContainers.forEach(container => {
-        observer.observe(container);
-    });
-});
-</script>
 
 <script>
     $(function () {

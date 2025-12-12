@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/company_dashboard.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -21,6 +22,7 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/main.js"></script>
 </head>
 
 <body class="page-search">
@@ -40,7 +42,7 @@
                             <a href="../html/statistic_1_1.html">Statistic</a>
                         </li>
                         <li class="active">
-                            <a href="../html/recommend.html">Search</a>
+                            <a href="../html/company_discovery.html">Search</a>
                         </li>
                     </ul>
                 </nav>
@@ -50,12 +52,20 @@
             </div>
         </header>
 
+                <div class="loading">
+            <div class="loading_visual">
+                <div class="load_vid">
+                    <video src="../img/dash_loading.webm" preload="auto" autoplay muted playsinline></video>
+                </div>
+            </div>
+        </div>
+
         <!-- Main Content -->
         <main class="recommend_page">
             <!-- Top Navigation -->
             <div class="recommend_topNav">
-                <a href="#" class="btn_back">
-                    <span><img src="../img/sub/Vector.png" alt=""></span> 리스트로 돌아가기
+                <a href="../html/company_discovery_list.html" class="btn_back">
+                      <span><img src="../img/Group 29.png" alt=""></span> 리스트로 돌아가기
                 </a>
                 <div class="page_navigation">
                     <button type="button" class="btn_prev"><img src="../img/sub/Vector.png" alt=""></button>
@@ -74,16 +84,19 @@
                         <div class="company_info">
                             <h2 class="company_name">라그노스</h2>
                             <p class="company_desc">
-                                알씨테크는 SK하이닉스 사내벤처 1호로,<br>
-                                반도체 장비 전문 기업으로서 혁신을 이끌고 있습니다.
+                                복잡한 산업 데이터를 AI로 분석해
+                                <br>
+운영 효율성과 미래 전략을 최적화하는 딥테크 기업입니다.
                             </p>
                         </div>
                         <div class="company_btns">
                             <a href="#" class="btn_info">기업 정보 <span><img src="../img/sub/arow1.png" alt=""></span></a>
-                            <a href="#" class="btn_recommend">운영사 추천 <span><img src="../img/sub/arow.png"
+                            <a href="../html/recommend2.html" class="btn_recommend">운영사 추천 <span><img src="../img/sub/arow.png"
                                         alt=""></span></a>
                         </div>
                     </div>
+
+                    <div class="company_info_modal_container num2"></div>
 
                     <!-- Grade & Score -->
                     <div class="company_grade">
@@ -103,42 +116,42 @@
                     <div class="company_stats">
                         <div class="stat_item">
                             <span class="stat_label">매출 <small>(백만 원)</small></span>
-                            <strong class="stat_value">3,042</strong>
+                            <strong class="stat_value">133</strong>
                             <div class="stat_chart">
                                 <img src="../img/sub/graph.png" alt="매출 그래프">
                             </div>
                         </div>
                         <div class="stat_item">
                             <span class="stat_label">영업이익 <small>(백만 원)</small></span>
-                            <strong class="stat_value">3,042</strong>
+                            <strong class="stat_value">-5,578</strong>
                             <div class="stat_chart">
                                 <img src="../img/sub/graph.png" alt="영업이익 그래프">
                             </div>
                         </div>
                         <div class="stat_item">
                             <span class="stat_label">당기순익 <small>(백만 원)</small></span>
-                            <strong class="stat_value">8,042</strong>
+                            <strong class="stat_value">-4,288</strong>
                             <div class="stat_chart">
                                 <img src="../img/sub/graph.png" alt="당기순익 그래프">
                             </div>
                         </div>
                         <div class="stat_item">
                             <span class="stat_label">고용인원 <small>(명)</small></span>
-                            <strong class="stat_value">345</strong>
+                            <strong class="stat_value">26</strong>
                             <div class="stat_chart">
                                 <img src="../img/sub/graph.png" alt="고용인원 그래프">
                             </div>
                         </div>
                         <div class="stat_item">
                             <span class="stat_label">특허 <small>(건)</small></span>
-                            <strong class="stat_value">102</strong>
+                            <strong class="stat_value">19</strong>
                             <div class="stat_chart">
                                 <img src="../img/sub/graph.png" alt="특허 그래프">
                             </div>
                         </div>
                         <div class="stat_item">
                             <span class="stat_label">투자유치금액 <small>(백만 원)</small></span>
-                            <strong class="stat_value">3,042</strong>
+                            <strong class="stat_value">5,700</strong>
                             <div class="stat_chart">
                                 <img src="../img/sub/graph.png" alt="투자유치금액 그래프">
                             </div>
@@ -179,7 +192,7 @@
                         <div class="factors_container">
                             <!-- 왼쪽: 항목 리스트 (회색 박스) -->
                             <div class="factors_list">
-                                <h4 class="factors_title">성공 요인 기여치</h4>
+                                <h4 class="factors_title">성공 요인 가중치</h4>
 
                                 <div class="factors_grid">
                                     <div class="factor_item_new active" data-index="0">
@@ -406,6 +419,40 @@
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script>
+    $(function() {
+    const videoContainers = document.querySelectorAll('.loading');
+    
+    // ✅ 초기에 active 클래스 강제 제거
+    videoContainers.forEach(container => {
+        container.classList.remove('active');
+    });
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const container = entry.target;
+                const video = container.querySelector('video');
+                
+                if (video) video.play();
+                
+                setTimeout(() => {
+                    $(container).fadeOut(600);
+                }, 6500);
+                
+                observer.unobserve(container);
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+    
+    videoContainers.forEach(container => {
+        observer.observe(container);
+    });
+});
+</script>
 
     <script>
         $(function () {

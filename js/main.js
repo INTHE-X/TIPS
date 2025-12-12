@@ -161,14 +161,31 @@ $(document).ready(function(){
     } else {
         htmlFile = '../inc/company_info_modal.html';
     }
+
+    htmlFile += '?v=' + new Date().getTime();
     
     $container.load(htmlFile, function() {
-        $('#company_modal_nav ul li button').on('click', function() {
-            $(this).parent('li').addClass('active').siblings().removeClass('active');
-            var idx = $(this).parent().index();
-            $('.cim_tab').eq(idx).addClass('active').siblings().removeClass('active');
-        });
+    // 기존 코드
+    $('#company_modal_nav ul li button').on('click', function() {
+        $(this).parent('li').addClass('active').siblings().removeClass('active');
+        var idx = $(this).parent().index();
+        $('.cim_tab').eq(idx).addClass('active').siblings().removeClass('active');
     });
+
+    // 수정된 코드 - 이벤트 위임 사용
+    $container.on('click', '.cim_info_tab_btn ul button', function() {
+        $(this).parent('li').addClass('active').siblings().removeClass('active');
+        var idx = $(this).parent('li').index();
+        $(this).closest('.cim_info_tab_btn').siblings('.cim_info_tab').eq(idx).addClass('active').siblings().removeClass('active');
+    });
+
+$container.on('click', '.cim_close button', function(e) {
+            e.preventDefault();
+            $('.company_info_modal_container').removeClass('active');
+            $('html, body').css('overflow-y', 'visible');
+            $('html, body').css('overflow-x', 'hidden');
+        });
+});
 });
 
 
@@ -196,20 +213,13 @@ $(document).ready(function(){
             $('html, body').css('overflow-x', 'hidden');
         });
 
-        $('.company_modal_nav ul li button').on('click', function(e){
-            e.preventDefault();
-            $(this).parent('li').addClass('active').siblings().removeClass('active');
-            var idx = $(this).parent('li').index();
-            $('.cim_tab').eq(idx).addClass('active').siblings().removeClass('active');
-        });
+        // $('.company_modal_nav ul li button').on('click', function(e){
+        //     e.preventDefault();
+        //     $(this).parent('li').addClass('active').siblings().removeClass('active');
+        //     var idx = $(this).parent('li').index();
+        //     $('.cim_tab').eq(idx).addClass('active').siblings().removeClass('active');
+        // });
 
-        $('.cim_info_tab_btn').each(function(){
-            $(this).children('ul').find('button').on('click', function(){
-                $(this).parent('li').addClass('active').siblings().removeClass('active');
-                var idx = $(this).parent('li').index();
-                $(this).parent().parent().parent().siblings('.cim_info_tab').eq(idx).addClass('active').siblings().removeClass('active');
-            });
-        });
         });
 
 });

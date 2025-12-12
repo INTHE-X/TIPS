@@ -3295,6 +3295,7 @@
     border-radius: 20px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 20px 0 6px 0;
+    overflow: hidden;
 }
 
 .score_definition table{

@@ -93,8 +93,8 @@ body {
 }
 
 .btn_back img {
-    width: 10px;
-    height: 10px;
+    width: 30px;
+    height: 30px;
 }
 
 .btn_back:hover {
@@ -528,6 +528,35 @@ body {
     opacity: 1;
     z-index: 1;
     pointer-events: none;
+}
+
+/* 배경 이미지 */
+.radar_chart_area video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    width: 60%;
+    max-width: 420px;
+
+    opacity: 0.6;   /* 영상은 조금 투명하게 */
+    z-index: 1;
+    pointer-events: none;
+
+    border-radius: 10px; /* 원하면 부드럽게 */
+    object-fit: cover;
+}
+.radar_chart_area canvas {
+    position: relative;
+    z-index: 2; /* 차트가 영상 위 */
+}
+/* 차트(canvas) */
+#radarChart {
+    position: relative;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 2;
 }
 
 /* 차트(canvas) */

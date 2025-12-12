@@ -527,7 +527,7 @@ body {
     opacity: 0;
     transform: translateX(-20px);
     transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s ease;
-    z-index: 1000;
+    z-index: 100;
     pointer-events: auto;
     height: calc(100% / 11);
 }
@@ -627,11 +627,11 @@ body {
 }
 
 .recommend_icon .icon_image {
-    position: relative;
+    /* position: relative; */
     width: 40px;
     height: 40px;
     object-fit: contain;
-    z-index: 2;
+    /* z-index: 2; */
 }
 
 .recommend_info {
@@ -762,18 +762,17 @@ body {
     font-size: 14px;
     font-weight: 700;
     fill: #6E42D9;
-
     transform: rotate(90deg);
     dominant-baseline: middle;
 }
 
 
 .mindmap_right .circle_chart .progress {
-    stroke: #226AD6
+    stroke: #226AD6;
 }
 
 .mindmap_right .percent_text {
-    fill: #226AD6
+    fill: #226AD6;
 }
 
 .mindmap_center {
@@ -783,7 +782,7 @@ body {
     justify-content: center;
     position: relative;
     min-width: 300px;
-    z-index: 50;
+    /* z-index: 50; */
     /* ✅ 추가 */
 
 }
@@ -888,11 +887,11 @@ body {
     z-index: 10000 !important;
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
     transform: translateY(10px);
     transition: all 0.3s ease;
     backdrop-filter: blur(50px);
     -webkit-backdrop-filter: blur(50px);
-    pointer-events: none;
 }
 
 .recommend_list li:hover .info_popup {
@@ -956,13 +955,17 @@ body {
 .popup_title {
     flex: 1;
     padding-right: 0;
+    min-width: 0;
 }
 
 .popup_title h4 {
+    display: inline-block;
+    max-width: 100%;
     font-size: 18px;
     font-weight: 700;
     color: #252525;
     margin-bottom: 6px;
+    word-break: break-all;
 }
 
 .popup_title p {
@@ -970,7 +973,6 @@ body {
     font-weight: 500;
     color: #70757C66;
     line-height: 1.5;
-    white-space: nowrap;
     overflow: visible;
 }
 

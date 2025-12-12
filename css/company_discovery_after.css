@@ -1,7 +1,7 @@
 html,
 body {
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .page-search #nav ul li:nth-child(1) a {

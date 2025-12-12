@@ -26,7 +26,7 @@ const innerExpandPlugin = {
         }
 
         const originalInner = chart._originalInnerRadius;
-        const expandAmount = 10;
+        const expandAmount = 3;
         const easingSpeed = 0.15;
 
         meta.data.forEach((arc, index) => {
@@ -60,6 +60,42 @@ const innerExpandPlugin = {
 // 전역 변수로 선언
 let successChart;
 let factorsData;
+
+// 🔥 updateActiveItem을 전역 함수로 이동
+function updateActiveItem(index) {
+    const factorItems = document.querySelectorAll('.factor_item_new');
+    factorItems.forEach(item => item.classList.remove('active'));
+    factorItems[index].classList.add('active');
+
+    const centerPercent = document.getElementById('donutCenterPercent');
+    const centerLabel = document.getElementById('donutCenterLabel');
+
+    // 페이드 아웃
+    centerPercent.style.opacity = '0';
+    centerLabel.style.opacity = '0';
+
+    // 텍스트 변경 및 페이드 인
+    setTimeout(() => {
+        centerPercent.textContent = factorsData.values[index] + '%';
+        centerLabel.textContent = factorsData.labels[index];
+
+        // 선택된 섹션의 색상으로 변경 (퍼센트와 라벨 모두)
+        centerPercent.style.setProperty('color', factorsData.colors[index], 'important');
+        centerLabel.style.setProperty('color', factorsData.colors[index], 'important');
+
+        centerPercent.style.opacity = '1';
+        centerLabel.style.opacity = '1';
+    }, 200);
+
+    // 차트에 선택된 인덱스 저장
+    if (successChart) {
+        successChart._selectedIndex = index;
+        successChart.update('none');
+    }
+
+    // 화살표 위치 업데이트
+    updateArrowPosition(index);
+}
 
 // Success Factors 도넛 차트 JavaScript
 document.addEventListener('DOMContentLoaded', function () {
@@ -104,12 +140,11 @@ document.addEventListener('DOMContentLoaded', function () {
         options: {
             responsive: false,
             maintainAspectRatio: false,
-            cutout: '75%',
+            cutout: '85%',
             plugins: {
                 legend: { display: false },
                 tooltip: { enabled: false }
             },
-            // 클릭 이벤트 추가
             onClick: (event, activeElements) => {
                 if (activeElements.length > 0) {
                     const index = activeElements[0].index;
@@ -128,8 +163,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // 초기 활성화
+    // 초기 활성화 - 색상 적용
     updateArrowPosition(0);
+    updateActiveItem(0);  // 🔥 이제 작동합니다!
 });
 
 function updateActiveItem(index) {
@@ -148,6 +184,11 @@ function updateActiveItem(index) {
     setTimeout(() => {
         centerPercent.textContent = factorsData.values[index] + '%';
         centerLabel.textContent = factorsData.labels[index];
+
+        // 선택된 섹션의 색상으로 변경 (퍼센트와 라벨 모두)
+        centerPercent.style.setProperty('color', factorsData.colors[index], 'important');
+        centerLabel.style.setProperty('color', factorsData.colors[index], 'important');
+
         centerPercent.style.opacity = '1';
         centerLabel.style.opacity = '1';
     }, 200);
@@ -161,7 +202,6 @@ function updateActiveItem(index) {
     // 화살표 위치 업데이트
     updateArrowPosition(index);
 }
-
 function updateArrowPosition(index) {
     const arrow = document.querySelector('.donut_arrow');
     if (!arrow) {
@@ -289,11 +329,13 @@ document.addEventListener('DOMContentLoaded', function () {
         },
     ];
 
-    labels.forEach((label) => {
+    let hoveredLabelIndex = 4; // 초기값 F5
+    const radius = 250;
+
+    labels.forEach((label, index) => {
         const labelEl = document.createElement('div');
         labelEl.className = 'radar_label';
-        
-        const radius = 250;
+
         const angleRad = (label.angle - 90) * Math.PI / 180;
         const x = radius * Math.cos(angleRad);
         const y = radius * Math.sin(angleRad);
@@ -307,27 +349,50 @@ document.addEventListener('DOMContentLoaded', function () {
 
         labelEl.addEventListener('click', () => {
             updateTableData(label.tableData, label.subtext);
-            labelEl.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(1.1)`;
-            setTimeout(() => {
-                labelEl.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(1)`;
-            }, 200);
         });
 
         labelEl.addEventListener('mouseenter', () => {
+            // 모든 라벨 초기화
+            document.querySelectorAll('.radar_label').forEach((el, i) => {
+                el.classList.remove('active');
+                const angle = labels[i].angle;
+                const ax = radius * Math.cos((angle - 90) * Math.PI / 180);
+                const ay = radius * Math.sin((angle - 90) * Math.PI / 180);
+                el.style.transform = `translate(calc(-50% + ${ax}px), calc(-50% + ${ay}px)) scale(1)`;
+            });
+
+            // 현재 호버된 라벨만 확대 + active
+            hoveredLabelIndex = index;
+            labelEl.classList.add('active');
             labelEl.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(1.05)`;
+
+            // 테이블 업데이트
+            updateTableData(label.tableData, label.subtext);
         });
 
         labelEl.addEventListener('mouseleave', () => {
-            labelEl.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(1)`;
+            // mouseleave 시에는 아무것도 하지 않음 (다음 호버까지 유지)
         });
 
         radarArea.appendChild(labelEl);
     });
 
-    // 초기 데이터 로드
+    // 초기 데이터 로드 및 F5를 active 상태로 설정
     const initialFactor = labels.find(l => l.text === 'F5');
     if (initialFactor) {
         updateTableData(initialFactor.tableData, initialFactor.subtext);
+
+        // F5 라벨에 active 클래스 추가
+        setTimeout(() => {
+            const allLabels = document.querySelectorAll('.radar_label');
+            if (allLabels[4]) {
+                allLabels[4].classList.add('active');
+                const angleRad = (labels[4].angle - 90) * Math.PI / 180;
+                const x = radius * Math.cos(angleRad);
+                const y = radius * Math.sin(angleRad);
+                allLabels[4].style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(1.05)`;
+            }
+        }, 100);
     }
 });
 
