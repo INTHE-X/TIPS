@@ -116,14 +116,16 @@
         // Side Include
         $('#side-container').load('../inc/side.html');
         
-        // 버튼 클릭 시 페이지 이동
+        // 버튼 클릭 시 페이지 이동 (data-link가 있는 경우에만 이동)
         $('.card-button').on('click', function() {
             const targetUrl = $(this).data('link');
+            if (!targetUrl) {
+                return; // data-link가 없으면 아무 동작도 하지 않음
+            }
             window.location.href = targetUrl;
         });
     });
 </script>
-<script src="../js/recommend.js"></script
 <script src="../js/recommend.js"></script>
 
 </html>

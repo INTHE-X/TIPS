@@ -21,7 +21,7 @@ const tipsCompaniesData = [
         "representative": "이윤행",
         "foundedDate": "2019-11-21",
         "stage": "성장",
-        "dashboardType": 2
+        "dashboardType": null
     },
     {
         "id": 3,
@@ -32,7 +32,7 @@ const tipsCompaniesData = [
         "representative": "손수영",
         "foundedDate": "2019-11-27",
         "stage": "성장",
-        "dashboardType": 3
+        "dashboardType": null
     },
     {
         "id": 4,
@@ -43,7 +43,7 @@ const tipsCompaniesData = [
         "representative": "신동주",
         "foundedDate": "2019-04-17",
         "stage": "성장",
-        "dashboardType": 4
+        "dashboardType": null
     },
     {
         "id": 5,
@@ -714,7 +714,7 @@ function renderCompanyCards(data, maxCount = 30) {
                 
 ${company.dashboardType
                 ? `<a href="company_dashboard_${company.dashboardType}.html?id=${company.id}"
-
+       onclick="sessionStorage.setItem('showDashboardLoading','true')"
        class="dashboard-btn active-link">
         DASHBOARD 
         <span><img src="../img/company_discovery/arrow.png" alt=""></span>

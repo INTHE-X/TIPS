@@ -668,42 +668,42 @@ document.addEventListener('DOMContentLoaded', function () {
         observer.observe(row);
     });
 });
-    </script>
+//     </script>
 
-    <script src="../js/company_dashboard.js"></script>
-    <script>
-        const params = new URLSearchParams(window.location.search);
-        const dashboardType = params.get('type');   // a,b,c,d,e,f
-        const companyId = params.get('id');         // 회사 id
+//     <script src="../js/company_dashboard.js"></script>
+//     <script>
+//         const params = new URLSearchParams(window.location.search);
+//         const dashboardType = params.get('type');   // a,b,c,d,e,f
+//         const companyId = params.get('id');         // 회사 id
 
-        console.log('id:', companyId, 'type:', dashboardType);
-    </script>
-    <script>
-    $(function () {
-        const maxPage = 5;  // 총 파일 수
-        const path = window.location.pathname;
-        const file = path.substring(path.lastIndexOf('/') + 1); // ex: company_dashboard_3.html
+//         console.log('id:', companyId, 'type:', dashboardType);
+//     </script>
+//     <script>
+//     $(function () {
+//         const maxPage = 4;  // 총 파일 수
+//         const path = window.location.pathname;
+//         const file = path.substring(path.lastIndexOf('/') + 1); // ex: company_dashboard_3.html
 
-        // 숫자 추출
-        const match = file.match(/company_dashboard_(\d+)\.html/);
+//         // 숫자 추출
+//         const match = file.match(/company_dashboard_(\d+)\.html/);
 
-        if (match) {
-            const currentIndex = Number(match[1]);
+//         if (match) {
+//             const currentIndex = Number(match[1]);
 
-            // next 버튼: 마지막→1 로 순환
-            $('.btn_next').on('click', function () {
-                const nextIndex = currentIndex === maxPage ? 1 : currentIndex + 1;
-                window.location.href = `company_dashboard_${nextIndex}.html`;
-            });
+//             // next 버튼: 마지막→1 로 순환
+//             $('.btn_next').on('click', function () {
+//                 const nextIndex = currentIndex === maxPage ? 1 : currentIndex + 1;
+//                 window.location.href = `company_dashboard_${nextIndex}.html`;
+//             });
 
-            // prev 버튼: 1→마지막(5) 로 순환
-            $('.btn_prev').on('click', function () {
-                const prevIndex = currentIndex === 1 ? maxPage : currentIndex - 1;
-                window.location.href = `company_dashboard_${prevIndex}.html`;
-            });
-        }
-    });
-</script>
+//             // prev 버튼: 1→마지막(5) 로 순환
+//             $('.btn_prev').on('click', function () {
+//                 const prevIndex = currentIndex === 1 ? maxPage : currentIndex - 1;
+//                 window.location.href = `company_dashboard_${prevIndex}.html`;
+//             });
+//         }
+//     });
+// </script>
 
 </body>
 

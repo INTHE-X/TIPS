@@ -422,6 +422,22 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script>
+    // 리스트에서 진입한 경우에만 로딩을 보여주기 위해 플래그 확인
+    (function(){
+        try{
+            const show = sessionStorage.getItem('showDashboardLoading') === 'true';
+            if (!show) {
+                const loadingEl = document.querySelector('.loading');
+                if (loadingEl) {
+                    const vid = loadingEl.querySelector('video');
+                    if (vid && !vid.paused) try{ vid.pause(); }catch(e){}
+                    loadingEl.parentNode.removeChild(loadingEl);
+                }
+            }
+            sessionStorage.removeItem('showDashboardLoading');
+        }catch(e){/* ignore */}
+    })();
+
     $(function() {
     const videoContainers = document.querySelectorAll('.loading');
     
@@ -678,7 +694,7 @@ document.addEventListener('DOMContentLoaded', function () {
     </script>
     <script>
     $(function () {
-        const maxPage = 5;  // 총 파일 수
+        const maxPage = 4;  // 총 파일 수
         const path = window.location.pathname;
         const file = path.substring(path.lastIndexOf('/') + 1); // ex: company_dashboard_3.html
 
