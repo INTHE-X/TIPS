@@ -23,7 +23,6 @@ body {
     overflow-x: auto;  
 }
 
-
 .recommend_page::after {
     content: '';
     position: fixed;
@@ -165,6 +164,17 @@ body {
     justify-content: center;
 }
 
+.company_logo_area::after{
+    display: block;
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 30%;
+        background: linear-gradient(to top, rgba(255, 255, 255, 1), transparent);
+}
+
 .company_logo_area .bg_img {
     position: absolute;
     top: 0;
@@ -193,8 +203,7 @@ body {
     font-size: 22px;
     font-weight: 800;
     color: #000000;
-    margin-bottom: 12px;
-    margin-top: 12px;
+    margin: 24px 0 12px 0;
 }
 
 .company_desc {
@@ -203,6 +212,7 @@ body {
     color: #000;
     line-height: 1.6;
     margin-bottom: 37px;
+    height: 70px;
 }
 
 .company_btns {
@@ -546,6 +556,7 @@ body {
 
     border-radius: 10px; /* 원하면 부드럽게 */
     object-fit: cover;
+    display: none;
 }
 .radar_chart_area canvas {
     position: relative;
@@ -1036,7 +1047,7 @@ body {
 }
 
 .bar_segment.filled {
-    background: #6E42D9;
+    background: #2F8DFF;
     animation: fillPulse 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
@@ -1052,7 +1063,7 @@ body {
     }
 
     100% {
-        background: #6E42D9;
+        background: #2F8DFF;
         transform: scale(1);
         opacity: 1;
     }
@@ -1076,6 +1087,14 @@ body {
     text-align: center;
     white-space: nowrap;
     z-index: 3;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.radar_label.show {
+    visibility: visible;
+    opacity: 1;
 }
 
 .radar_label_main {
@@ -1095,11 +1114,13 @@ body {
 }
 
 /* radar_label 호버 시에만 색상 변경 */
-.radar_chart_area .radar_label:hover .radar_label_main {
+.radar_chart_area .radar_label:hover .radar_label_main,
+.radar_chart_area .radar_label.active .radar_label_main {
     color: #6E42D9 !important;
 }
 
-.radar_chart_area .radar_label:hover .radar_label_sub {
+.radar_chart_area .radar_label:hover .radar_label_sub,
+.radar_chart_area .radar_label.active .radar_label_sub{
     color: #9A7CE3 !important;
 }
 

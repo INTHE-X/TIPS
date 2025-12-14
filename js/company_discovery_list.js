@@ -346,7 +346,7 @@ const generalCompaniesData = [
         "representative": "이석우",
         "foundedDate": "2019-08-01",
         "stage": "성장",
-        "dashboardType": 5
+        "dashboardType": null
     },
     {
         "id": 2,
@@ -394,14 +394,14 @@ const generalCompaniesData = [
     },
     {
         "id": 6,
-        "name": "노머스",
-        "bgImage": "../img/company_list/bg6.png",
-        "rank": "TOP 0.7%",
+        "name": "시너지엠",
+        "bgImage": "../img/sub/bg6.png",
+        "rank": "TOP 0.3%",
         "grade": 1,
-        "representative": "김영준",
-        "foundedDate": "2019-03-18",
+        "representative": "구수룡",
+        "foundedDate": "2019-05-09",
         "stage": "성장",
-        "dashboardType": null
+        "dashboardType": 5
     },
     {
         "id": 7,

@@ -283,6 +283,30 @@ body {
     overflow: hidden;
 }
 
+.card-button:hover{
+    transform: scale(1.05);
+}
+
+.discovery-card:nth-child(1) .card-button{
+    width: 129.11px;
+    background: #2764DD;
+}
+
+.discovery-card:nth-child(1) .btn-text-ready{
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    display: none;
+}
+
+.discovery-card:nth-child(1) .btn-text-start{
+    position: static;
+    left: 0;
+    top: 0;
+    opacity: 1;
+}
+
 /* 버튼 텍스트 스타일 */
 .btn-text-ready,
 .btn-text-start {
@@ -312,7 +336,7 @@ body {
 }
 
 .discovery-card:first-child:hover .card-button {
-    background: #2764DD;
+    transform: scale(1.05);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 

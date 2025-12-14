@@ -19,30 +19,30 @@ document.addEventListener('DOMContentLoaded', () => {
 // ================================
 const stepsData = [
     {
-        title: '벤치마킹 기업 정의',
+        title: 'TIPS 성공 사례 학습',
         description:
-            '미래 성장 모형은 IBK데이터베이스에서 과거 성공사례 30개를 선정하고,<br>해당 중소기업들의 성장 과정을 분석하여 공통적인 성공 패턴을 도출했습니다.',
+            '투자유치형 관점에서 TIPS 출신 업력 7년 이상의 핵심 성공 사례 30개 기업을 선정하여 빅데이터 기반의 조사를 수행합니다.',
         video: '../img/company_discovery/loading_step1.mp4',
         stayTime: 13000
     },
     {
-        title: '성공 DNA 추출',
+        title: 'TIPS 성장 요인 추출',
         description:
-            '벤치마킹 과정을 통해 대체 데이터 라이브러리에서 14개의<br>공통 핵심 성장 요인과 107개의 잠재적 성장 DNA가 추출되었습니다.',
+            'TIPS 핵심 성공 사례의 공통적인 성장 패턴과 성공 요인을 잠재 변수로 개발하여 제시합니다.',
         video: '../img/company_discovery/loading_step2.mp4',
         stayTime: 9000
     },
     {
-        title: '성공 DNA 검증',
+        title: 'TIPS 성장 요인 검증',
         description:
-            '벤치마킹 과정을 통해 대체 데이터 라이브러리에서 14개의<br> 공통 핵심 성장 요인과 107개의 잠재적 성장 DNA가 추출되었습니다.',
+            '통계적 유의성 검증을 통해 실질적인 성공 요인을 선별하고,<br> 개별 변수로서의 중요도에 따른 가중치를 부여합니다.',
         video: '../img/company_discovery/loading_step3.mp4',
         stayTime: 6000
     },
     {
-        title: '유망 기업 발굴',
+        title: 'TIPS MRI 진단',
         description:
-            '미래성장모형을 IBK 데이터베이스에 등록된 74,394개<br>기업에 적용하였으며, 그중 선택된 산업 분야에서<br> 점수가 가장 높은 상위 30개 기업이 선정되었습니다.',
+            '인공지능 모형에 의거하여 TIPS 선정 및 잠재 TIPS 후보 기업들을 진단하고, <br> 향후 성장 지원을 위한 AI Agent 기반의 시사점을 제공합니다.',
         video: '../img/company_discovery/loading_step4.mp4',
         stayTime: 6000
     }
@@ -117,7 +117,7 @@ function changeStep(stepIndex) {
                 if (currentStep < stepsData.length - 1) {
                     changeStep(currentStep + 1);
                 } else {
-                    goNextPage();
+                    onAllAnimationsComplete();
                 }
             }, durationMs);
         };
@@ -157,19 +157,30 @@ function animateStepLine(item) {
 // ================================
 // 마지막 페이지 전환
 // ================================
-function goNextPage() {
-    let overlay = document.querySelector('.page-transition-overlay');
+// function goNextPage() {
+//     let overlay = document.querySelector('.page-transition-overlay');
 
-    if (!overlay) {
-        overlay = document.createElement('div');
-        overlay.className = 'page-transition-overlay';
-        document.body.appendChild(overlay);
-    }
+//     if (!overlay) {
+//         overlay = document.createElement('div');
+//         overlay.className = 'page-transition-overlay';
+//         document.body.appendChild(overlay);
+//     }
 
-    overlay.classList.remove('fade-out');
-    overlay.classList.add('fade-in');
+//     overlay.classList.remove('fade-out');
+//     overlay.classList.add('fade-in');
 
+//     setTimeout(() => {
+//         location.href = 'company_discovery_after.html';
+//     }, 600);
+// }
+
+function onAllAnimationsComplete() {
+    // 특정 div에 클래스 추가
+    const targetDiv = document.querySelector('.step_link');
     setTimeout(() => {
-        location.href = 'company_discovery_after.html';
-    }, 600);
+        if (targetDiv) {
+            targetDiv.classList.add('active');
+        }
+    }, 300);
+
 }

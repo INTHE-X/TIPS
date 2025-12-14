@@ -249,7 +249,6 @@ timings.forEach(function(percent, index) {
 
 const table = document.querySelectorAll('.distr_graph table');
 
-setTimeout(() => {
     table.forEach(table => {
 if (!table) return;
 
@@ -283,7 +282,6 @@ rows.forEach((tr, rowIndex) => {
   });
 });
 });
-}, 9100);
 
 
 

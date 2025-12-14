@@ -165,6 +165,17 @@ body {
     justify-content: center;
 }
 
+.company_logo_area::after{
+    display: block;
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(to top, rgba(255, 255, 255, 1), transparent);
+}
+
 .company_logo_area .bg_img {
     position: absolute;
     top: 0;
@@ -421,6 +432,7 @@ body {
 .recommend_header {
     position: relative;
     padding-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 .recommend_header::after {
@@ -435,7 +447,7 @@ body {
 
 
 .recommend_title .company {
-    display: block;
+    display: none;
     font-size: 18px;
     color: #70757C;
     font-weight: 700;
@@ -483,6 +495,7 @@ body {
 }
 
 .mindmap_label {
+    display: none;
     font-size: 14px;
     font-weight: 600;
     color: #5E5E5E;
@@ -525,6 +538,7 @@ body {
     cursor: pointer;
     position: relative;
     opacity: 0;
+    visibility: hidden;
     transform: translateX(-20px);
     transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s ease;
     z-index: 100;
@@ -566,12 +580,10 @@ body {
 
 .recommend_list li.animate {
     opacity: 1;
+    visibility: visible;
     transform: translateX(0);
 }
 
-.connection_lines path.animate {
-    stroke-dashoffset: 0;
-}
 
 .center_node {
     width: 200px;
@@ -624,6 +636,10 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+.recommend_list li:not(.active) .recommend_icon .circle_chart{
+    filter: grayscale(100%) brightness(0.9);
 }
 
 .recommend_icon .icon_image {
@@ -966,6 +982,10 @@ body {
     color: #252525;
     margin-bottom: 6px;
     word-break: break-all;
+    /* min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; */
 }
 
 .popup_title p {
@@ -1025,10 +1045,7 @@ body {
     color: #000;
     padding-bottom: 10px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-    text-align: right;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    text-align: left;
     margin: 0;
 }
 
@@ -1041,6 +1058,17 @@ body {
 .popup_content dd:last-child {
     border-bottom: none;
     padding-bottom: 0;
+}
+
+.popup_content dl dd:first-of-type,
+.popup_content dl dd:nth-of-type(2)
+{
+    display: block;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
 }
 
 /* #nav ul li.active a,
