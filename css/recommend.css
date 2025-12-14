@@ -213,6 +213,7 @@ body {
     color: #000;
     line-height: 1.6;
     margin-bottom: 37px;
+    height: 65px;
 
 }
 
@@ -332,6 +333,7 @@ body {
     font-weight: 600;
     color: #FFFFFF !important;
     margin: 0 0 6px 0;
+    text-transform: uppercase;
 }
 
 .grade_value {
@@ -638,7 +640,7 @@ body {
     height: 100%;
 }
 
-.recommend_list li:not(.active) .recommend_icon .circle_chart{
+.recommend_list li:not(.active) .recommend_icon{
     filter: grayscale(100%) brightness(0.9);
 }
 
@@ -822,9 +824,17 @@ body {
 }
 
 .center_node img {
-    max-width: 80px;
-    max-height: 18px;
+    height: 90px;
     object-fit: contain;
+}
+
+.center_node.gray img {
+     filter: grayscale(100%) brightness(0.8);
+     -webkit-filter: grayscale(100%) brightness(0.8);
+}
+
+.center_node.invert img {
+    filter: brightness(0) invert(1);
 }
 
 .center_node.purple,
