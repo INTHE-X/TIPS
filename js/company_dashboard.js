@@ -1,19 +1,40 @@
 const getAnimationDelay = () => {
-    // sessionStorage에서 네비게이션 진입 여부 확인
     const fromNavigation = sessionStorage.getItem('fromNavigation');
     
+    // 내부 네비게이션 플래그 체크
     if (fromNavigation === 'true') {
-        // 네비게이션으로 진입한 경우
-        sessionStorage.removeItem('fromNavigation'); // 사용 후 제거
-        
-        const navDelay = document.body.getAttribute('data-recommend-delay-from-dashboard-navigation');
-        return parseInt(navDelay || '0', 10);
-    } else {
-        // 일반 진입인 경우
-        const bodyDelay = document.body.getAttribute('data-recommend-delay');
-        const containerDelay = document.querySelector('.radar_chart_area')?.getAttribute('data-recommend-delay');
-        return parseInt(containerDelay || bodyDelay || '3100', 10);
+        sessionStorage.removeItem('fromNavigation');
+        return 0;
     }
+    
+    // 새로고침 감지 (sessionStorage 활용)
+    const pageLoaded = sessionStorage.getItem('pageLoaded');
+    if (pageLoaded === 'true') {
+        // 이미 한번 로드된 적 있음 = 새로고침
+        return 0;
+    }
+    
+    // 첫 방문 표시
+    sessionStorage.setItem('pageLoaded', 'true');
+    
+    // referrer로 진입 경로 판단
+    const currentDomain = window.location.hostname;
+    let referrerDomain = '';
+    try {
+        if (document.referrer) {
+            referrerDomain = new URL(document.referrer).hostname;
+        }
+    } catch (e) {}
+    
+    // 같은 도메인에서 온 경우 (내부 이동)
+    if (referrerDomain === currentDomain && referrerDomain !== '') {
+        return 0;
+    }
+    
+    // 외부 링크 또는 직접 입력으로 첫 진입
+    const bodyDelay = document.body.getAttribute('data-recommend-delay');
+    const containerDelay = document.querySelector('.radar_chart_area')?.getAttribute('data-recommend-delay');
+    return parseInt(containerDelay || bodyDelay || '3100', 10);
 };
 
 const ANIMATION_DELAY = getAnimationDelay();

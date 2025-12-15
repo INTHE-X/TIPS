@@ -194,29 +194,31 @@ $(function () {
             });
 
             const drawBar = (li, isLeft) => {
-                const liRect = li.getBoundingClientRect();
-                const x = isLeft ? liRect.right - rect.left + GAP : liRect.left - rect.left - GAP;
-                const y = liRect.top + liRect.height / 2 - rect.top;
-                const score = parseFloat(li.dataset.originalScore || getMatchScore(li));
-                const strokeWidth = calculateStrokeWidth(score);
-                const bar = document.createElementNS(svgNS, 'path');
-                bar.setAttribute('d', `M ${x} ${y - strokeWidth/2} L ${x} ${y + strokeWidth/2}`);
-                bar.setAttribute('class', `color-bar ${isLeft ? 'left-color' : 'right-color'}`);
-                bar.setAttribute(isLeft ? 'data-from' : 'data-to', li.dataset.id);
-                
-                // 초기 색상은 모두 #666
-                bar.style.stroke = '#666';
-                
-                // 최종 색상을 data 속성으로 저장
-                if (score >= 60) {
-                    bar.dataset.activeColor = isLeft ? '#5A2FB8' : '#1B55AB';
-                } else {
-                    bar.dataset.activeColor = '#666';
-                }
-                
-                bar.style.opacity = isInitialLoad ? '0' : '1';
-                svg.appendChild(bar);
-            };
+    const liRect = li.getBoundingClientRect();
+    const x = isLeft ? liRect.right - rect.left + GAP : liRect.left - rect.left - GAP;
+    const y = liRect.top + liRect.height / 2 - rect.top;
+    const score = parseFloat(li.dataset.originalScore || getMatchScore(li));
+    const strokeWidth = calculateStrokeWidth(score);
+    const bar = document.createElementNS(svgNS, 'path');
+    bar.setAttribute('d', `M ${x} ${y - strokeWidth/2} L ${x} ${y + strokeWidth/2}`);
+    bar.setAttribute('class', `color-bar ${isLeft ? 'left-color' : 'right-color'}`);
+    bar.setAttribute(isLeft ? 'data-from' : 'data-to', li.dataset.id);
+    
+    // 최종 색상 결정
+    const activeColor = score >= 60 ? (isLeft ? '#5A2FB8' : '#1B55AB') : '#666';
+    bar.dataset.activeColor = activeColor;
+    
+    // isInitialLoad가 아니면 (resize 시) 바로 최종 색상 적용
+    if (isInitialLoad) {
+        bar.style.stroke = '#666';
+        bar.style.opacity = '0';
+    } else {
+        bar.style.stroke = activeColor;
+        bar.style.opacity = '1';
+    }
+    
+    svg.appendChild(bar);
+};
             operatorList.forEach(li => drawBar(li, true));
             productList.forEach(li => drawBar(li, false));
 
