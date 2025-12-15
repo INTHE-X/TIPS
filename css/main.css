@@ -3132,6 +3132,7 @@
     display: flex;
     justify-content: flex-start;
     margin-bottom: 28px;
+    display: none;
 }
 
 .cim_chart_colorDesc ul{
@@ -3184,7 +3185,8 @@
 
 .risk_table_area .cim_table_box table thead th:first-child,
 .risk_table_area .cim_table_box table tbody th{
-    width: 73px;
+    /* width: 73px; */
+    width: 96px;
     word-break: keep-all;
 }
 
@@ -3207,7 +3209,8 @@
 
 .risk_table_area .cim_table_box table tbody td:last-child,
 .risk_table_area .cim_table_box table thead th:last-child{
-    margin-right: 6px;
+    /* margin-right: 6px; */
+    margin-right: 33px;
 }
 
 .risk_table_area .cim_table_box table thead th:not(:first-child){
@@ -3301,7 +3304,7 @@
     width: 100%;
     border-radius: 20px;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 20px 0 6px 0;
+    padding: 20px 0 10px 0;
     overflow: hidden;
 }
 

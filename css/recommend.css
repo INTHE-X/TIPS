@@ -680,12 +680,12 @@ body {
 
 .recommend_list li.active .recommend_info .name,
 .recommend_list li:hover .recommend_info .name {
-    color: #6E42D9
+    color: #6E42D9;
 }
 
 .recommend_list li.active .recommend_info .score strong,
 .recommend_list li:hover .recommend_info .score strong {
-    color: #6E42D9
+    color: #6E42D9;
 }
 
 .mindmap_right .recommend_list li.active .recommend_info .name,
@@ -808,7 +808,6 @@ body {
 .center_node {
     width: 200px;
     height: 200px;
-    background: #333333E5;
     border-radius: 60px;
     display: flex;
     align-items: center;
@@ -821,9 +820,29 @@ body {
     transition: all 0.4s ease;
     opacity: 1;
     transform: scale(1);
+    overflow: hidden;
+}
+
+.center_node::after{
+    display: block;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(110, 66, 217, 1), rgba(34, 106, 214, 1));
+    opacity: 0;
+    transition: all .3s ease;
+}
+
+.center_node.active::after{
+    opacity: 1;
 }
 
 .center_node img {
+    position: relative;
+    z-index: 1;
     height: 90px;
     object-fit: contain;
 }
@@ -957,7 +976,7 @@ body {
 .popup_header {
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 16px;
     padding: 16px 16px 16px 16px;
     border-bottom: none;
     margin-bottom: 20px;
@@ -967,8 +986,8 @@ body {
 }
 
 .popup_icon {
-    width: 64px;
-    height: 64px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     background: #F5F5F7;
     display: flex;
@@ -1004,6 +1023,9 @@ body {
     color: #70757C66;
     line-height: 1.5;
     overflow: visible;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.5px;
 }
 
 .popup_title p span {
@@ -1013,9 +1035,18 @@ body {
 }
 
 .popup_title p span:not(.divider) {
+    display: inline-block;
+    max-width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     color: #70757C;
     font-weight: 500;
     margin-left: 6px;
+}
+
+.popup_title p span:first-child{
+    margin-right: 0;
 }
 
 .popup_title p .divider {
@@ -1038,6 +1069,7 @@ body {
     gap: 0;
     row-gap: 14px;
     margin-bottom: 10px;
+    padding: 0 10px;
 }
 
 .popup_content dt {
@@ -1045,7 +1077,6 @@ body {
     font-weight: 500;
     color: #70757C;
     padding-bottom: 10px;
-    margin-left: 10px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
@@ -1103,8 +1134,7 @@ body {
     border-radius: 20px;
     flex-direction: column;
     position: relative;
-    margin-right: 10px;
-    margin-bottom: 20px;
+    margin: 0 !important;
 }
 
 .recommend_chart_area::before {
@@ -1140,8 +1170,9 @@ body {
 }
 
 .recommend_info .name {
+    display: inline-block;
     white-space: nowrap;
-    max-width: 160px;
+    max-width: 180px;
     overflow: hidden;
     text-overflow: ellipsis;
 }

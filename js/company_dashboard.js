@@ -1,3 +1,23 @@
+const getAnimationDelay = () => {
+    // sessionStorage에서 네비게이션 진입 여부 확인
+    const fromNavigation = sessionStorage.getItem('fromNavigation');
+    
+    if (fromNavigation === 'true') {
+        // 네비게이션으로 진입한 경우
+        sessionStorage.removeItem('fromNavigation'); // 사용 후 제거
+        
+        const navDelay = document.body.getAttribute('data-recommend-delay-from-dashboard-navigation');
+        return parseInt(navDelay || '0', 10);
+    } else {
+        // 일반 진입인 경우
+        const bodyDelay = document.body.getAttribute('data-recommend-delay');
+        const containerDelay = document.querySelector('.radar_chart_area')?.getAttribute('data-recommend-delay');
+        return parseInt(containerDelay || bodyDelay || '3100', 10);
+    }
+};
+
+const ANIMATION_DELAY = getAnimationDelay();
+
 // Inner Expand Plugin (안쪽으로만 확대) - 클릭 시 고정
 const innerExpandPlugin = {
     id: 'innerExpand',
@@ -321,7 +341,7 @@ document.addEventListener('DOMContentLoaded', function () {
         plugins: [innerExpandPlugin]
     });
 
-    // 3.1초 후 색상 애니메이션 시작
+    // ANIMATION_DELAY 후 색상 애니메이션 시작
     setTimeout(() => {
         // 색상으로 변경하고 애니메이션 활성화
         successChart.data.datasets[0].backgroundColor = factorsData.colors;
@@ -342,7 +362,7 @@ document.addEventListener('DOMContentLoaded', function () {
             updateActiveItem(0, true); // skipGauges = true로 호출
         }, 1000);
         
-    }, 3100);
+    }, ANIMATION_DELAY);
 });
 
 // ==================== F1~F8 라벨 배치 ====================
@@ -531,10 +551,239 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }, 1000);
         
-    }, 3100);
-
+    }, ANIMATION_DELAY);
 });
 
+// ==================== Gauge Chart ====================
+function createGauge(svgId, targetScore = 91, colorScheme = 'blue', duration = 1500, animate = true) {
+    const svg = document.getElementById(svgId);
+    if (!svg) return;
+    
+    svg.innerHTML = "";
+
+    const centerX = 100;
+    const centerY = 120;
+    const innerRadius = 55;
+    const outerRadius = 90;
+
+    const startAngle = 180;
+    const endAngle = 0;
+    const totalAngle = startAngle - endAngle;
+    const totalSegments = 14;
+    const segmentAngle = totalAngle / totalSegments;
+    const gapAngle = 2.5;
+
+    const colorSchemes = {
+        blue: { start: { r: 144, g: 188, b: 255 }, end: { r: 54, g: 111, b: 198 } },
+        purple: { start: { r: 203, g: 182, b: 255 }, end: { r: 110, g: 66, b: 217 } },
+        cyan: { start: { r: 127, g: 228, b: 238 }, end: { r: 0, g: 162, b: 182 } }
+    };
+
+    const colors = colorSchemes[colorScheme];
+    const segments = [];
+
+    for (let i = 0; i < totalSegments; i++) {
+        const startDeg = startAngle - (segmentAngle * i);
+        const endDeg = startDeg - segmentAngle + gapAngle;
+        const startRad = startDeg * Math.PI / 180;
+        const endRad = endDeg * Math.PI / 180;
+
+        const x1Inner = centerX + innerRadius * Math.cos(startRad);
+        const y1Inner = centerY - innerRadius * Math.sin(startRad);
+        const x2Inner = centerX + innerRadius * Math.cos(endRad);
+        const y2Inner = centerY - innerRadius * Math.sin(endRad);
+        const x1Outer = centerX + outerRadius * Math.cos(startRad);
+        const y1Outer = centerY - outerRadius * Math.sin(startRad);
+        const x2Outer = centerX + outerRadius * Math.cos(endRad);
+        const y2Outer = centerY - outerRadius * Math.sin(endRad);
+
+        const pathData = `M ${x1Inner} ${y1Inner} L ${x1Outer} ${y1Outer} A ${outerRadius} ${outerRadius} 0 0 0 ${x2Outer} ${y2Outer} L ${x2Inner} ${y2Inner} A ${innerRadius} ${innerRadius} 0 0 1 ${x1Inner} ${y1Inner} Z`;
+
+        const segment = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        segment.setAttribute("d", pathData.trim());
+        segment.setAttribute("fill", "#D7D7D7");
+        svg.appendChild(segment);
+
+        segments.push({ element: segment, startDeg, endDeg, startRad, endRad, x1Inner, y1Inner, x2Inner, y2Inner, x1Outer, y1Outer, x2Outer, y2Outer, pathData });
+    }
+
+    // 애니메이션을 취소할 수 있도록 저장
+    svg._animationFrameId = null;
+
+    // 애니메이션이 false이면 바로 리턴 (회색 상태 유지)
+    if (!animate) {
+        return;
+    }
+
+    let startTime = null;
+    let lastProgress = -1; // 진행률 추적 추가
+    
+    function animateGauge(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        
+        // 진행률이 변하지 않으면 건너뛰기 (불필요한 렌더링 방지)
+        if (Math.abs(progress - lastProgress) < 0.001 && progress < 1) {
+            svg._animationFrameId = requestAnimationFrame(animateGauge);
+            return;
+        }
+        lastProgress = progress;
+        
+        const currentScore = progress * targetScore;
+        const exactFill = (currentScore / 100) * totalSegments;
+        const filledSegments = Math.floor(exactFill);
+        const partialFill = exactFill - filledSegments;
+
+        segments.forEach((seg, i) => {
+            // 색상 계산을 totalSegments 기준으로 정규화
+            const t = Math.min(i / (totalSegments - 1), 1);
+            const r = Math.round(colors.start.r + t * (colors.end.r - colors.start.r));
+            const g = Math.round(colors.start.g + t * (colors.end.g - colors.start.g));
+            const b = Math.round(colors.start.b + t * (colors.end.b - colors.start.b));
+
+            if (i < filledSegments) {
+                // 완전히 채워진 세그먼트
+                seg.element.setAttribute("d", seg.pathData.trim());
+                seg.element.setAttribute("fill", `rgb(${r},${g},${b})`);
+                if (seg.grayElement) { 
+                    seg.grayElement.remove(); 
+                    seg.grayElement = null; 
+                }
+            } else if (i === filledSegments && partialFill > 0) {
+                // 부분적으로 채워진 세그먼트
+                const partialAngleDeg = seg.startDeg - (segmentAngle - gapAngle) * partialFill;
+                const partialAngleRad = partialAngleDeg * Math.PI / 180;
+                const xPartialInner = centerX + innerRadius * Math.cos(partialAngleRad);
+                const yPartialInner = centerY - innerRadius * Math.sin(partialAngleRad);
+                const xPartialOuter = centerX + outerRadius * Math.cos(partialAngleRad);
+                const yPartialOuter = centerY - outerRadius * Math.sin(partialAngleRad);
+
+                const colorPath = `M ${seg.x1Inner} ${seg.y1Inner} L ${seg.x1Outer} ${seg.y1Outer} A ${outerRadius} ${outerRadius} 0 0 0 ${xPartialOuter} ${yPartialOuter} L ${xPartialInner} ${yPartialInner} A ${innerRadius} ${innerRadius} 0 0 1 ${seg.x1Inner} ${seg.y1Inner} Z`;
+                seg.element.setAttribute("d", colorPath.trim());
+                seg.element.setAttribute("fill", `rgb(${r},${g},${b})`);
+
+                if (!seg.grayElement) {
+                    seg.grayElement = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                    svg.appendChild(seg.grayElement);
+                }
+                const grayPath = `M ${xPartialInner} ${yPartialInner} L ${xPartialOuter} ${yPartialOuter} A ${outerRadius} ${outerRadius} 0 0 0 ${seg.x2Outer} ${seg.y2Outer} L ${seg.x2Inner} ${seg.y2Inner} A ${innerRadius} ${innerRadius} 0 0 1 ${xPartialInner} ${yPartialInner} Z`;
+                seg.grayElement.setAttribute("d", grayPath.trim());
+                seg.grayElement.setAttribute("fill", "#D7D7D7");
+            } else {
+                // 채워지지 않은 세그먼트
+                seg.element.setAttribute("d", seg.pathData.trim());
+                seg.element.setAttribute("fill", "#D7D7D7");
+                if (seg.grayElement) { 
+                    seg.grayElement.remove(); 
+                    seg.grayElement = null; 
+                }
+            }
+        });
+
+        if (progress < 1) {
+            svg._animationFrameId = requestAnimationFrame(animateGauge);
+        } else {
+            // 애니메이션 완료 시 최종 상태 강제 설정
+            const finalExactFill = (targetScore / 100) * totalSegments;
+            const finalFilledSegments = Math.floor(finalExactFill);
+            const finalPartialFill = finalExactFill - finalFilledSegments;
+            
+            segments.forEach((seg, i) => {
+                const t = Math.min(i / (totalSegments - 1), 1);
+                const r = Math.round(colors.start.r + t * (colors.end.r - colors.start.r));
+                const g = Math.round(colors.start.g + t * (colors.end.g - colors.start.g));
+                const b = Math.round(colors.start.b + t * (colors.end.b - colors.start.b));
+
+                if (i < finalFilledSegments) {
+                    seg.element.setAttribute("d", seg.pathData.trim());
+                    seg.element.setAttribute("fill", `rgb(${r},${g},${b})`);
+                    if (seg.grayElement) { 
+                        seg.grayElement.remove(); 
+                        seg.grayElement = null; 
+                    }
+                } else if (i === finalFilledSegments && finalPartialFill > 0.01) { // 0.01 이상일 때만 부분 표시
+                    const partialAngleDeg = seg.startDeg - (segmentAngle - gapAngle) * finalPartialFill;
+                    const partialAngleRad = partialAngleDeg * Math.PI / 180;
+                    const xPartialInner = centerX + innerRadius * Math.cos(partialAngleRad);
+                    const yPartialInner = centerY - innerRadius * Math.sin(partialAngleRad);
+                    const xPartialOuter = centerX + outerRadius * Math.cos(partialAngleRad);
+                    const yPartialOuter = centerY - outerRadius * Math.sin(partialAngleRad);
+
+                    const colorPath = `M ${seg.x1Inner} ${seg.y1Inner} L ${seg.x1Outer} ${seg.y1Outer} A ${outerRadius} ${outerRadius} 0 0 0 ${xPartialOuter} ${yPartialOuter} L ${xPartialInner} ${yPartialInner} A ${innerRadius} ${innerRadius} 0 0 1 ${seg.x1Inner} ${seg.y1Inner} Z`;
+                    seg.element.setAttribute("d", colorPath.trim());
+                    seg.element.setAttribute("fill", `rgb(${r},${g},${b})`);
+
+                    if (!seg.grayElement) {
+                        seg.grayElement = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                        svg.appendChild(seg.grayElement);
+                    }
+                    const grayPath = `M ${xPartialInner} ${yPartialInner} L ${xPartialOuter} ${yPartialOuter} A ${outerRadius} ${outerRadius} 0 0 0 ${seg.x2Outer} ${seg.y2Outer} L ${seg.x2Inner} ${seg.y2Inner} A ${innerRadius} ${innerRadius} 0 0 1 ${xPartialInner} ${yPartialInner} Z`;
+                    seg.grayElement.setAttribute("d", grayPath.trim());
+                    seg.grayElement.setAttribute("fill", "#D7D7D7");
+                } else {
+                    seg.element.setAttribute("d", seg.pathData.trim());
+                    seg.element.setAttribute("fill", "#D7D7D7");
+                    if (seg.grayElement) { 
+                        seg.grayElement.remove(); 
+                        seg.grayElement = null; 
+                    }
+                }
+            });
+        }
+    }
+    
+    // 이전 애니메이션 취소
+    if (svg._animationFrameId) {
+        cancelAnimationFrame(svg._animationFrameId);
+    }
+    
+    svg._animationFrameId = requestAnimationFrame(animateGauge);
+}
+
+// 게이지 업데이트 함수 (전역 함수로 선언하여 외부 JS에서 호출 가능)
+function updateGauges(labelText) {
+    const data = gaugeDataByLabel[labelText];
+    if (!data) return;
+
+    // gauge_number 텍스트 업데이트
+    const gaugeNumbers = document.querySelectorAll('.gauge_number');
+    gaugeNumbers.forEach((el, index) => {
+        if (data.values[index] !== undefined) {
+            el.textContent = data.values[index];
+        }
+    });
+
+    // 게이지 차트 재생성 (애니메이션 활성화)
+    createGauge("gauge1", data.values[0], data.colors[0], 1500, true);
+    createGauge("gauge2", data.values[1], data.colors[1], 1500, true);
+    createGauge("gauge3", data.values[2], data.colors[2], 1500, true);
+}
+
+// 초기 로드 시 F1 데이터로 시작 (애니메이션 없이 회색 상태)
+// DOM이 완전히 로드된 후 실행
+document.addEventListener('DOMContentLoaded', function() {
+    // 페이지 로드 즉시 F1 값으로 gauge_number 텍스트 설정
+    const gaugeNumbers = document.querySelectorAll('.gauge_number');
+    gaugeNumbers.forEach((el, index) => {
+        if (gaugeDataByLabel['F1'].values[index] !== undefined) {
+            el.textContent = gaugeDataByLabel['F1'].values[index];
+        }
+    });
+
+    // 회색 게이지 생성
+    createGauge("gauge1", gaugeDataByLabel['F1'].values[0], "blue", 1500, false);
+    createGauge("gauge2", gaugeDataByLabel['F1'].values[1], "purple", 1500, false);
+    createGauge("gauge3", gaugeDataByLabel['F1'].values[2], "cyan", 1500, false);
+
+    // ANIMATION_DELAY 후 애니메이션 시작 (다른 요소들과 동기화)
+    setTimeout(() => {
+        createGauge("gauge1", gaugeDataByLabel['F1'].values[0], "blue", 1500, true);
+        createGauge("gauge2", gaugeDataByLabel['F1'].values[1], "purple", 1500, true);
+        createGauge("gauge3", gaugeDataByLabel['F1'].values[2], "cyan", 1500, true);
+    }, ANIMATION_DELAY);
+});
+
+// 비디오 재생도 ANIMATION_DELAY 사용
 setTimeout(function() {
     const video = document.getElementById('radarVideo');
     if (video) {
@@ -545,4 +794,54 @@ setTimeout(function() {
     } else {
         console.error('Video element not found');
     }
-}, 3100);
+}, ANIMATION_DELAY);
+
+// 네비게이션 버튼
+$(function () {
+    const maxPage = 4;
+    const path = window.location.pathname;
+    const file = path.substring(path.lastIndexOf('/') + 1);
+    const match = file.match(/company_dashboard_(\d+)\.html/);
+
+    if (match) {
+        const currentIndex = Number(match[1]);
+
+        // company_dashboard_5.html인 경우 버튼 비활성화
+        if (currentIndex === 5) {
+            $('.btn_next, .btn_prev').on('click', function (e) {
+                e.preventDefault();
+                return false;
+            });
+            
+            // 선택적: 버튼 스타일 변경으로 비활성화 표시
+            $('.btn_next, .btn_prev').css({
+                'opacity': '0.5',
+                'cursor': 'pointer'
+            });
+            
+            return;
+        }
+
+        $('.btn_next').on('click', function () {
+            const nextIndex = currentIndex === maxPage ? 1 : currentIndex + 1;
+            
+            // 1번 페이지로 가는 경우만 표시
+            if (nextIndex === 1) {
+                sessionStorage.setItem('fromNavigation', 'true');
+            }
+            
+            window.location.href = `company_dashboard_${nextIndex}.html`;
+        });
+
+        $('.btn_prev').on('click', function () {
+            const prevIndex = currentIndex === 1 ? maxPage : currentIndex - 1;
+            
+            // 1번 페이지로 가는 경우만 표시
+            if (prevIndex === 1) {
+                sessionStorage.setItem('fromNavigation', 'true');
+            }
+            
+            window.location.href = `company_dashboard_${prevIndex}.html`;
+        });
+    }
+});

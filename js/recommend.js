@@ -30,54 +30,93 @@ $(function () {
             const scoreElement = li.querySelector('.score strong');
             if (!scoreElement) return 0;
             const scoreText = scoreElement.textContent.replace('%', '').trim();
-            return parseInt(scoreText) || 0;
+            return parseFloat(scoreText) || 0;
         }
 
         function calculateStrokeWidth(score) {
-            return score <= 50 ? 20 : 20 + ((score - 50) / 50) * 30;
+            return score <= 60 ? 20 : 20 + ((score - 60) / 40) * 30;
+        }
+
+        // 각 li의 원래 적합도 숫자 저장
+        function storeOriginalScores() {
+            const allLi = document.querySelectorAll('#operatorList li, #productList li');
+            allLi.forEach(li => {
+                const scoreElement = li.querySelector('.score strong');
+                if (scoreElement) {
+                    const originalScore = scoreElement.textContent.replace('%', '').trim();
+                    li.dataset.originalScore = originalScore;
+                    scoreElement.textContent = '0%';
+                }
+            });
+        }
+
+        // 숫자 카운팅 애니메이션
+        function animateScore(element, targetScore, duration = 2000) {
+            const start = 0;
+            const end = parseFloat(targetScore);
+            const startTime = performance.now();
+
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // easeOutCubic
+                const easeProgress = 1 - Math.pow(1 - progress, 3);
+                const currentValue = start + (end - start) * easeProgress;
+                
+                element.textContent = Math.round(currentValue) + '%';
+                
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    element.textContent = Math.round(end) + '%';
+                }
+            }
+            
+            requestAnimationFrame(update);
         }
 
         let defs = svg.querySelector('defs') || document.createElementNS(svgNS, 'defs');
         if (!svg.querySelector('defs')) svg.appendChild(defs);
 
         function setupGradients(rect, centerX) {
-    let defs = svg.querySelector('defs') || document.createElementNS(svgNS, 'defs');
-    if (!svg.querySelector('defs')) svg.appendChild(defs);
+            let defs = svg.querySelector('defs') || document.createElementNS(svgNS, 'defs');
+            if (!svg.querySelector('defs')) svg.appendChild(defs);
 
-    // 왼쪽 그라디언트
-    let gLeft = document.getElementById('gradientLeft');
-    if (!gLeft) {
-        gLeft = document.createElementNS(svgNS, 'linearGradient');
-        gLeft.setAttribute('id', 'gradientLeft');
-        gLeft.setAttribute('gradientUnits', 'objectBoundingBox'); // 변경!
-        defs.appendChild(gLeft);
-    }
-    gLeft.setAttribute('x1', '0');
-    gLeft.setAttribute('y1', '0');
-    gLeft.setAttribute('x2', '1'); // 0~1 범위로 변경
-    gLeft.setAttribute('y2', '0');
-    gLeft.innerHTML = `
-        <stop offset="0%" style="stop-color:#6E42D9;stop-opacity:1" />
-        <stop offset="100%" style="stop-color:#E8E3F5;stop-opacity:1" />
-    `;
+            // 왼쪽 그라디언트
+            let gLeft = document.getElementById('gradientLeft');
+            if (!gLeft) {
+                gLeft = document.createElementNS(svgNS, 'linearGradient');
+                gLeft.setAttribute('id', 'gradientLeft');
+                gLeft.setAttribute('gradientUnits', 'objectBoundingBox');
+                defs.appendChild(gLeft);
+            }
+            gLeft.setAttribute('x1', '0');
+            gLeft.setAttribute('y1', '0');
+            gLeft.setAttribute('x2', '1');
+            gLeft.setAttribute('y2', '0');
+            gLeft.innerHTML = `
+                <stop offset="0%" style="stop-color:#6E42D9;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#E8E3F5;stop-opacity:1" />
+            `;
 
-    // 오른쪽 그라디언트
-    let gRight = document.getElementById('gradientRight');
-    if (!gRight) {
-        gRight = document.createElementNS(svgNS, 'linearGradient');
-        gRight.setAttribute('id', 'gradientRight');
-        gRight.setAttribute('gradientUnits', 'objectBoundingBox'); // 변경!
-        defs.appendChild(gRight);
-    }
-    gRight.setAttribute('x1', '0'); // 0~1 범위로 변경
-    gRight.setAttribute('y1', '0');
-    gRight.setAttribute('x2', '1');
-    gRight.setAttribute('y2', '0');
-    gRight.innerHTML = `
-        <stop offset="0%" style="stop-color:#E3F2FD;stop-opacity:1" />
-        <stop offset="100%" style="stop-color:#226AD6;stop-opacity:1" />
-    `;
-}
+            // 오른쪽 그라디언트
+            let gRight = document.getElementById('gradientRight');
+            if (!gRight) {
+                gRight = document.createElementNS(svgNS, 'linearGradient');
+                gRight.setAttribute('id', 'gradientRight');
+                gRight.setAttribute('gradientUnits', 'objectBoundingBox');
+                defs.appendChild(gRight);
+            }
+            gRight.setAttribute('x1', '0');
+            gRight.setAttribute('y1', '0');
+            gRight.setAttribute('x2', '1');
+            gRight.setAttribute('y2', '0');
+            gRight.innerHTML = `
+                <stop offset="0%" style="stop-color:#E3F2FD;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#226AD6;stop-opacity:1" />
+            `;
+        }
 
         function drawConnections() {
             const GAP = 30;
@@ -94,14 +133,13 @@ $(function () {
             const centerX = centerRect.left + centerRect.width / 2 - rect.left;
             const centerY = centerRect.top + centerRect.height / 2 - rect.top;
 
-            // 그라디언트 재설정 (centerX 기준으로 좌우 분리)
             setupGradients(rect, centerX);
 
             const operatorList = document.querySelectorAll('#operatorList li');
             const productList = document.querySelectorAll('#productList li');
 
             const createPath = (li, isLeft, isHover) => {
-                const score = getMatchScore(li);
+                const score = parseFloat(li.dataset.originalScore || getMatchScore(li));
                 const strokeWidth = calculateStrokeWidth(score);
                 const liRect = li.getBoundingClientRect();
                 
@@ -114,10 +152,8 @@ $(function () {
                     const endX = centerX - GAP;
                     const c1 = startX + (endX - startX) * 0.4;
                     const c2 = startX + (endX - startX) * 0.6;
-                    d = `M ${isHover ? startX : endX} ${isHover ? startY : adjustedEndY} 
-                         C ${isHover ? c1 : c2} ${isHover ? startY : adjustedEndY}, 
-                           ${isHover ? c2 : c1} ${isHover ? adjustedEndY : startY}, 
-                           ${isHover ? endX : startX} ${isHover ? adjustedEndY : startY}`;
+                    d = `M ${endX} ${adjustedEndY} 
+                         C ${c2} ${adjustedEndY}, ${c1} ${startY}, ${startX} ${startY}`;
                 } else {
                     const startX = centerX + GAP;
                     const endX = liRect.left - rect.left - GAP;
@@ -148,7 +184,6 @@ $(function () {
                 return path;
             };
 
-            // 회색 선 및 그라디언트 선 생성
             operatorList.forEach(li => {
                 svg.appendChild(createPath(li, true, false));
                 svg.appendChild(createPath(li, true, true));
@@ -158,17 +193,27 @@ $(function () {
                 svg.appendChild(createPath(li, false, true));
             });
 
-            // color-bar
             const drawBar = (li, isLeft) => {
                 const liRect = li.getBoundingClientRect();
                 const x = isLeft ? liRect.right - rect.left + GAP : liRect.left - rect.left - GAP;
                 const y = liRect.top + liRect.height / 2 - rect.top;
-                const strokeWidth = calculateStrokeWidth(getMatchScore(li));
+                const score = parseFloat(li.dataset.originalScore || getMatchScore(li));
+                const strokeWidth = calculateStrokeWidth(score);
                 const bar = document.createElementNS(svgNS, 'path');
                 bar.setAttribute('d', `M ${x} ${y - strokeWidth/2} L ${x} ${y + strokeWidth/2}`);
                 bar.setAttribute('class', `color-bar ${isLeft ? 'left-color' : 'right-color'}`);
                 bar.setAttribute(isLeft ? 'data-from' : 'data-to', li.dataset.id);
-                bar.style.stroke = isLeft ? '#5A2FB8' : '#1B55AB';
+                
+                // 초기 색상은 모두 #666
+                bar.style.stroke = '#666';
+                
+                // 최종 색상을 data 속성으로 저장
+                if (score >= 60) {
+                    bar.dataset.activeColor = isLeft ? '#5A2FB8' : '#1B55AB';
+                } else {
+                    bar.dataset.activeColor = '#666';
+                }
+                
                 bar.style.opacity = isInitialLoad ? '0' : '1';
                 svg.appendChild(bar);
             };
@@ -176,6 +221,7 @@ $(function () {
             productList.forEach(li => drawBar(li, false));
 
             if (isInitialLoad) {
+                storeOriginalScores();
                 startAnimation();
                 isInitialLoad = false;
             } else {
@@ -185,8 +231,8 @@ $(function () {
 
         function updateActiveStates(ops, prods) {
             [...ops, ...prods].forEach(li => {
-                const score = getMatchScore(li);
-                if (score >= 50) {
+                const score = parseFloat(li.dataset.originalScore || getMatchScore(li));
+                if (score >= 60) {
                     li.classList.add('active');
                     const id = li.dataset.id;
                     const selector = li.parentElement.id === 'operatorList' ? `[data-from="${id}"]` : `[data-to="${id}"]`;
@@ -203,41 +249,72 @@ $(function () {
             const ops = document.querySelectorAll('#operatorList li');
             const prods = document.querySelectorAll('#productList li');
 
-            // 1. 회색 선 애니메이션
+            // 1. 리스트 아이템 & 바 애니메이션 (0~1.6초) - 차트 제외
             setTimeout(() => {
+                [...ops, ...prods].forEach((li, i) => {
+                    setTimeout(() => {
+                        li.classList.add('animate');
+                        const bar = svg.querySelector(`.color-bar[data-from="${li.dataset.id}"], .color-bar[data-to="${li.dataset.id}"]`);
+                        if(bar) { bar.style.transition = 'opacity 0.7s ease'; bar.style.opacity = '1'; }
+                    }, i * 80);
+                });
+            }, 400);
+
+            // 2. 숫자 카운팅 + 원형 차트 애니메이션 동시 시작 (2초~4초)
+            setTimeout(() => {
+                // 숫자 카운팅 애니메이션
+                [...ops, ...prods].forEach(li => {
+                    const scoreElement = li.querySelector('.score strong');
+                    if (scoreElement && li.dataset.originalScore) {
+                        animateScore(scoreElement, li.dataset.originalScore, 2000);
+                    }
+                    
+                    // 원형 차트 애니메이션 (2초 동안)
+                    const chart = li.querySelector('.circle_chart');
+                    if (chart) {
+                        const progress = chart.querySelector('.progress');
+                        const off = (2 * Math.PI * 45) * (1 - parseInt(li.dataset.originalScore) / 100);
+                        progress.style.transition = 'stroke-dashoffset 2s ease';
+                        setTimeout(() => progress.style.strokeDashoffset = off, 50);
+                    }
+                });
+            }, 2000);
+
+            // 3. centerNode active + 회색 선 + 그라디언트 선 + color-bar 색상 변경 애니메이션 (4초~6초)
+            setTimeout(() => {
+                // centerNode에 active 클래스 추가
+                centerNode.classList.add('active');
+                
+                // color-bar 색상 변경 애니메이션
+                [...ops, ...prods].forEach(li => {
+                    const bar = svg.querySelector(`.color-bar[data-from="${li.dataset.id}"], .color-bar[data-to="${li.dataset.id}"]`);
+                    if (bar && bar.dataset.activeColor) {
+                        // transition을 먼저 설정
+                        bar.style.transition = 'stroke 2s ease';
+                        // 강제 리플로우
+                        bar.getBoundingClientRect();
+                        // 그 다음 색상 변경
+                        setTimeout(() => {
+                            bar.style.stroke = bar.dataset.activeColor;
+                        }, 50);
+                    }
+                });
+                
+                // 회색 선 애니메이션
                 svg.querySelectorAll('path.line-init').forEach(path => {
                     const len = path.getTotalLength();
                     path.style.transition = 'none';
                     path.style.strokeDasharray = len;
                     path.style.strokeDashoffset = len;
                     path.getBoundingClientRect();
-                    path.style.transition = 'stroke-dashoffset 2.5s ease';
+                    path.style.transition = 'stroke-dashoffset 2s ease';
                     path.style.strokeDashoffset = '0';
                 });
-            }, 400);
 
-            // 2. 리스트 아이템 & 차트 & 바 애니메이션
-            setTimeout(() => {
-                [...ops, ...prods].forEach((li, i) => {
-                    setTimeout(() => {
-                        li.classList.add('animate');
-                        const chart = li.querySelector('.circle_chart');
-                        if (chart) {
-                            const progress = chart.querySelector('.progress');
-                            const off = (2 * Math.PI * 45) * (1 - parseInt(chart.dataset.percent) / 100);
-                            progress.style.transition = 'stroke-dashoffset 0.7s ease';
-                            setTimeout(() => progress.style.strokeDashoffset = off, 50);
-                        }
-                        const bar = svg.querySelector(`.color-bar[data-from="${li.dataset.id}"], .color-bar[data-to="${li.dataset.id}"]`);
-                        if(bar) { bar.style.transition = 'opacity 0.7s ease'; bar.style.opacity = '1'; }
-                    }, i * 80);
-                });
-            }, 2000);
-
-            // 3. 그라디언트 선 연결 애니메이션
-            setTimeout(() => {
+                // 그라디언트 선 애니메이션
                 [...ops, ...prods].forEach(li => {
-                    if (getMatchScore(li) >= 50) {
+                    const score = parseFloat(li.dataset.originalScore);
+                    if (score >= 60) {
                         li.classList.add('active');
                         const id = li.dataset.id;
                         const selector = li.parentElement.id === 'operatorList' ? `[data-from="${id}"]` : `[data-to="${id}"]`;
@@ -259,7 +336,7 @@ $(function () {
                         });
                     }
                 });
-            }, 3000);
+            }, 4000);
         }
 
         drawConnections();

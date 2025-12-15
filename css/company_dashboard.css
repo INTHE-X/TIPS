@@ -505,7 +505,6 @@ body {
 .center_section {
     padding: 30px;
     width: 718px;
-    height: 920px;
     flex-shrink: 0;
     background: #FFFFFF;
     border: 1px solid #FFFFFF;
@@ -536,7 +535,7 @@ body {
     max-width: 420px;
     /* 너무 커지지 않게 제한 */
     opacity: 1;
-    z-index: 1;
+    z-index: 10;
     pointer-events: none;
 }
 
@@ -551,7 +550,7 @@ body {
     max-width: 420px;
 
     opacity: 0.6;   /* 영상은 조금 투명하게 */
-    z-index: 1;
+    z-index: 10;
     pointer-events: none;
 
     border-radius: 10px; /* 원하면 부드럽게 */
@@ -1029,7 +1028,7 @@ body {
 
 .bar_fill {
     flex: 1;
-    height: 6px;
+    height: 8px;
     background: transparent;
     display: flex;
     gap: 2px;
@@ -1069,8 +1068,6 @@ body {
     }
 }
 
-
-
 .factors_grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -1079,13 +1076,15 @@ body {
 
 /* F1~F8 라벨 호버 스타일 - 호버 시 색상 변경 */
 .radar_label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: absolute;
     top: 50%;
     left: 50%;
     cursor: pointer;
     transition: all 0.2s ease;
     text-align: center;
-    white-space: nowrap;
     z-index: 3;
     visibility: hidden;
     opacity: 0;
@@ -1098,6 +1097,8 @@ body {
 }
 
 .radar_label_main {
+    position: relative;
+    display: inline-block;
     font-family: Clash Grotesk;
     font-size: 20px;
     font-weight: 600;
@@ -1106,22 +1107,73 @@ body {
     transition: color 0.2s ease;
 }
 
+.radar_label_main::after{
+    display: block;
+    content: "";
+    position: absolute;
+    right: -8px;
+    top: -2px;
+    width: 5px;
+    height: 5px;
+    background: #6E42D9;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all .4s;
+}
+
+.radar_label.active .radar_label_main::after{
+    opacity: 1;
+}
+
 .radar_label_sub {
+    position: relative;
+    display: inline-block;
     font-size: 15px;
     font-weight: 500;
     color: #5E5E5E;
-    transition: color 0.2s ease;
+    transition: all 0.2s ease;
+    padding: 6px 10px;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.radar_chart_area .radar_label .radar_label_sub::after {
+    display: block;
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    -webkit-transform: translate(-50%, -50%) scale(0);
+    width: 180px;
+    height: 180px;
+    background: linear-gradient(to right, rgba(110, 66, 217, 0.8), rgba(34, 106, 214, 0.8));
+    z-index: -1;
+    transform-origin: center;
+    transition: all .5s ease;
+    border-radius: 50%;
+}
+
+.radar_chart_area .radar_label.active .radar_label_sub::after{
+    transform: translate(-50%, -50%) scale(1);
+    -webkit-transform: translate(-50%, -50%) scale(1);
 }
 
 /* radar_label 호버 시에만 색상 변경 */
-.radar_chart_area .radar_label:hover .radar_label_main,
-.radar_chart_area .radar_label.active .radar_label_main {
+.radar_chart_area .radar_label:not(.active):hover .radar_label_main{
     color: #6E42D9 !important;
 }
 
-.radar_chart_area .radar_label:hover .radar_label_sub,
-.radar_chart_area .radar_label.active .radar_label_sub{
+.radar_chart_area .radar_label:not(.active) .radar_label_main {
+}
+
+.radar_chart_area .radar_label:not(.active):hover .radar_label_sub{
     color: #9A7CE3 !important;
+}
+
+.radar_chart_area .radar_label.active .radar_label_sub{
+    color: #fff;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* bar_score 스타일 - 검은색 고정 */
