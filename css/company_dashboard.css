@@ -1145,18 +1145,21 @@ body {
     top: 50%;
     transform: translate(-50%, -50%) scale(0);
     -webkit-transform: translate(-50%, -50%) scale(0);
-    width: 180px;
-    height: 180px;
-    background: linear-gradient(to right, rgba(110, 66, 217, 0.8), rgba(34, 106, 214, 0.8));
+    width: 130px;
+    height: 130px;
+    /* background: linear-gradient(to left, rgba(110, 66, 217, 0.8), rgba(34, 106, 214, 0.8)); */
     z-index: -1;
+    background: #6E42D9;
     transform-origin: center;
     transition: all .5s ease;
     border-radius: 50%;
+    opacity: 0;
 }
 
 .radar_chart_area .radar_label.active .radar_label_sub::after{
     transform: translate(-50%, -50%) scale(1);
     -webkit-transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
 }
 
 /* radar_label 호버 시에만 색상 변경 */
