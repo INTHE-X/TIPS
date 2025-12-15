@@ -10,6 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.right-section')?.classList.add('animate');
     }, 100);
 
+    // progressBar 비디오 초기 숨김
+    const progressBarVideo = document.getElementById('progressBar');
+    if (progressBarVideo) {
+        progressBarVideo.style.opacity = '0';
+        progressBarVideo.style.transition = 'opacity 0.5s ease-in-out';
+    }
+
     // 첫 스텝 시작
     changeStep(0);
 });
@@ -44,7 +51,7 @@ const stepsData = [
         description:
             '인공지능 모형에 의거하여 TIPS 선정 및 잠재 TIPS 후보 기업들을 진단하고, <br> 향후 성장 지원을 위한 AI Agent 기반의 시사점을 제공합니다.',
         video: '../img/company_discovery/loading_step4.mp4',
-        stayTime: 6000
+        stayTime: 4000
     }
 ];
 
@@ -81,9 +88,15 @@ function changeStep(stepIndex) {
     const imageEl = document.getElementById('imageArea');
     const videoEl = document.getElementById('stepVideo');
     const sourceEl = videoEl.querySelector('source');
+    const progressBarVideo = document.getElementById('progressBar');
 
     // 페이드 아웃
     [titleEl, descEl, imageEl, videoEl].forEach(el => el.style.opacity = '0');
+    
+    // progressBar는 4번째 스텝이 아닐 때 숨김
+    if (stepIndex !== 3 && progressBarVideo) {
+        progressBarVideo.style.opacity = '0';
+    }
 
     // ================================
     // 콘텐츠 변경
@@ -103,6 +116,13 @@ function changeStep(stepIndex) {
         // 페이드 인
         [titleEl, descEl, imageEl, videoEl].forEach(el => el.style.opacity = '1');
 
+        // 4번째 스텝일 때 progressBar도 페이드 인
+        if (stepIndex === 3 && progressBarVideo) {
+            progressBarVideo.style.opacity = '1';
+            progressBarVideo.currentTime = 0;
+            progressBarVideo.play();
+        }
+
         // ================================
         // 영상 길이 기준 자동 진행
         // ================================
@@ -121,7 +141,6 @@ function changeStep(stepIndex) {
                 }
             }, durationMs);
         };
-
 
         videoEl.play();
     }, 500);
@@ -182,5 +201,4 @@ function onAllAnimationsComplete() {
             targetDiv.classList.add('active');
         }
     }, 300);
-
 }

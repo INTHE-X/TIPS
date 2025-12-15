@@ -37,7 +37,6 @@ $(function () {
             return score <= 60 ? 20 : 20 + ((score - 60) / 40) * 30;
         }
 
-        // 각 li의 원래 적합도 숫자 저장
         function storeOriginalScores() {
             const allLi = document.querySelectorAll('#operatorList li, #productList li');
             allLi.forEach(li => {
@@ -50,7 +49,6 @@ $(function () {
             });
         }
 
-        // 숫자 카운팅 애니메이션
         function animateScore(element, targetScore, duration = 2000) {
             const start = 0;
             const end = parseFloat(targetScore);
@@ -59,8 +57,6 @@ $(function () {
             function update(currentTime) {
                 const elapsed = currentTime - startTime;
                 const progress = Math.min(elapsed / duration, 1);
-                
-                // easeOutCubic
                 const easeProgress = 1 - Math.pow(1 - progress, 3);
                 const currentValue = start + (end - start) * easeProgress;
                 
@@ -83,7 +79,6 @@ $(function () {
             let defs = svg.querySelector('defs') || document.createElementNS(svgNS, 'defs');
             if (!svg.querySelector('defs')) svg.appendChild(defs);
 
-            // 왼쪽 그라디언트
             let gLeft = document.getElementById('gradientLeft');
             if (!gLeft) {
                 gLeft = document.createElementNS(svgNS, 'linearGradient');
@@ -100,7 +95,6 @@ $(function () {
                 <stop offset="100%" style="stop-color:#E8E3F5;stop-opacity:1" />
             `;
 
-            // 오른쪽 그라디언트
             let gRight = document.getElementById('gradientRight');
             if (!gRight) {
                 gRight = document.createElementNS(svgNS, 'linearGradient');
@@ -194,31 +188,30 @@ $(function () {
             });
 
             const drawBar = (li, isLeft) => {
-    const liRect = li.getBoundingClientRect();
-    const x = isLeft ? liRect.right - rect.left + GAP : liRect.left - rect.left - GAP;
-    const y = liRect.top + liRect.height / 2 - rect.top;
-    const score = parseFloat(li.dataset.originalScore || getMatchScore(li));
-    const strokeWidth = calculateStrokeWidth(score);
-    const bar = document.createElementNS(svgNS, 'path');
-    bar.setAttribute('d', `M ${x} ${y - strokeWidth/2} L ${x} ${y + strokeWidth/2}`);
-    bar.setAttribute('class', `color-bar ${isLeft ? 'left-color' : 'right-color'}`);
-    bar.setAttribute(isLeft ? 'data-from' : 'data-to', li.dataset.id);
-    
-    // 최종 색상 결정
-    const activeColor = score >= 60 ? (isLeft ? '#5A2FB8' : '#1B55AB') : '#666';
-    bar.dataset.activeColor = activeColor;
-    
-    // isInitialLoad가 아니면 (resize 시) 바로 최종 색상 적용
-    if (isInitialLoad) {
-        bar.style.stroke = '#666';
-        bar.style.opacity = '0';
-    } else {
-        bar.style.stroke = activeColor;
-        bar.style.opacity = '1';
-    }
-    
-    svg.appendChild(bar);
-};
+                const liRect = li.getBoundingClientRect();
+                const x = isLeft ? liRect.right - rect.left + GAP : liRect.left - rect.left - GAP;
+                const y = liRect.top + liRect.height / 2 - rect.top;
+                const score = parseFloat(li.dataset.originalScore || getMatchScore(li));
+                const strokeWidth = calculateStrokeWidth(score);
+                const bar = document.createElementNS(svgNS, 'path');
+                bar.setAttribute('d', `M ${x} ${y - strokeWidth/2} L ${x} ${y + strokeWidth/2}`);
+                bar.setAttribute('class', `color-bar ${isLeft ? 'left-color' : 'right-color'}`);
+                bar.setAttribute(isLeft ? 'data-from' : 'data-to', li.dataset.id);
+                
+                const activeColor = score >= 60 ? (isLeft ? '#5A2FB8' : '#1B55AB') : '#666';
+                bar.dataset.activeColor = activeColor;
+                
+                if (isInitialLoad) {
+                    bar.style.stroke = '#666';
+                    bar.style.opacity = '0';  // 초기에 숨김
+                } else {
+                    bar.style.stroke = activeColor;
+                    bar.style.opacity = '1';
+                }
+                
+                svg.appendChild(bar);
+            };
+
             operatorList.forEach(li => drawBar(li, true));
             productList.forEach(li => drawBar(li, false));
 
@@ -251,27 +244,24 @@ $(function () {
             const ops = document.querySelectorAll('#operatorList li');
             const prods = document.querySelectorAll('#productList li');
 
-            // 1. 리스트 아이템 & 바 애니메이션 (0~1.6초) - 차트 제외
+            // 1. 리스트 아이템 애니메이션 (0.4초~) - color-bar 제외
             setTimeout(() => {
                 [...ops, ...prods].forEach((li, i) => {
                     setTimeout(() => {
                         li.classList.add('animate');
-                        const bar = svg.querySelector(`.color-bar[data-from="${li.dataset.id}"], .color-bar[data-to="${li.dataset.id}"]`);
-                        if(bar) { bar.style.transition = 'opacity 0.7s ease'; bar.style.opacity = '1'; }
+                        // color-bar는 여기서 보이지 않음 (제거됨)
                     }, i * 80);
                 });
             }, 400);
 
-            // 2. 숫자 카운팅 + 원형 차트 애니메이션 동시 시작 (2초~4초)
+            // 2. 숫자 카운팅 + 원형 차트 애니메이션 (2초~4초)
             setTimeout(() => {
-                // 숫자 카운팅 애니메이션
                 [...ops, ...prods].forEach(li => {
                     const scoreElement = li.querySelector('.score strong');
                     if (scoreElement && li.dataset.originalScore) {
                         animateScore(scoreElement, li.dataset.originalScore, 2000);
                     }
                     
-                    // 원형 차트 애니메이션 (2초 동안)
                     const chart = li.querySelector('.circle_chart');
                     if (chart) {
                         const progress = chart.querySelector('.progress');
@@ -282,21 +272,19 @@ $(function () {
                 });
             }, 2000);
 
-            // 3. centerNode active + 회색 선 + 그라디언트 선 + color-bar 색상 변경 애니메이션 (4초~6초)
+            // 3. centerNode active + 회색 선 + 그라디언트 선 + color-bar 표시 및 색상 변경 (4초~)
             setTimeout(() => {
-                // centerNode에 active 클래스 추가
                 centerNode.classList.add('active');
                 
-                // color-bar 색상 변경 애니메이션
+                // color-bar 표시 및 색상 변경 애니메이션 (라인과 동시에)
                 [...ops, ...prods].forEach(li => {
                     const bar = svg.querySelector(`.color-bar[data-from="${li.dataset.id}"], .color-bar[data-to="${li.dataset.id}"]`);
                     if (bar && bar.dataset.activeColor) {
-                        // transition을 먼저 설정
-                        bar.style.transition = 'stroke 2s ease';
-                        // 강제 리플로우
+                        // opacity와 stroke 동시에 애니메이션
+                        bar.style.transition = 'opacity 0.5s ease, stroke 2s ease';
                         bar.getBoundingClientRect();
-                        // 그 다음 색상 변경
                         setTimeout(() => {
+                            bar.style.opacity = '1';  // 여기서 보이기 시작
                             bar.style.stroke = bar.dataset.activeColor;
                         }, 50);
                     }

@@ -478,8 +478,9 @@ body {
     transition: all 0.5s ease;
 }
 .image-area.video-mode {
+    position: relative;
     width: 1000px;  /* 이미지와 동일 */
-    height: 681px;  /* 이미지와 동일 */
+    height: 700px;  /* 이미지와 동일 */
     border: 1px solid #E7E7E780;
     background: rgba(231, 231, 231, 0.5);
     display: flex;
@@ -488,13 +489,7 @@ body {
     padding: 34px 33.5px;
     box-sizing: border-box;
 }
-#stepVideo {
-    width: 830px;
-    height: 536px;
-    object-fit: cover;
-    display: none;
-    border-radius: 20px;
-}
+
 .section-title,
 .section-description,
 .image-area {
@@ -512,6 +507,22 @@ body {
     object-fit: cover;
     display: none;
     border-radius: 20px;
+}
+
+.load_progress{
+    position: absolute;
+    left: 50%;
+    bottom: 45px;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.load_progress video{
+    width: 100%;
 }
 
 /* ==================== Page Load Animation ==================== */
