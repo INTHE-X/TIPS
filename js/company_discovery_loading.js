@@ -23,21 +23,21 @@ const stepsData = [
         description:
             '투자유치형 관점에서 TIPS 출신 업력 7년 이상의 핵심 성공 사례 30개 기업을 선정하여 빅데이터 기반의 조사를 수행합니다.',
         video: '../img/company_discovery/loading_step1.mp4',
-        stayTime: 13000
+        stayTime: 10000
     },
     {
         title: 'TIPS 성장 요인 추출',
         description:
             'TIPS 핵심 성공 사례의 공통적인 성장 패턴과 성공 요인을 잠재 변수로 개발하여 제시합니다.',
         video: '../img/company_discovery/loading_step2.mp4',
-        stayTime: 9000
+        stayTime: 8000
     },
     {
         title: 'TIPS 성장 요인 검증',
         description:
             '통계적 유의성 검증을 통해 실질적인 성공 요인을 선별하고,<br> 개별 변수로서의 중요도에 따른 가중치를 부여합니다.',
         video: '../img/company_discovery/loading_step3.mp4',
-        stayTime: 6000
+        stayTime: 9000
     },
     {
         title: 'TIPS MRI 진단',
