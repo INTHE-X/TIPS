@@ -432,6 +432,9 @@ body {
 }
 
 .recommend_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     position: relative;
     padding-bottom: 30px;
     margin-bottom: 30px;
@@ -447,6 +450,57 @@ body {
     background: #E5E5EA;
 }
 
+.recommend_tag ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.recommend_tag ul li{
+    display: flex;
+    align-items: center;
+}
+
+.recommend_tag ul li.tag{
+    padding: 8px 11px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.recommend_tag ul li.tag.bg1{
+    background: rgba(110, 66, 217, 1);
+}
+
+.recommend_tag ul li.tag.bg2{
+    background: #fff;
+    color: rgba(110, 66, 217, 1);
+    border: 1px solid rgba(110, 66, 217, 1);
+}
+
+.recommend_tag ul li.tag.bg3{
+    background: rgba(34, 107, 218, 1);
+}
+
+.recommend_tag ul li.tag.bg4{
+    background: #fff;
+    color: rgba(34, 107, 218, 1);
+    border: 1px solid rgba(34, 107, 218, 1);
+}
+
+.recommend_tag ul li.tag.bg5{
+    background: rgba(53, 53, 156, 1);
+}
+
+.recommend_tag ul li.tag.bg6{
+    background: #fff;
+    color: rgba(53, 53, 156, 1);
+    border: 1px solid rgba(53, 53, 156, 1);
+}
+
+.recommend_tag ul li.tag.txt_wh{
+    color: #fff;
+}
 
 .recommend_title .company {
     display: none;
