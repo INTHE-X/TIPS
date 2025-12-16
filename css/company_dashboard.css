@@ -527,6 +527,7 @@ body {
 
 /* 배경 이미지 */
 .radar_chart_area img {
+    display: none;
     position: absolute;
     top: 50%;
     left: 50%;
