@@ -205,6 +205,10 @@ body {
     z-index: 3;
 }
 
+.step-item:last-child::before{
+    display: none;
+}
+
 /* 아이콘 기본 스타일 */
 .step-icon {
     width: 42px;
@@ -431,6 +435,7 @@ body {
     position: absolute;
     right: 0;
     bottom: 0;
+    width: 100%;
     opacity: 0;
     visibility: hidden;
     transition: all .5s ease;
@@ -443,14 +448,16 @@ body {
 
 .step_link a{
     display: inline-block;
-    padding: 12px 40px;
+    width: 100%;
+    padding: 16px 20px;
     font-family: 'Clash Grotesk', sans-serif;
     font-size: 16px;
     font-weight: 500;
     border-radius: 999px;
-    background: #2764dd;
+    background: linear-gradient(to right, #6E42D9, #2764DD);
     color: #fff;
     transition: all .3s ease;
+    text-align: center;
 }
 
 .step_link a:hover{
