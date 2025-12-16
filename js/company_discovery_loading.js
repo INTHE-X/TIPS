@@ -37,7 +37,7 @@ const stepsData = [
         description:
             'TIPS 핵심 성공 사례의 공통적인 성장 패턴과 성공 요인을 <br> 잠재 변수로 개발하여 제시합니다.',
         video: '../img/company_discovery/loading_step2.mp4',
-        stayTime: 8000
+        stayTime: 15000
     },
     {
         title: 'TIPS 성장 요인 검증',
