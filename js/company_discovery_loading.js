@@ -43,7 +43,7 @@ const stepsData = [
         title: 'TIPS 성장 요인 검증',
         description:
             '통계적 유의성 검증을 통해 실질적인 성공 요인을 선별하고,<br> 개별 변수로서의 중요도에 따른 가중치를 부여합니다.',
-        video: '../img/company_discovery/loading_step3.webm',
+        video: '../img/company_discovery/loading_step3.mp4',
         stayTime: 10000
     },
     {

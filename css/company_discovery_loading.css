@@ -484,6 +484,7 @@ body {
     border-radius: 20px;
     transition: all 0.5s ease;
 }
+
 .image-area.video-mode {
     position: relative;
     width: 1000px;  /* 이미지와 동일 */
@@ -495,6 +496,7 @@ body {
     /* padding: 34px 33.5px; */
     box-sizing: border-box;
     border: 1px solid rgba(255, 255, 255, 0.3);
+    overflow: hidden;
 }
 
 .section-title,
@@ -502,7 +504,6 @@ body {
 .image-area {
     transition: opacity 0.5s ease-in-out;
 }
-
 
 .step-item.active .step-icon {
     transition: background 0.5s ease;

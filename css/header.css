@@ -67,6 +67,18 @@
     color: #000;
 }
 
+#nav ul li.active:nth-child(2) a,
+#nav ul li.active:nth-child(2) a:hover,
+#nav ul li.active:nth-child(2) a:focus-visible{
+    background: url('../img/nav_ico2_active.svg') var(--main-color2-);
+}
+
+#nav ul li.active:nth-child(3) a,
+#nav ul li.active:nth-child(3) a:hover,
+#nav ul li.active:nth-child(3) a:focus-visible{
+    background: url('../img/nav_ico3_active.svg') var(--main-color2-);
+}
+
 .logo{
     position: absolute;
     left: 0;
