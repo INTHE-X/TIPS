@@ -958,7 +958,7 @@ body {
 }
 
 .info_popup.popup_left {
-    width: 400px;
+    width: 430px;
     right: calc(100% + 20px);
     top: 50%;
     transform: translateY(-50%) translateX(-10px);
@@ -1043,6 +1043,10 @@ body {
     color: #70757C;
     font-weight: 500;
     margin-left: 6px;
+}
+
+.popup_title p span:not(.divider):last-child{
+    margin-right: 0;
 }
 
 .popup_title p span:first-child{
