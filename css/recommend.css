@@ -976,7 +976,7 @@ body {
 .popup_header {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
     padding: 16px 16px 16px 16px;
     border-bottom: none;
     margin-bottom: 20px;
@@ -1036,7 +1036,7 @@ body {
 
 .popup_title p span:not(.divider) {
     display: inline-block;
-    max-width: 100px;
+    max-width: 80px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
