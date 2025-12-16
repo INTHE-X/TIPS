@@ -394,7 +394,7 @@ const generalCompaniesData = [
     },
     {
         "id": 6,
-        "name": "시너지엠",
+        "name": "시너지엠플러스",
         "bgImage": "../img/sub/bg6.png",
         "rank": "TOP 0.3%",
         "grade": 1,

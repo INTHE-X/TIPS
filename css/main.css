@@ -3121,6 +3121,7 @@
 }
 
 .risk_chart{
+    position: relative;
     padding: 30px 30px 0 30px;
     border-radius: 20px;
     background: #eff0f0;
@@ -3172,11 +3173,24 @@
 }
 
 .risk_score_chart{
+    position: relative;
     padding: 20px;
 }
 
-.risk_chart{
+.risk_score_chart::after{
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    background: rgba(255, 0, 0, 0.06);
 }
+
+.risk_score_chart::after{
+    right: 40px;
+}
+
 
 .risk_table_area .cim_table_box{
     padding: 0 30px;
@@ -3186,7 +3200,7 @@
 .risk_table_area .cim_table_box table thead th:first-child,
 .risk_table_area .cim_table_box table tbody th{
     /* width: 73px; */
-    width: 96px;
+    width: 97px;
     word-break: keep-all;
 }
 
@@ -3260,9 +3274,9 @@
     top: 0;
     transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
-    width: 60px;
+    width: 55px;
     height: 100%;
-    background: rgba(51, 51, 51, 0.06);
+    background: rgba(255, 0, 0, 0.06);
     pointer-events: none;
 }
 

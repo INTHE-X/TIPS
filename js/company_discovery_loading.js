@@ -28,14 +28,14 @@ const stepsData = [
     {
         title: 'TIPS 성공 사례 학습',
         description:
-            '투자유치형 관점에서 TIPS 출신 업력 7년 이상의 핵심 성공 사례 30개 기업을 선정하여 빅데이터 기반의 조사를 수행합니다.',
-        video: '../img/company_discovery/loading_step1.mp4',
-        stayTime: 10000
+            '투자유치형 관점에서 TIPS 출신 업력 7년 이상의 핵심 성공 사례<br> 30개 기업을 선정하여 빅데이터 기반의 조사를 수행합니다.',
+        video: '../img/company_discovery/loading_step1.webm',
+        stayTime: 15000
     },
     {
         title: 'TIPS 성장 요인 추출',
         description:
-            'TIPS 핵심 성공 사례의 공통적인 성장 패턴과 성공 요인을 잠재 변수로 개발하여 제시합니다.',
+            'TIPS 핵심 성공 사례의 공통적인 성장 패턴과 성공 요인을 <br> 잠재 변수로 개발하여 제시합니다.',
         video: '../img/company_discovery/loading_step2.mp4',
         stayTime: 8000
     },
@@ -49,7 +49,7 @@ const stepsData = [
     {
         title: 'TIPS MRI 진단',
         description:
-            '인공지능 모형에 의거하여 TIPS 선정 및 잠재 TIPS 후보 기업들을 진단하고, <br> 향후 성장 지원을 위한 AI Agent 기반의 시사점을 제공합니다.',
+            '인공지능 모형에 의거하여 TIPS 선정 및 잠재 TIPS 후보 <br> 기업들을 진단하고,향후 성장 지원을 위한 AI Agent 기반의 <br> 시사점을 제공합니다.',
         video: '../img/company_discovery/loading_step4.mp4',
         stayTime: 4000
     }

@@ -512,7 +512,7 @@ body {
 .load_progress{
     position: absolute;
     left: 50%;
-    bottom: 45px;
+    bottom: 60px;
     transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
     width: 400px;
