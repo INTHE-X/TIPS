@@ -10,11 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.right-section')?.classList.add('animate');
     }, 100);
 
-    // progressBar 비디오 초기 숨김
-    const progressBarVideo = document.getElementById('progressBar');
-    if (progressBarVideo) {
-        progressBarVideo.style.opacity = '0';
-        progressBarVideo.style.transition = 'opacity 0.5s ease-in-out';
+    // progress_box 초기 숨김
+    const progressBox = document.querySelector('.load_progress');
+    if (progressBox) {
+        progressBox.style.opacity = '0';
+        progressBox.style.transition = 'opacity 0.5s ease-in-out';
     }
 
     // 첫 스텝 시작
@@ -88,14 +88,15 @@ function changeStep(stepIndex) {
     const imageEl = document.getElementById('imageArea');
     const videoEl = document.getElementById('stepVideo');
     const sourceEl = videoEl.querySelector('source');
-    const progressBarVideo = document.getElementById('progressBar');
+    const progressBox = document.querySelector('.load_progress');
 
     // 페이드 아웃
     [titleEl, descEl, imageEl, videoEl].forEach(el => el.style.opacity = '0');
     
-    // progressBar는 4번째 스텝이 아닐 때 숨김
-    if (stepIndex !== 3 && progressBarVideo) {
-        progressBarVideo.style.opacity = '0';
+    // progress_box는 4번째 스텝이 아닐 때 숨김 및 active 제거
+    if (stepIndex !== 3 && progressBox) {
+        progressBox.style.opacity = '0';
+        progressBox.classList.remove('active');
     }
 
     // ================================
@@ -116,11 +117,13 @@ function changeStep(stepIndex) {
         // 페이드 인
         [titleEl, descEl, imageEl, videoEl].forEach(el => el.style.opacity = '1');
 
-        // 4번째 스텝일 때 progressBar도 페이드 인
-        if (stepIndex === 3 && progressBarVideo) {
-            progressBarVideo.style.opacity = '1';
-            progressBarVideo.currentTime = 0;
-            progressBarVideo.play();
+        // 4번째 스텝일 때 progress_box 페이드 인 및 active 클래스 추가
+        if (stepIndex === 3 && progressBox) {
+            progressBox.style.opacity = '1';
+            progressBox.classList.add('active');
+            
+            // 퍼센트 카운팅 애니메이션 시작
+            animatePercentage();
         }
 
         // ================================
@@ -144,6 +147,38 @@ function changeStep(stepIndex) {
 
         videoEl.play();
     }, 500);
+}
+
+// ================================
+// 퍼센트 카운팅 애니메이션
+// ================================
+function animatePercentage() {
+    const percentText = document.querySelector('.percent_text');
+    if (!percentText) return;
+
+    const duration = 4000; // 0.4초
+    const startTime = performance.now();
+    const startValue = 0;
+    const endValue = 100;
+
+    function animate(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // easeOutCubic 적용
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const currentValue = Math.round(startValue + (endValue - startValue) * ease);
+        
+        percentText.textContent = `${currentValue}%`;
+
+        if (progress < 1) {
+            requestAnimationFrame(animate);
+        } else {
+            percentText.textContent = '100%';
+        }
+    }
+
+    requestAnimationFrame(animate);
 }
 
 // ================================
@@ -176,23 +211,6 @@ function animateStepLine(item) {
 // ================================
 // 마지막 페이지 전환
 // ================================
-// function goNextPage() {
-//     let overlay = document.querySelector('.page-transition-overlay');
-
-//     if (!overlay) {
-//         overlay = document.createElement('div');
-//         overlay.className = 'page-transition-overlay';
-//         document.body.appendChild(overlay);
-//     }
-
-//     overlay.classList.remove('fade-out');
-//     overlay.classList.add('fade-in');
-
-//     setTimeout(() => {
-//         location.href = 'company_discovery_after.html';
-//     }, 600);
-// }
-
 function onAllAnimationsComplete() {
     // 특정 div에 클래스 추가
     const targetDiv = document.querySelector('.step_link');

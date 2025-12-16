@@ -520,17 +520,64 @@ body {
 .load_progress{
     position: absolute;
     left: 50%;
-    bottom: 40px;
-    transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
-    width: 400px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
 }
 
-.load_progress video{
+/* .load_progress video{
     width: 100%;
+} */
+
+.load_progress .tit{
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.2px;
+    font-family: var(--font3-);
+}
+
+.load_progress .progress_box{
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+    gap: 10px;
+}
+
+.load_progress .progress_bar{
+    width: 300px;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.1);    
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.load_progress .progress_bar .bar_color{
+    width: 100%;
+    transform: scaleX(0);
+    -webkit-transform: scaleX(0);
+    height: 100%;
+    background: linear-gradient(to right, rgba(40, 99, 221, 1), rgba(110, 66, 217, 1));
+    transition: all 4s;
+    transform-origin: left;
+    border-radius: 999px;
+}
+
+.load_progress .progress_box .percent_text{
+    display: inline-block;
+    width: 40px;
+    font-size: 15px;
+    font-family: var(--font3-);
+    color: rgba(95, 107, 127, 1);
+    font-weight: 600;
+}
+
+.load_progress.active .progress_bar .bar_color{
+    transform: scaleX(1);
+    -webkit-transform: scaleX(1);
 }
 
 /* ==================== Page Load Animation ==================== */
