@@ -1354,6 +1354,8 @@
 
 #statistic .divider.type1{
     position: relative;
+    width: 100%;
+    max-width: 100%;
 }
 
 #statistic .divider.type1 .dashBox{

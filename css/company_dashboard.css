@@ -336,9 +336,9 @@ body {
 
 .grade_value {
     display: block;
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 500;
-    font-family: 'Clash Grotesk', 'Pretendard', sans-serif;
+    font-family: 'Pretendard', sans-serif;
     line-height: 1.2;
     margin-bottom: 9px;
     margin-top: 5px;
